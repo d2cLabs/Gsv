@@ -1,11 +1,24 @@
 ﻿(function ($) {
+    //监听加载状态改变
+    document.onreadystatechange = completeLoading;
+    //$.parser.onComplete = completeLoading;
+
+    //加载状态为complete时移除loading效果
+    function completeLoading() {
+        //if (document.readyState === "complete") {
+            //alert("easyui complete");
+            var loadingMask = document.getElementById('loadingDiv');
+            if (loadingMask !== null)
+                loadingMask.parentNode.removeChild(loadingMask);
+        //}
+    };
 
     //Notification handler
     abp.event.on('abp.notifications.received', function (userNotification) {
         abp.notifications.showUiNotifyForUserNotification(userNotification);
 
         //Desktop notification
-        Push.create("Gsv", {
+        Push.create("Clc", {
             body: userNotification.notification.data.message,
             icon: abp.appPath + 'images/app-logo-small.png',
             timeout: 6000,

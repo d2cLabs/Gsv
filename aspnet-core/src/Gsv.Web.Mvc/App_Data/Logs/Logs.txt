@@ -1,0 +1,1027 @@
+DEBUG 2019-07-22 10:18:40,940 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:18:41,023 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:18:41,044 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,049 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,053 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,053 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,053 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,054 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,054 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,055 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,055 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:41,060 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:18:41,177 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:18:41,177 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:18:41,177 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:18:41,177 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:18:41,897 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:18:43,295 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:18:43,328 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:18:43,337 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:18:43,342 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:18:43,347 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:18:43,542 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:18:43,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:18:43,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:18:43,603 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:18:43,603 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:18:43,604 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:18:43,604 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:18:43,604 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:18:43,604 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:18:43,605 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:18:43,605 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:18:43,605 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:18:43,606 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:18:43,606 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+DEBUG 2019-07-22 10:23:42,922 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:23:43,015 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:23:43,045 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,049 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,049 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,049 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:43,055 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:23:43,139 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:23:43,139 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:23:43,139 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:23:43,139 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:23:43,554 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:23:44,676 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:23:44,709 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:23:44,720 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:23:44,725 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:23:44,730 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:23:44,956 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:23:45,013 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:23:45,013 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:23:45,021 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:23:45,021 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:23:45,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:23:45,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:23:45,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:23:45,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:23:45,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:23:45,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:23:45,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:23:45,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:23:45,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 10:23:51,428 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 10:23:57,466 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 10:23:58,034 [6    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 10:23:58,046 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 10:23:58,061 [6    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 10:23:58,094 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 10:23:58,104 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 626.7875ms
+INFO  2019-07-22 10:23:58,195 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6778.454ms 302 
+INFO  2019-07-22 10:23:58,206 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 10:23:58,261 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 10:24:02,642 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 10:24:02,657 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 9.4751ms.
+INFO  2019-07-22 10:24:03,107 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 10:24:04,154 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 1114.6935ms.
+INFO  2019-07-22 10:24:04,164 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5899.2236ms
+INFO  2019-07-22 10:24:04,227 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o  
+INFO  2019-07-22 10:24:04,232 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6021.4007ms 200 text/html; charset=utf-8
+INFO  2019-07-22 10:24:04,254 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0  
+INFO  2019-07-22 10:24:04,263 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc  
+INFO  2019-07-22 10:24:04,271 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I  
+INFO  2019-07-22 10:24:04,309 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/Waves/dist/waves.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\Waves\dist\waves.css'
+INFO  2019-07-22 10:24:04,311 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/roboto/roboto.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\fonts\roboto\roboto.css'
+INFO  2019-07-22 10:24:04,314 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 107.4702ms 200 text/css
+INFO  2019-07-22 10:24:04,320 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg  
+INFO  2019-07-22 10:24:04,327 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 59.8708ms 200 text/css
+INFO  2019-07-22 10:24:04,329 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\famfamfam-flags\dist\sprite\famfamfam-flags.css'
+INFO  2019-07-22 10:24:04,342 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 82.4053ms 200 text/css
+INFO  2019-07-22 10:24:04,344 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\fonts\material-icons\materialicons.css'
+INFO  2019-07-22 10:24:04,349 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.526ms 200 text/css
+INFO  2019-07-22 10:24:04,353 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css?v=opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk  
+INFO  2019-07-22 10:24:04,360 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/animate.css/animate.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\animate.css\animate.css'
+INFO  2019-07-22 10:24:04,363 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 97.6265ms 200 text/css
+INFO  2019-07-22 10:24:04,567 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ  
+INFO  2019-07-22 10:24:04,595 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/css/style.css?v=Hmj_hRbtMwZt6Iov-5Sm2qe6D6y7PFUTQRDdUyYreE4  
+INFO  2019-07-22 10:24:04,602 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/materialize.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\css\materialize.css'
+INFO  2019-07-22 10:24:04,607 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.5817ms 200 text/css
+INFO  2019-07-22 10:24:04,609 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g  
+INFO  2019-07-22 10:24:04,622 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/_Layout.css?v=xwt8JYbj8Mkb1RNju6XwW_7TfGRHHIDWaSjBggiszMY  
+INFO  2019-07-22 10:24:04,627 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+INFO  2019-07-22 10:24:04,638 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/json2/json2.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\json2\json2.js'
+INFO  2019-07-22 10:24:04,643 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/_Layout.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Account\_Layout.css'
+INFO  2019-07-22 10:24:04,645 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 298.903ms 200 text/css
+INFO  2019-07-22 10:24:04,652 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 41.3292ms 200 application/javascript
+INFO  2019-07-22 10:24:04,661 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w  
+INFO  2019-07-22 10:24:04,663 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 83.3362ms 200 text/css
+INFO  2019-07-22 10:24:04,676 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2019-07-22 10:24:04,678 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2019-07-22 10:24:04,684 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js?v=1fo3W6qowq4PinpCsKshaVqewExoFmzrRBGKbSdAVEk  
+INFO  2019-07-22 10:24:04,695 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc  
+INFO  2019-07-22 10:24:04,702 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-validation\dist\jquery.validate.js'
+INFO  2019-07-22 10:24:04,705 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/spin.js/spin.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\spin.js\spin.js'
+INFO  2019-07-22 10:24:04,708 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 41.4427ms 200 application/javascript
+INFO  2019-07-22 10:24:04,711 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/style.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\css\style.css'
+INFO  2019-07-22 10:24:04,720 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 150.2472ms 200 text/css
+INFO  2019-07-22 10:24:04,727 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.5647ms 200 application/javascript
+INFO  2019-07-22 10:24:04,739 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA  
+INFO  2019-07-22 10:24:04,751 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/admin.js?v=Arfe4oER5FiUTDitsyC7vauFkVzED5S2QjygyKFEnZ8  
+INFO  2019-07-22 10:24:04,752 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I  
+INFO  2019-07-22 10:24:04,757 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\bootstrap\dist\js\bootstrap.js'
+INFO  2019-07-22 10:24:04,761 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/admin.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\admin.js'
+INFO  2019-07-22 10:24:04,764 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\libs\abp.sweet-alert.js'
+INFO  2019-07-22 10:24:04,768 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.061ms 200 application/javascript
+INFO  2019-07-22 10:24:04,772 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/Waves/dist/waves.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\Waves\dist\waves.js'
+INFO  2019-07-22 10:24:04,779 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.0896ms 200 application/javascript
+INFO  2019-07-22 10:24:04,782 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 108.722ms 200 application/javascript
+INFO  2019-07-22 10:24:04,787 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2019-07-22 10:24:04,788 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Account\Login.css'
+INFO  2019-07-22 10:24:04,794 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 195.2847ms 200 text/css
+INFO  2019-07-22 10:24:04,795 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993878249582197  
+INFO  2019-07-22 10:24:04,812 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993878249582197  
+INFO  2019-07-22 10:24:04,843 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/abp.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\abp.js'
+INFO  2019-07-22 10:24:04,861 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY  
+INFO  2019-07-22 10:24:04,872 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 10:24:04,877 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/spin.js/jquery.spin.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\spin.js\jquery.spin.js'
+INFO  2019-07-22 10:24:04,888 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 10:24:04,893 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 48.513ms 200 application/javascript
+INFO  2019-07-22 10:24:04,895 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 65.0246ms 200 application/javascript
+INFO  2019-07-22 10:24:04,940 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-validation/src/localization/messages_zh_Hans.js?v=XUuMErmB-_cG9KcjKQpdh_se_7xGkbGzQZFXwFWneJg  
+INFO  2019-07-22 10:24:04,973 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/moment/min/moment-with-locales.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\moment\min\moment-with-locales.js'
+INFO  2019-07-22 10:24:04,985 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 10:24:05,025 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 322.8843ms 200 application/javascript
+INFO  2019-07-22 10:24:05,062 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-validation/src/localization/messages_zh_Hans.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-validation\src\localization\messages_zh_Hans.js'
+INFO  2019-07-22 10:24:05,102 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 168.2385ms 200 application/javascript
+INFO  2019-07-22 10:24:05,111 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 10:24:05,130 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/CWB0XYA8bzo0kSThX0UTuA.woff2  
+INFO  2019-07-22 10:24:05,135 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=HwuaDEir648DG9BaA_fbmYtAbb9sEFZ3W1ypAU5IjmU  
+INFO  2019-07-22 10:24:05,161 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 82.04ms 200 application/javascript
+INFO  2019-07-22 10:24:05,166 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636993878441193156  
+INFO  2019-07-22 10:24:05,196 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2019-07-22 10:24:05,201 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/roboto/CWB0XYA8bzo0kSThX0UTuA.woff2'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\fonts\roboto\CWB0XYA8bzo0kSThX0UTuA.woff2'
+INFO  2019-07-22 10:24:05,204 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 98.7636ms 200 font/woff2
+INFO  2019-07-22 10:24:05,206 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.2581ms 200 application/javascript
+INFO  2019-07-22 10:24:05,209 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\main.js'
+INFO  2019-07-22 10:24:05,216 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 296.5317ms 200 application/javascript
+INFO  2019-07-22 10:24:05,229 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/material-icons/materialicons.woff2  
+INFO  2019-07-22 10:24:05,268 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.woff2'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\fonts\material-icons\materialicons.woff2'
+INFO  2019-07-22 10:24:05,273 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.6913ms 200 font/woff2
+INFO  2019-07-22 10:24:05,322 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 324.6531ms.
+INFO  2019-07-22 10:24:05,352 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2  
+INFO  2019-07-22 10:24:05,355 [12   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:24:05,378 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/famfamfam-flags/dist/sprite/famfamfam-flags.png  
+INFO  2019-07-22 10:24:05,417 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 487.9056ms
+INFO  2019-07-22 10:24:05,420 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 631.4285ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:24:05,477 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/roboto/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\fonts\roboto\d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2'
+INFO  2019-07-22 10:24:05,478 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/famfamfam-flags/dist/sprite/famfamfam-flags.png'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\famfamfam-flags\dist\sprite\famfamfam-flags.png'
+INFO  2019-07-22 10:24:05,486 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 141.3525ms 200 font/woff2
+INFO  2019-07-22 10:24:05,495 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 136.0387ms 200 image/png
+INFO  2019-07-22 10:24:05,499 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 380.4357ms.
+INFO  2019-07-22 10:24:05,508 [9    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 10:24:05,511 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 620.324ms
+INFO  2019-07-22 10:24:05,516 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 732.2381ms 200 application/x-javascript
+DEBUG 2019-07-22 10:40:59,089 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:40:59,125 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:40:59,151 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,155 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,156 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,156 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,156 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,157 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,157 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,158 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,159 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,159 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,159 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,161 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:40:59,165 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:40:59,254 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:40:59,255 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:40:59,255 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:40:59,255 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:40:59,603 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:41:00,053 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:41:00,087 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:41:00,097 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:41:00,101 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:41:00,107 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:41:00,152 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:41:00,205 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:41:00,206 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:41:00,217 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:41:00,218 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:41:00,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:41:00,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:41:00,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:41:00,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:41:00,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:41:00,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:41:00,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:41:00,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:41:00,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 10:41:05,000 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 10:41:06,752 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 10:41:07,051 [7    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 10:41:07,059 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 10:41:07,074 [7    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 10:41:07,105 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 10:41:07,109 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 352.406ms
+INFO  2019-07-22 10:41:07,189 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2196.0439ms 302 
+INFO  2019-07-22 10:41:07,197 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 10:41:07,252 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 10:41:09,016 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 10:41:09,024 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.9027ms.
+INFO  2019-07-22 10:41:09,405 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 10:41:10,139 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 788.7499ms.
+INFO  2019-07-22 10:41:10,149 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 2896.6292ms
+INFO  2019-07-22 10:41:10,190 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2993.4715ms 200 text/html; charset=utf-8
+INFO  2019-07-22 10:41:10,191 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o  
+INFO  2019-07-22 10:41:10,193 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg  
+INFO  2019-07-22 10:41:10,200 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0  
+INFO  2019-07-22 10:41:10,202 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc  
+INFO  2019-07-22 10:41:10,203 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I  
+INFO  2019-07-22 10:41:10,244 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /fonts/roboto/roboto.css was not modified
+INFO  2019-07-22 10:41:10,245 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /fonts/material-icons/materialicons.css was not modified
+INFO  2019-07-22 10:41:10,245 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/animate.css/animate.css was not modified
+INFO  2019-07-22 10:41:10,247 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/famfamfam-flags/dist/sprite/famfamfam-flags.css was not modified
+INFO  2019-07-22 10:41:10,247 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/Waves/dist/waves.css was not modified
+INFO  2019-07-22 10:41:10,254 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 63.0662ms 304 text/css
+INFO  2019-07-22 10:41:10,255 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css?v=opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk  
+INFO  2019-07-22 10:41:10,256 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 53.2787ms 304 text/css
+INFO  2019-07-22 10:41:10,257 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 56.2229ms 304 text/css
+INFO  2019-07-22 10:41:10,256 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.8854ms 304 text/css
+INFO  2019-07-22 10:41:10,257 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 63.6636ms 304 text/css
+INFO  2019-07-22 10:41:10,256 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/bootstrap/dist/css/bootstrap.css was not modified
+INFO  2019-07-22 10:41:10,257 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.1645ms 304 text/css
+INFO  2019-07-22 10:41:10,258 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ  
+INFO  2019-07-22 10:41:10,259 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /css/materialize.css was not modified
+INFO  2019-07-22 10:41:10,259 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8222ms 304 text/css
+INFO  2019-07-22 10:41:10,267 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/css/style.css?v=Hmj_hRbtMwZt6Iov-5Sm2qe6D6y7PFUTQRDdUyYreE4  
+INFO  2019-07-22 10:41:10,268 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /css/style.css was not modified
+INFO  2019-07-22 10:41:10,269 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.099ms 304 text/css
+INFO  2019-07-22 10:41:10,269 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/_Layout.css?v=xwt8JYbj8Mkb1RNju6XwW_7TfGRHHIDWaSjBggiszMY  
+INFO  2019-07-22 10:41:10,270 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/_Layout.css was not modified
+INFO  2019-07-22 10:41:10,270 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7332ms 304 text/css
+INFO  2019-07-22 10:41:10,271 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g  
+INFO  2019-07-22 10:41:10,271 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/json2/json2.js was not modified
+INFO  2019-07-22 10:41:10,271 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8388ms 304 application/javascript
+INFO  2019-07-22 10:41:10,272 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2019-07-22 10:41:10,272 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.css was not modified
+INFO  2019-07-22 10:41:10,273 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9988ms 304 text/css
+INFO  2019-07-22 10:41:10,273 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js?v=1fo3W6qowq4PinpCsKshaVqewExoFmzrRBGKbSdAVEk  
+INFO  2019-07-22 10:41:10,274 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/bootstrap/dist/js/bootstrap.js was not modified
+INFO  2019-07-22 10:41:10,274 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9333ms 304 application/javascript
+INFO  2019-07-22 10:41:10,286 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w  
+INFO  2019-07-22 10:41:10,287 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2019-07-22 10:41:10,287 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993888601538124  
+INFO  2019-07-22 10:41:10,290 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/moment/min/moment-with-locales.js was not modified
+INFO  2019-07-22 10:41:10,291 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.682ms 304 application/javascript
+INFO  2019-07-22 10:41:10,291 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993888601538124  
+INFO  2019-07-22 10:41:10,296 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636993888701163822  
+INFO  2019-07-22 10:41:10,316 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 10:41:10,322 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc  
+INFO  2019-07-22 10:41:10,323 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/spin.js/spin.js was not modified
+INFO  2019-07-22 10:41:10,323 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7893ms 304 application/javascript
+INFO  2019-07-22 10:41:10,332 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 10:41:10,337 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2019-07-22 10:41:10,337 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 41.4277ms 200 application/javascript
+INFO  2019-07-22 10:41:10,352 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/jquery-validation/dist/jquery.validate.js was not modified
+INFO  2019-07-22 10:41:10,352 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 65.5085ms 304 application/javascript
+INFO  2019-07-22 10:41:10,359 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 10:41:10,366 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY  
+INFO  2019-07-22 10:41:10,367 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/spin.js/jquery.spin.js was not modified
+INFO  2019-07-22 10:41:10,367 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9028ms 304 application/javascript
+INFO  2019-07-22 10:41:10,367 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2019-07-22 10:41:10,368 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/abp.js was not modified
+INFO  2019-07-22 10:41:10,368 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8961ms 304 application/javascript
+INFO  2019-07-22 10:41:10,368 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA  
+INFO  2019-07-22 10:41:10,369 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/Waves/dist/waves.js was not modified
+INFO  2019-07-22 10:41:10,369 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.814ms 304 application/javascript
+INFO  2019-07-22 10:41:10,372 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I  
+INFO  2019-07-22 10:41:10,373 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js was not modified
+INFO  2019-07-22 10:41:10,373 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4217ms 304 application/javascript
+INFO  2019-07-22 10:41:10,382 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/admin.js?v=Arfe4oER5FiUTDitsyC7vauFkVzED5S2QjygyKFEnZ8  
+INFO  2019-07-22 10:41:10,383 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/admin.js was not modified
+INFO  2019-07-22 10:41:10,383 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8222ms 304 application/javascript
+INFO  2019-07-22 10:41:10,383 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=HwuaDEir648DG9BaA_fbmYtAbb9sEFZ3W1ypAU5IjmU  
+INFO  2019-07-22 10:41:10,383 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/main.js was not modified
+INFO  2019-07-22 10:41:10,383 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.671ms 304 application/javascript
+INFO  2019-07-22 10:41:10,384 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-validation/src/localization/messages_zh_Hans.js?v=XUuMErmB-_cG9KcjKQpdh_se_7xGkbGzQZFXwFWneJg  
+INFO  2019-07-22 10:41:10,384 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/jquery-validation/src/localization/messages_zh_Hans.js was not modified
+INFO  2019-07-22 10:41:10,384 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8352ms 304 application/javascript
+INFO  2019-07-22 10:41:10,461 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/famfamfam-flags/dist/sprite/famfamfam-flags.png  
+INFO  2019-07-22 10:41:10,463 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/famfamfam-flags/dist/sprite/famfamfam-flags.png was not modified
+INFO  2019-07-22 10:41:10,464 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.6599ms 304 image/png
+INFO  2019-07-22 10:41:10,513 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 10:41:10,598 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/CWB0XYA8bzo0kSThX0UTuA.woff2  
+INFO  2019-07-22 10:41:10,599 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /fonts/roboto/CWB0XYA8bzo0kSThX0UTuA.woff2 was not modified
+INFO  2019-07-22 10:41:10,599 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9484ms 304 font/woff2
+INFO  2019-07-22 10:41:10,599 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/material-icons/materialicons.woff2  
+INFO  2019-07-22 10:41:10,600 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /fonts/material-icons/materialicons.woff2 was not modified
+INFO  2019-07-22 10:41:10,600 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9595ms 304 font/woff2
+INFO  2019-07-22 10:41:10,600 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/fonts/roboto/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2  
+INFO  2019-07-22 10:41:10,601 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /fonts/roboto/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2 was not modified
+INFO  2019-07-22 10:41:10,601 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7419ms 304 font/woff2
+INFO  2019-07-22 10:41:10,759 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 400.5454ms.
+INFO  2019-07-22 10:41:10,774 [12   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:41:10,780 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 464.0334ms
+INFO  2019-07-22 10:41:10,780 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 488.8981ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:41:10,785 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 272.0892ms.
+INFO  2019-07-22 10:41:10,787 [7    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 10:41:10,787 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 454.8039ms
+INFO  2019-07-22 10:41:10,787 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 500.0166ms 200 application/x-javascript
+DEBUG 2019-07-22 10:48:38,346 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:48:38,440 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:48:38,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:38,473 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:48:38,557 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:48:38,557 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:48:38,557 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:48:38,557 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:48:39,006 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:48:40,199 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:48:40,232 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:48:40,241 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:48:40,245 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:48:40,250 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:48:40,462 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:48:40,516 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:48:40,516 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:48:40,523 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:48:40,524 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:48:40,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:48:40,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:48:40,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:48:40,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:48:40,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:48:40,526 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:48:40,526 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:48:40,526 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:48:40,526 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 10:48:46,300 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 10:48:52,303 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 10:48:52,932 [7    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 10:48:52,943 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 10:48:52,962 [7    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 10:48:53,024 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 10:48:53,036 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 718.9342ms
+INFO  2019-07-22 10:48:53,181 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6891.8524ms 302 
+INFO  2019-07-22 10:48:53,189 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 10:48:53,240 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 10:48:57,702 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 10:48:57,718 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 11.7022ms.
+INFO  2019-07-22 10:48:58,151 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 10:48:58,966 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 895.2841ms.
+INFO  2019-07-22 10:48:58,980 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5733.4367ms
+INFO  2019-07-22 10:48:59,069 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5829.2527ms 200 text/html; charset=utf-8
+INFO  2019-07-22 10:48:59,138 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993893204631406  
+INFO  2019-07-22 10:48:59,179 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636993893389311969  
+INFO  2019-07-22 10:48:59,225 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993893204631406  
+INFO  2019-07-22 10:48:59,245 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.js?v=wq0jzK1UIp-FUP9hwR6Uz9_WSa7TYNzJKarS3uAB4Z8  
+INFO  2019-07-22 10:48:59,270 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 10:48:59,281 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 10:48:59,346 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2019-07-22 10:48:59,366 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 10:48:59,384 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 198.9338ms 200 application/javascript
+INFO  2019-07-22 10:48:59,446 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2019-07-22 10:48:59,457 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 279.1217ms 200 application/javascript
+INFO  2019-07-22 10:48:59,524 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 10:48:59,736 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 363.922ms.
+INFO  2019-07-22 10:48:59,753 [9    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:48:59,762 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 476.4187ms
+INFO  2019-07-22 10:48:59,766 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 600.0869ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:48:59,775 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 248.0379ms.
+INFO  2019-07-22 10:48:59,778 [7    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 10:48:59,787 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 497.7807ms
+INFO  2019-07-22 10:48:59,796 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 710.687ms 200 application/x-javascript
+DEBUG 2019-07-22 10:51:58,463 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:51:58,618 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:51:58,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,669 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,670 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,674 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,676 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,677 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,678 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,678 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,679 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,679 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,680 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,680 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,684 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:51:58,693 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:51:58,849 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:51:58,849 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:51:58,849 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:51:58,849 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:51:59,487 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:00,722 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:52:00,756 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:52:00,766 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:52:00,772 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:52:00,777 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:52:00,994 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:52:01,058 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:52:01,059 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:52:01,067 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:52:01,068 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:52:01,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:52:01,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:52:01,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:52:01,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:52:01,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:52:01,070 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:52:01,071 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:52:01,071 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:52:01,071 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 10:52:07,618 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 10:52:13,446 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 10:52:14,033 [10   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 10:52:14,044 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 10:52:14,062 [10   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 10:52:14,094 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 10:52:14,100 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 646.0345ms
+INFO  2019-07-22 10:52:14,132 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6536.2814ms 0 
+DEBUG 2019-07-22 10:52:55,599 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 10:52:55,685 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 10:52:55,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:55,720 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 10:52:55,803 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:52:55,803 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:52:55,803 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:52:55,803 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 10:52:56,246 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 10:52:57,397 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 10:52:57,432 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 10:52:57,442 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 10:52:57,446 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 10:52:57,451 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 10:52:57,665 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 10:52:57,717 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 10:52:57,717 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 10:52:57,725 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 10:52:57,726 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 10:52:57,726 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 10:52:57,727 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 10:52:57,727 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 10:52:57,727 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 10:52:57,727 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 10:52:57,728 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 10:52:57,728 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 10:52:57,729 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 10:52:57,729 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 10:53:03,100 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 10:53:09,008 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 10:53:09,718 [6    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 10:53:09,732 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 10:53:09,751 [6    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 10:53:09,798 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 10:53:09,810 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 787.4015ms
+INFO  2019-07-22 10:53:09,915 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6820.0369ms 302 
+INFO  2019-07-22 10:53:09,923 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 10:53:09,972 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 10:53:14,276 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 10:53:14,288 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.8599ms.
+INFO  2019-07-22 10:53:14,714 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 10:53:15,260 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 605.6165ms.
+INFO  2019-07-22 10:53:15,275 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5294.8609ms
+INFO  2019-07-22 10:53:15,315 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5379.9712ms 200 text/html; charset=utf-8
+INFO  2019-07-22 10:53:15,329 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/default/easyui.css?v=HSgwLgMrPntnkUlMkc_nqszH1pyngWfSQMP1M7EQpRc  
+INFO  2019-07-22 10:53:15,344 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/icon.css?v=clXAqUQZgElcw0544z7qRC_q7bVHBtUZ38aLbItaH00  
+INFO  2019-07-22 10:53:15,363 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/css/main.css?v=qZO-ogqUF_OnsO9Zd7RkVJzO-FMfU4-Eaom7vzSnu0s  
+INFO  2019-07-22 10:53:15,399 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/jquery.min.js?v=ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ-Xp8a4MxAQ  
+INFO  2019-07-22 10:53:15,435 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/icon.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\icon.css'
+INFO  2019-07-22 10:53:15,443 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 97.0276ms 200 text/css
+INFO  2019-07-22 10:53:15,447 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/main.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\css\main.css'
+INFO  2019-07-22 10:53:15,451 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/jquery.easyui.min.js?v=j_kSrN1EXNOecmrjmPYcJK2BxC6vDPduXfqzzEKRQiY  
+INFO  2019-07-22 10:53:15,456 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 93.7124ms 200 text/css
+INFO  2019-07-22 10:53:15,460 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/locale/easyui-lang-zh_CN.js?v=sDOeUeEuVESnf9-iPlIcBlIAGcuDBjZGfDVxecIEfCs  
+INFO  2019-07-22 10:53:15,468 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/locale/easyui-lang-zh_CN.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\locale\easyui-lang-zh_CN.js'
+INFO  2019-07-22 10:53:15,479 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.2331ms 200 application/javascript
+INFO  2019-07-22 10:53:15,491 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993895776668518  
+INFO  2019-07-22 10:53:15,499 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/default/easyui.css'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\default\easyui.css'
+INFO  2019-07-22 10:53:15,521 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993895776668518  
+INFO  2019-07-22 10:53:15,523 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/jquery.min.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\jquery.min.js'
+INFO  2019-07-22 10:53:15,529 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 144.0094ms 200 application/javascript
+INFO  2019-07-22 10:53:15,540 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg  
+INFO  2019-07-22 10:53:15,563 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 192.3492ms 200 text/css
+INFO  2019-07-22 10:53:15,599 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\libs\abp.signalr-client.js'
+INFO  2019-07-22 10:53:15,602 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 10:53:15,627 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 10:53:15,630 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 70.2262ms 200 application/javascript
+INFO  2019-07-22 10:53:15,638 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 10:53:15,651 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=HwuaDEir648DG9BaA_fbmYtAbb9sEFZ3W1ypAU5IjmU  
+INFO  2019-07-22 10:53:15,727 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/main.js was not modified
+INFO  2019-07-22 10:53:15,751 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 10:53:15,758 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 78.896ms 404 
+INFO  2019-07-22 10:53:15,767 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 96.9893ms 304 application/javascript
+INFO  2019-07-22 10:53:15,771 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.js?v=wq0jzK1UIp-FUP9hwR6Uz9_WSa7TYNzJKarS3uAB4Z8  
+INFO  2019-07-22 10:53:15,789 [15   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2019-07-22 10:53:15,802 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.2508ms 304 application/javascript
+INFO  2019-07-22 10:53:15,832 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 10:53:15,852 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/jquery.easyui.min.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\jquery.easyui.min.js'
+INFO  2019-07-22 10:53:15,867 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 406.9027ms 200 application/javascript
+INFO  2019-07-22 10:53:15,904 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 10:53:15,918 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9.0271ms 404 
+INFO  2019-07-22 10:53:16,076 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 238.7122ms.
+INFO  2019-07-22 10:53:16,091 [9    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 10:53:16,095 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 464.7976ms
+INFO  2019-07-22 10:53:16,099 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 622.2175ms 200 application/x-javascript
+INFO  2019-07-22 10:53:16,108 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 351.0187ms.
+INFO  2019-07-22 10:53:16,116 [6    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:53:16,126 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 517.741ms
+INFO  2019-07-22 10:53:16,129 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 629.0031ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 10:53:16,148 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2019-07-22 10:53:16,212 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 71.0019ms 200 application/json
+INFO  2019-07-22 10:53:16,227 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/icons/man.png  
+INFO  2019-07-22 10:53:16,235 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/icons/man.png'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\icons\man.png'
+INFO  2019-07-22 10:53:16,240 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.9025ms 200 image/png
+INFO  2019-07-22 10:53:16,264 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/icons/lock.png  
+INFO  2019-07-22 10:53:16,270 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/icons/lock.png'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\icons\lock.png'
+INFO  2019-07-22 10:53:16,277 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.2746ms 200 image/png
+INFO  2019-07-22 10:53:16,284 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/default/images/blank.gif  
+INFO  2019-07-22 10:53:16,294 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-easyui-1.8.2/themes/default/images/panel_tools.png  
+INFO  2019-07-22 10:53:16,298 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/default/images/blank.gif'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\default\images\blank.gif'
+INFO  2019-07-22 10:53:16,311 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-easyui-1.8.2/themes/default/images/panel_tools.png'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\lib\jquery-easyui-1.8.2\themes\default\images\panel_tools.png'
+INFO  2019-07-22 10:53:16,325 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.499ms 200 image/png
+INFO  2019-07-22 10:53:16,330 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.0751ms 200 image/gif
+INFO  2019-07-22 10:53:16,432 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?id=2ewDvAVMjogRiK4upoT0Vg  
+INFO  2019-07-22 10:53:16,762 [10   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-07-22 10:53:16,828 [10   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"2ewDvAVMjogRiK4upoT0Vg","IpAddress":"::1","TenantId":null,"UserId":null,"ConnectTime":"2019-07-22T10:53:16.8169471+08:00","Properties":{}}
+DEBUG 2019-07-22 10:53:16,882 [10   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: 2ewDvAVMjogRiK4upoT0Vg
+DEBUG 2019-07-22 11:00:02,373 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 11:00:02,501 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 11:00:02,530 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,534 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,534 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,535 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,536 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,536 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,537 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,538 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,539 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,542 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,542 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,543 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,543 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,543 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,544 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:02,548 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 11:00:02,684 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:00:02,684 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:00:02,684 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:00:02,684 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:00:03,273 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:00:04,666 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 11:00:04,702 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 11:00:04,712 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 11:00:04,717 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 11:00:04,722 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 11:00:04,933 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 11:00:04,992 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 11:00:04,992 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 11:00:04,999 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 11:00:05,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 11:00:05,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 11:00:05,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 11:00:05,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 11:00:05,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 11:00:05,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 11:00:05,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 11:00:05,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 11:00:05,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 11:00:05,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 11:00:10,376 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 11:00:16,141 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 11:00:16,684 [6    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 11:00:16,695 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 11:00:16,710 [6    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 11:00:16,742 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 11:00:16,750 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 601.7111ms
+INFO  2019-07-22 11:00:16,829 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6460.7054ms 302 
+INFO  2019-07-22 11:00:16,834 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 11:00:16,878 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 11:00:21,026 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 11:00:21,038 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.1152ms.
+INFO  2019-07-22 11:00:21,406 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 11:00:21,917 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 573.8719ms.
+INFO  2019-07-22 11:00:21,936 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5046.2645ms
+INFO  2019-07-22 11:00:22,043 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5125.6175ms 200 text/html; charset=utf-8
+INFO  2019-07-22 11:00:22,065 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=TR8M8qzJrRQKwHHjT-vLvIOqziTyccWINMWronhQa4E  
+INFO  2019-07-22 11:00:22,129 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 11:00:22,187 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2019-07-22 11:00:22,194 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.3333ms 404 
+INFO  2019-07-22 11:00:22,229 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993900049352901  
+INFO  2019-07-22 11:00:22,236 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/abp.js was not modified
+INFO  2019-07-22 11:00:22,275 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 150.4186ms 304 application/javascript
+INFO  2019-07-22 11:00:22,277 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993900049352901  
+INFO  2019-07-22 11:00:22,296 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I  
+INFO  2019-07-22 11:00:22,301 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js was not modified
+INFO  2019-07-22 11:00:22,308 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.2067ms 304 application/javascript
+INFO  2019-07-22 11:00:22,312 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 11:00:22,337 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.js?v=wq0jzK1UIp-FUP9hwR6Uz9_WSa7TYNzJKarS3uAB4Z8  
+INFO  2019-07-22 11:00:22,341 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\main.js'
+INFO  2019-07-22 11:00:22,344 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2019-07-22 11:00:22,349 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 297.6235ms 200 application/javascript
+INFO  2019-07-22 11:00:22,350 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.8496ms 304 application/javascript
+INFO  2019-07-22 11:00:22,360 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 11:00:22,363 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 11:00:22,453 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 11:00:22,617 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 232.1867ms.
+INFO  2019-07-22 11:00:22,631 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 176.4265ms.
+INFO  2019-07-22 11:00:22,634 [6    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:00:22,638 [13   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 11:00:22,643 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 279.1643ms
+INFO  2019-07-22 11:00:22,649 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 452.6424ms 200 application/x-javascript
+INFO  2019-07-22 11:00:22,651 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 334.9789ms
+INFO  2019-07-22 11:00:22,656 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 457.4678ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:00:22,671 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2019-07-22 11:00:22,728 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 59.6468ms 200 application/json
+INFO  2019-07-22 11:00:26,257 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?id=yAlIdUP-CzreR0G5b0A2tQ  
+INFO  2019-07-22 11:00:26,533 [9    ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-07-22 11:00:26,596 [9    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"yAlIdUP-CzreR0G5b0A2tQ","IpAddress":"::1","TenantId":null,"UserId":null,"ConnectTime":"2019-07-22T11:00:26.5875286+08:00","Properties":{}}
+DEBUG 2019-07-22 11:00:26,648 [9    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: yAlIdUP-CzreR0G5b0A2tQ
+DEBUG 2019-07-22 11:01:55,191 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 11:01:55,277 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 11:01:55,295 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,298 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,298 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,298 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,299 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,299 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,299 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,300 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,300 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,301 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,301 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,301 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,301 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,302 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,302 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:55,305 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 11:01:55,386 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:01:55,386 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:01:55,386 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:01:55,386 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:01:55,778 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:01:56,940 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 11:01:56,984 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 11:01:56,995 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 11:01:57,002 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 11:01:57,009 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 11:01:57,326 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 11:01:57,378 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 11:01:57,378 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 11:01:57,389 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 11:01:57,390 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 11:01:57,390 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 11:01:57,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 11:01:57,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 11:01:57,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 11:01:57,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 11:01:57,392 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 11:01:57,392 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 11:01:57,392 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 11:01:57,392 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 11:02:02,559 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 11:02:08,314 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 11:02:08,976 [9    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 11:02:08,985 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 11:02:09,003 [9    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 11:02:09,039 [9    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 11:02:09,046 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 721.9023ms
+INFO  2019-07-22 11:02:09,128 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6576.6315ms 302 
+INFO  2019-07-22 11:02:09,133 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 11:02:09,188 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 11:02:13,546 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 11:02:13,559 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 9.2581ms.
+INFO  2019-07-22 11:02:13,927 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 11:02:14,483 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 626.47ms.
+INFO  2019-07-22 11:02:14,498 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5304.6962ms
+INFO  2019-07-22 11:02:14,582 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5409.3205ms 200 text/html; charset=utf-8
+INFO  2019-07-22 11:02:14,599 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993901173287187  
+INFO  2019-07-22 11:02:14,625 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=q4SteMM6gIU53RAeOF26sWVNQ_zK2T3ZTDY4MN9n--4  
+INFO  2019-07-22 11:02:14,641 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993901173287187  
+INFO  2019-07-22 11:02:14,645 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.js?v=wq0jzK1UIp-FUP9hwR6Uz9_WSa7TYNzJKarS3uAB4Z8  
+INFO  2019-07-22 11:02:14,669 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 11:02:14,743 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 11:02:14,763 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 100.7769ms 404 
+INFO  2019-07-22 11:02:14,765 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 11:02:14,773 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\main.js'
+INFO  2019-07-22 11:02:14,785 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 184.6758ms 200 application/javascript
+INFO  2019-07-22 11:02:14,789 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2019-07-22 11:02:14,796 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 149.5716ms 304 application/javascript
+INFO  2019-07-22 11:02:14,820 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 11:02:14,847 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 11:02:14,982 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 132.9003ms.
+INFO  2019-07-22 11:02:14,991 [13   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 11:02:14,996 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 322.8468ms
+INFO  2019-07-22 11:02:15,004 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 407.1249ms 200 application/x-javascript
+INFO  2019-07-22 11:02:15,056 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 234.7833ms.
+INFO  2019-07-22 11:02:15,068 [9    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:02:15,074 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 304.6101ms
+INFO  2019-07-22 11:02:15,081 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 476.7208ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:02:15,091 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2019-07-22 11:02:15,145 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 55.7376ms 200 application/json
+INFO  2019-07-22 11:02:15,213 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?id=cXyos4ftKFYiG8LmOUezyg  
+INFO  2019-07-22 11:02:15,459 [6    ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-07-22 11:02:15,524 [6    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"cXyos4ftKFYiG8LmOUezyg","IpAddress":"::1","TenantId":null,"UserId":null,"ConnectTime":"2019-07-22T11:02:15.5147588+08:00","Properties":{}}
+DEBUG 2019-07-22 11:02:15,575 [6    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: cXyos4ftKFYiG8LmOUezyg
+DEBUG 2019-07-22 11:02:56,110 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 11:02:56,194 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 11:02:56,215 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,218 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,219 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,219 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,219 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,219 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,220 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,220 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,220 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:56,225 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 11:02:56,305 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:02:56,305 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:02:56,305 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:02:56,305 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:02:56,718 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:02:58,153 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 11:02:58,201 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 11:02:58,215 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 11:02:58,225 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 11:02:58,233 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 11:02:58,542 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 11:02:58,613 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 11:02:58,613 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 11:02:58,628 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 11:02:58,629 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 11:02:58,630 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 11:02:58,631 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 11:02:58,631 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 11:02:58,631 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 11:02:58,632 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 11:02:58,634 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 11:02:58,634 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 11:02:58,634 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 11:02:58,635 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 11:03:05,198 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 11:03:11,047 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 11:03:11,601 [9    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 11:03:11,612 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 11:03:11,628 [9    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 11:03:11,661 [9    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 11:03:11,669 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 612.5555ms
+INFO  2019-07-22 11:03:11,784 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6588.2184ms 302 
+INFO  2019-07-22 11:03:11,791 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 11:03:11,854 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 11:03:16,678 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 11:03:16,693 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 10.8343ms.
+INFO  2019-07-22 11:03:17,087 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 11:03:17,590 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 588.3279ms.
+INFO  2019-07-22 11:03:17,668 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 5744.5696ms
+INFO  2019-07-22 11:03:17,693 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 11:03:17,705 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993901785432199  
+INFO  2019-07-22 11:03:17,710 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=ITOdf2f-eoGuIcHnloDwGsfZOCufCp9SuSUjFJyZ3qE  
+INFO  2019-07-22 11:03:17,729 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5925.8092ms 200 text/html; charset=utf-8
+INFO  2019-07-22 11:03:17,736 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993901785432199  
+INFO  2019-07-22 11:03:17,777 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.7536ms 404 
+INFO  2019-07-22 11:03:17,781 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 11:03:17,792 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 11:03:17,814 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\main.js'
+INFO  2019-07-22 11:03:17,827 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 135.585ms 200 application/javascript
+INFO  2019-07-22 11:03:17,837 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 11:03:17,907 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 11:03:18,133 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 220.582ms.
+INFO  2019-07-22 11:03:18,164 [7    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 11:03:18,180 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 384.1654ms
+INFO  2019-07-22 11:03:18,188 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 343.7848ms.
+INFO  2019-07-22 11:03:18,191 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 497.3708ms 200 application/x-javascript
+INFO  2019-07-22 11:03:18,201 [12   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:03:18,213 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 411.9346ms
+INFO  2019-07-22 11:03:18,228 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 520.5241ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:03:18,240 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2019-07-22 11:03:18,306 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 66.6272ms 200 application/json
+INFO  2019-07-22 11:03:18,363 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?id=UsNnFrJ4eJsj2FZ4AmOuyg  
+INFO  2019-07-22 11:03:18,598 [6    ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-07-22 11:03:18,666 [6    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"UsNnFrJ4eJsj2FZ4AmOuyg","IpAddress":"::1","TenantId":null,"UserId":null,"ConnectTime":"2019-07-22T11:03:18.6543702+08:00","Properties":{}}
+DEBUG 2019-07-22 11:03:18,721 [6    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: UsNnFrJ4eJsj2FZ4AmOuyg
+DEBUG 2019-07-22 11:05:03,678 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-22 11:05:03,776 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-07-22 11:05:03,795 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Web.Startup.GsvWebMvcModule, Gsv.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,798 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvWebCoreModule, Gsv.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,799 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvApplicationModule, Gsv.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,799 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,799 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,800 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,800 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,800 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,802 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,802 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,802 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:03,806 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-07-22 11:05:03,887 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:05:03,887 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:05:03,887 [1    ] o.Configuration.LanguageManagementConfig - Converted Gsv (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:05:03,887 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-07-22 11:05:04,294 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-22 11:05:05,452 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-07-22 11:05:05,495 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-22 11:05:05,512 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-22 11:05:05,520 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+DEBUG 2019-07-22 11:05:05,525 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-07-22 11:05:05,842 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-07-22 11:05:05,931 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-07-22 11:05:05,931 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-07-22 11:05:05,945 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.CreateUserDto
+DEBUG 2019-07-22 11:05:05,946 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Users.Dto.UserDto
+DEBUG 2019-07-22 11:05:05,947 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-07-22 11:05:05,948 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-07-22 11:05:05,948 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.CreateRoleDto
+DEBUG 2019-07-22 11:05:05,948 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.PermissionDto
+DEBUG 2019-07-22 11:05:05,949 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Roles.Dto.RoleDto
+DEBUG 2019-07-22 11:05:05,950 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-07-22 11:05:05,950 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.MultiTenancy.Dto.TenantDto
+DEBUG 2019-07-22 11:05:05,950 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-07-22 11:05:05,950 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Gsv.Web.Models.Roles.EditRoleModalViewModel
+INFO  2019-07-22 11:05:12,170 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-07-22 11:05:17,669 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc)
+WARN  2019-07-22 11:05:18,221 [9    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 107
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 56
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2019-07-22 11:05:18,234 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2019-07-22 11:05:18,253 [9    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2019-07-22 11:05:18,286 [9    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2019-07-22 11:05:18,292 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.HomeController.Index (Gsv.Web.Mvc) in 614.1912ms
+INFO  2019-07-22 11:05:18,375 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6203.7888ms 302 
+INFO  2019-07-22 11:05:18,379 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/Account/Login?ReturnUrl=%2F  
+INFO  2019-07-22 11:05:18,427 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc)
+INFO  2019-07-22 11:05:22,407 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2019-07-22 11:05:22,419 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.1792ms.
+INFO  2019-07-22 11:05:22,777 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2019-07-22 11:05:23,278 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 560.2771ms.
+INFO  2019-07-22 11:05:23,293 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Gsv.Web.Controllers.AccountController.Login (Gsv.Web.Mvc) in 4860.1648ms
+INFO  2019-07-22 11:05:23,355 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/js/main.js?v=G1wgb5_UtAWZi97j6dM0zuka8gG7DPUSjtwq3GZg-MI  
+INFO  2019-07-22 11:05:23,402 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpServiceProxies/GetAll?v=636993903058445012  
+INFO  2019-07-22 11:05:23,428 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5026.2324ms 200 text/html; charset=utf-8
+INFO  2019-07-22 11:05:23,438 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 11:05:23,446 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/view-resources/Views/Account/Login.js?v=wq0jzK1UIp-FUP9hwR6Uz9_WSa7TYNzJKarS3uAB4Z8  
+INFO  2019-07-22 11:05:23,455 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.4491ms 404 
+INFO  2019-07-22 11:05:23,488 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpScripts/GetScripts?v=636993903058445012  
+INFO  2019-07-22 11:05:23,493 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2019-07-22 11:05:23,505 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2019-07-22 11:05:23,545 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 96.1368ms 304 application/javascript
+INFO  2019-07-22 11:05:23,557 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'E:\Projects\Gsv\aspnet-core\src\Gsv.Web.Mvc\wwwroot\js\main.js'
+INFO  2019-07-22 11:05:23,573 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 210.8914ms 200 application/javascript
+INFO  2019-07-22 11:05:23,574 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/lib/momnet/min/moment-with-locales.js  
+INFO  2019-07-22 11:05:23,589 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.8805ms 404 
+INFO  2019-07-22 11:05:23,594 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2019-07-22 11:05:23,638 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments (, False) - Validation state: Valid
+INFO  2019-07-22 11:05:23,667 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2019-07-22 11:05:23,821 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 151.1844ms.
+INFO  2019-07-22 11:05:23,830 [7    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2019-07-22 11:05:23,836 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 329.5012ms
+INFO  2019-07-22 11:05:23,841 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 454.3219ms 200 application/x-javascript
+INFO  2019-07-22 11:05:23,889 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 249.1916ms.
+INFO  2019-07-22 11:05:23,899 [6    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:05:23,906 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 308.4938ms
+INFO  2019-07-22 11:05:23,911 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 462.8416ms 200 application/x-javascript; charset=utf-8
+INFO  2019-07-22 11:05:23,921 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2019-07-22 11:05:23,975 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.9663ms 200 application/json
+INFO  2019-07-22 11:05:24,058 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?id=b4Fn_EpDZ9IvqEmCE3gG1A  
+INFO  2019-07-22 11:05:24,310 [7    ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-07-22 11:05:24,374 [7    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"b4Fn_EpDZ9IvqEmCE3gG1A","IpAddress":"::1","TenantId":null,"UserId":null,"ConnectTime":"2019-07-22T11:05:24.3635604+08:00","Properties":{}}
+DEBUG 2019-07-22 11:05:24,428 [7    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: b4Fn_EpDZ9IvqEmCE3gG1A

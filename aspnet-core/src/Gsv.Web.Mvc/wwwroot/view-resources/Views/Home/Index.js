@@ -1,115 +1,123 @@
-﻿$(function () {
-    //Widgets count
-    $('.count-to').countTo();
+﻿(function () {
+    $(function() {
+        $("#main-tab").tabs({
+            onContextMenu: function (e, title) {
+                e.preventDefault();
+                $("#tab-menu").menu("show", { left: e.pageX, top: e.pageY })
+                    .data("tabTitle", title); //将点击的Tab标题加到菜单数据中
+            }
+        });
 
-    //Sales count to
-    $('.sales-count-to').countTo({
-        formatter: function (value, options) {
-            return '$' + value.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, ' ').replace('.', ',');
+        $("#tab-menu").menu({
+            onClick: function (item) {
+                tabHandle(this, item.id);
+            }
+        });
+        
+        var x = document.getElementsByClassName('easyui-tree');
+        for (var i = 0; i < x.length; i++)
+        {
+            $(x[i]).tree({
+                onClick: function(node) {
+                    addTab(node.text, node.attributes.url);
+                }
+            });
         }
     });
 
-    initRealTimeChart();
-    initDonutChart();
-    initSparkline();
-});
-
-var realtime = 'on';
-function initRealTimeChart() {
-    //Real time ==========================================================================================
-    var plot = $.plot('#real_time_chart', [getRandomData()], {
-        series: {
-            shadowSize: 0,
-            color: 'rgb(0, 188, 212)'
-        },
-        grid: {
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
-        lines: {
-            fill: true
-        },
-        yaxis: {
-            min: 0,
-            max: 100
-        },
-        xaxis: {
-            min: 0,
-            max: 100
-        }
-    });
-
-    function updateRealTime() {
-        plot.setData([getRandomData()]);
-        plot.draw();
-
-        var timeout;
-        if (realtime === 'on') {
-            timeout = setTimeout(updateRealTime, 320);
+    function addTab(title, url, icon) {
+        var $mainTabs = $("#main-tab");
+        if ($mainTabs.tabs("exists", title)) {
+            $mainTabs.tabs("select", title);
         } else {
-            clearTimeout(timeout);
+            $mainTabs.tabs("add", {
+                title: title,
+                closable: true,
+                icon: icon,
+                content: createFrame(url)
+            });
         }
     }
 
-    updateRealTime();
+    function createFrame(url) {
+        var html = '<iframe scrolling="auto" frameborder="0" src="' + url + '" style="width:100%; height:99%"></iframe>';
+        return html;
+    }
 
-    $('#realtime').on('change', function () {
-        realtime = this.checked ? 'on' : 'off';
-        updateRealTime();
-    });
-    //====================================================================================================
-}
+    // utils for sub
+    function closeTab(title) {
+        $("#main-tab").tabs('close', title);
+    }
 
-function initSparkline() {
-    $(".sparkline").each(function () {
-        var $this = $(this);
-        $this.sparkline('html', $this.data());
-    });
-}
-
-function initDonutChart() {
-    Morris.Donut({
-        element: 'donut_chart',
-        data: [{
-                label: 'Chrome',
-                value: 37
-            }, {
-                label: 'Firefox',
-                value: 30
-            }, {
-                label: 'Safari',
-                value: 18
-            }, {
-                label: 'Opera',
-                value: 12
-            },
-            {
-                label: 'Other',
-                value: 3
-            }],
-        colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
-        formatter: function (y) {
-            return y + '%'
+    function tabHandle(menu, type) {
+        var title = $(menu).data("tabTitle");
+        var $tab = $("#main-tab");
+        var tabs = $tab.tabs("tabs");
+        var index = $tab.tabs("getTabIndex", $tab.tabs("getTab", title));
+        var closeTitles = [];
+        switch (type) {
+            case "tab-menu-refresh":
+                var iframe = $(".tabs-panels .panel").eq(index).find("iframe");
+                if (iframe) {
+                    var url = iframe.attr("src");
+                    iframe.attr("src", url);
+                }
+                break;
+            case "tab-menu-openFrame":
+                var iframe = $(".tabs-panels .panel").eq(index).find("iframe");
+                if (iframe) {
+                    window.open(iframe.attr("src"));
+                }
+                break;
+            case "tab-menu-close":
+                closeTitles.push(title);
+                break;
+            case "tab-menu-closeleft":
+                if (index == 0) {
+                    mfx.notify.warn("左边没有可关闭标签。");
+                    return;
+                }
+                for (var i = 0; i < index; i++) {
+                    var opt = $(tabs[i]).panel("options");
+                    if (opt.closable) {
+                        closeTitles.push(opt.title);
+                    }
+                }
+                break;
+            case "tab-menu-closeright":
+                if (index == tabs.length - 1) {
+                    mfx.notify.warn("右边没有可关闭标签。");
+                    return;
+                }
+                for (var i = index + 1; i < tabs.length; i++) {
+                    var opt = $(tabs[i]).panel("options");
+                    if (opt.closable) {
+                        closeTitles.push(opt.title);
+                    }
+                }
+                break;
+            case "tab-menu-closeother":
+                for (var i = 0; i < tabs.length; i++) {
+                    if (i == index) {
+                        continue;
+                    }
+                    var opt = $(tabs[i]).panel("options");
+                    if (opt.closable) {
+                        closeTitles.push(opt.title);
+                    }
+                }
+                break;
+            case "tab-menu-closeall":
+                for (var i = 0; i < tabs.length; i++) {
+                    var opt = $(tabs[i]).panel("options");
+                    if (opt.closable) {
+                        closeTitles.push(opt.title);
+                    }
+                }
+                break;
         }
-    });
-}
-
-var data = [], totalPoints = 110;
-function getRandomData() {
-    if (data.length > 0) data = data.slice(1);
-
-    while (data.length < totalPoints) {
-        var prev = data.length > 0 ? data[data.length - 1] : 50, y = prev + Math.random() * 10 - 5;
-        if (y < 0) { y = 0; } else if (y > 100) { y = 100; }
-
-        data.push(y);
+        for (var i = 0; i < closeTitles.length; i++) {
+            $tab.tabs("close", closeTitles[i]);
+        }
     }
-
-    var res = [];
-    for (var i = 0; i < data.length; ++i) {
-        res.push([i, data[i]]);
-    }
-
-    return res;
-}
+})();

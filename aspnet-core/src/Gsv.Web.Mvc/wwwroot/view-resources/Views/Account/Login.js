@@ -1,44 +1,48 @@
-﻿$(function () {
-    $('#ReturnUrlHash').val(location.hash);
+﻿(function ($) {
+    var _$Form = $('#LoginForm');
 
-    var $loginForm = $('#LoginForm');
-
-    $loginForm.validate({
-        highlight: function (input) {
-            $(input).parents('.form-line').addClass('error');
-        },
-        unhighlight: function (input) {
-            $(input).parents('.form-line').removeClass('error');
-        },
-        errorPlacement: function (error, element) {
-            $(element).parents('.input-group').append(error);
-        }
-    });
-
-    $loginForm.submit(function (e) {
-        e.preventDefault();
-
-        if (!$loginForm.valid()) {
-            return;
-        }
-
+    function login() {
         abp.ui.setBusy(
             $('#LoginArea'),
-
             abp.ajax({
                 contentType: 'application/x-www-form-urlencoded',
-                url: $loginForm.attr('action'),
-                data: $loginForm.serialize()
-            })
+                url: _$Form.attr('action'),
+                data: _$Form.serialize(),
+            })              
         );
-    });
+    }
 
-    $('a.social-login-link').click(function () {
-        var $a = $(this);
-        var $form = $a.closest('form');
-        $form.find('input[name=provider]').val($a.attr('data-provider'));
-        $form.submit();
-    });
+    $('#LoginButton').click(function (e) {
+        e.preventDefault();
+        if (!_$Form.form('validate'))
+            return;
 
-    $loginForm.find('input[type=text]:first-child').focus();
-});
+        var tenancyName = $('#TenancyName').val();    
+        if (!tenancyName) {
+            abp.multiTenancy.setTenantIdCookie(null);
+            login();
+        }
+        else {
+            abp.services.app.account.isTenantAvailable({tenancyName: tenancyName})
+            .done(function (result) {
+                switch (result.state) {
+                    case 1: //Available
+                        abp.multiTenancy.setTenantIdCookie(result.tenantId);
+                        // location.reload();
+                        login();
+                        break;
+                    case 2: //InActive
+                        abp.message.warn(abp.utils.formatString(abp.localization
+                            .localize("TenantIsNotActive", "Gsv"),
+                            tenancyName));
+                        break;
+                    case 3: //NotFound
+                        abp.message.warn(abp.utils.formatString(abp.localization
+                            .localize("ThereIsNoTenantDefinedWithName{0}", "Gsv"),
+                            tenancyName));
+                        break;
+                }
+            })
+        }
+    })
+})(jQuery);

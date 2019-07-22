@@ -1,8 +1,10 @@
-﻿@using Abp.Collections.Extensions
-@using Gsv.Web.Views
+﻿@using Gsv.Web.Views
 @using Gsv.Web.Views.Shared.Components.SideBarNav
 @model SideBarNavViewModel
 @{
+    int i = 0;
+    string selected = null;
+
     var calculateMenuUrl = new Func<string, string>((url) =>
     {
         if (string.IsNullOrEmpty(url))
@@ -18,69 +20,27 @@
         return ApplicationPath + url;
     });
 }
-<div class="menu">
-    <ul class="list">
-        @foreach (var menuItem in Model.MainMenu.Items)
-        {
-            <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
-                @if (menuItem.Items.IsNullOrEmpty())
-                {
-                    <a href="@calculateMenuUrl(menuItem.Url)">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                }
-                else
-                {
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                    <ul class="ml-menu">
-                        @foreach (var subMenuItem in menuItem.Items)
-                        {
-                            <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
-                                @if (subMenuItem.Items.IsNullOrEmpty())
-                                {
-                                    <a href="@calculateMenuUrl(subMenuItem.Url)">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        @foreach (var subSubMenuItem in subMenuItem.Items)
-                                        {
-                                            <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")">
-                                                <a href="@calculateMenuUrl(subSubMenuItem.Url)">
-                                                    @subSubMenuItem.DisplayName
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-            </li>
-        }
-    </ul>
-</div>
+
+@foreach (var menuItem in Model.MainMenu.Items) 
+{
+    @if (i == 0)
+    {
+        selected = "selected:true";
+        i = 1;
+    }
+    else
+    {
+        selected = "";
+    }
+
+    <div title="@menuItem.DisplayName" data-options="iconCls:'@menuItem.Icon',@selected"> 
+        <ul id="Tree1" class="easyui-tree">
+            @foreach (var subMenuItem in menuItem.Items)
+            {
+                <li data-options="attributes:{'url': '@calculateMenuUrl(subMenuItem.Url)'}"}>
+                    <span>@subMenuItem.DisplayName</span>
+                </li>
+            }
+        </ul>
+    </div>
+}
