@@ -28,6 +28,10 @@ namespace Gsv.Web.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureApplicationCookie(options => {
+                options.ExpireTimeSpan = TimeSpan.FromHours(12);
+            });
+            
             // MVC
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())

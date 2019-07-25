@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Gsv.MultiTenancy
 {
-    [AbpAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpAuthorize(PermissionNames.Pages_Host)]
     public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
         private readonly TenantManager _tenantManager;

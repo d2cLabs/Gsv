@@ -1,129 +1,43 @@
-﻿@using Abp.Authorization.Users
-@using Abp.MultiTenancy
-@using Gsv.MultiTenancy
-@using Gsv.Web.Startup
-@model Abp.Application.Services.Dto.PagedResultDto<Gsv.MultiTenancy.Dto.TenantDto>
-@{
-    ViewBag.CurrentPageName = PageNames.Tenants; // The menu item will be active for this page.
+﻿@{
+    Layout = "~/Views/Shared/_CrudLayout.cshtml";
 }
-@section scripts
+
+@section customScript
 {
-    <environment names="Development">
-        <script src="~/view-resources/Views/Tenants/Index.js" asp-append-version="true"></script>
-    </environment>
-
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Tenants/Index.min.js" asp-append-version="true"></script>
-    </environment>
+    <script type="text/javascript">
+        crud.dgDefault.name = 'Tenants';
+        crud.dgDefault.pagination = false;
+        crud.dgDefault.sortName = 'id';
+        crud.dgDefault.columns = [[
+            { field: "tenancyName", title: "名称", width: 80, sortable: true },
+            { field: "name", title: "全名", width: 80, sortable: true },
+            { field: "isActive", title: "活动", width: 80},
+        ]];
+        crud.useSelfSave = true;
+    </script>
 }
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
-                <h2>
-                    @L("Tenants")
-                </h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a id="RefreshButton" href="javascript:void(0);" class="waves-effect waves-block"><i class="material-icons">refresh</i>@L("Refresh")</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="body table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>@L("TenancyName")</th>
-                            <th>@L("Name")</th>
-                            <th>@L("IsActive")</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var tenant in Model.Items)
-                        {
-                            <tr>
-                                <td>@tenant.TenancyName</td>
-                                <td>@tenant.Name</td>
-                                <td><i class="material-icons" style="color:@(tenant.IsActive ? "green":"red");">@(tenant.IsActive ? "check_box" : "indeterminate_check_box")</i></td>
-                                <td class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">menu</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#" class="waves-effect waves-block edit-tenant" data-tenant-id="@tenant.Id" data-toggle="modal" data-target="#TenantEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
-                                        <li><a href="#" class="waves-effect waves-block delete-tenant" data-tenant-id="@tenant.Id" data-tenancy-name="@tenant.TenancyName"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#TenantCreateModal">
-                    <i class="material-icons">add</i>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="TenantCreateModal" tabindex="-1" role="dialog" aria-labelledby="TenantCreateModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form name="tenantCreateForm" role="form" novalidate class="form-validation">
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        <span>@L("CreateNewTenant")</span>
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input class="form-control" type="text" name="TenancyName" required maxlength="@AbpTenantBase.MaxTenancyNameLength" minlength="2">
-                            <label class="form-label">@L("TenancyName")</label>
-                        </div>
-                    </div>
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" name="Name" class="form-control" required maxlength="@Tenant.MaxNameLength">
-                            <label class="form-label">@L("Name")</label>
-                        </div>
-                    </div>
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" name="ConnectionString" class="form-control" maxlength="@AbpTenantBase.MaxConnectionStringLength">
-                            <label class="form-label">@L("DatabaseConnectionString") (@L("Optional"))</label>
-                        </div>
-                    </div>
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="email" name="AdminEmailAddress" class="form-control" required maxlength="@AbpUserBase.MaxEmailAddressLength">
-                            <label class="form-label">@L("AdminEmailAddress")</label>
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <input type="checkbox" name="IsActive" value="true" id="CreateTenantIsActive" class="filled-in" checked />
-                        <label for="CreateTenantIsActive">@L("IsActive")</label>
-                    </div>
-                    <p>@L("DefaultPasswordIs", Gsv.Authorization.Users.User.DefaultPassword)</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@L("Cancel")</button>
-                    <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-        </div>
-    </div>
+@*弹窗*@
+<div id="dlg" class="easyui-dialog" title="添加" closed="true" modal="true" align="center" style="width: 450px; padding: 10px;">
+    <form id="fm" method="post" novalidate>
+        <table class="edit-tbl">
+            <input id="id" name="id" type="hidden">
+            <tr>
+                <th><label for="TenacyName">TenancyName</label></th>
+                <td><input name="tenancyName" class="easyui-textbox" data-options="required:true" style="width:100%"></td>
+            </tr>
+            <tr>
+                <th><label for="Name">Name</label></th>
+                <td><input name="name" class="easyui-textbox" data-options="required:true" style="width:100%"></td>
+            </tr>
+            <tr>
+                <th><label for="ConnectionString">数据库连接串(可选)</label></th>
+                <td><input name="connectionString" class="easyui-textbox" style="width:100%"></td>
+            </tr>
+            <tr>
+                <th><label for="AdminEmailAddress">AdminEmailAddress</label></th>
+                <td><input name="adminEmailAddress" class="easyui-textbox" style="width:100%"></td>
+            </tr>
+        </table>
+    </form>
 </div>

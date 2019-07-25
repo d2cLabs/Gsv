@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .datagrid-header-inner {
+            font-weight: bold;
+        }
+        #tree .tree-node { height: 26px; }
+    </style>
+}
+
+@section scripts {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Shared/_CrudLayout.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Shared/_CrudLayout.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @*开放一个Section，让子视图（Partial View）可以插入代码，对上面定义的变量进行重新赋值。*@
+    @RenderSection("customScript", true)
+
+    @* 后台还有可能有需要执行的逻辑，开放一个Section *@
+    @RenderSection("endScript", false)
+}
+
+@* datagrid 前面有可能需要插入html，开放一个Section *@
+@RenderSection("headHtml", false)
+<table id="datagrid"></table>
+@* datagrid 后面有可能需要插入html，开放一个Section *@
+@RenderSection("footHtml", false)
+
+@RenderBody()

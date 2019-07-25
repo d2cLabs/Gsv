@@ -10,6 +10,8 @@ namespace Gsv.Authorization.Roles
         public static class Tenants
         {
             public const string Admin = "Admin";
+            public const string Watcher = "Watcher";
+            public const string Supervisor = "Supervisor";
         }
     }
 }

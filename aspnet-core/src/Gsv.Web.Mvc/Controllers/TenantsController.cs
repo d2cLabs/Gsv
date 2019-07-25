@@ -1,34 +1,53 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Abp.Application.Services.Dto;
+using Abp.Domain.Repositories;
 using Abp.AspNetCore.Mvc.Authorization;
+using Abp.UI;
 using Gsv.Authorization;
-using Gsv.Controllers;
 using Gsv.MultiTenancy;
 using Gsv.MultiTenancy.Dto;
 
 namespace Gsv.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Tenants)]
-    public class TenantsController : GsvControllerBase
+    [AbpMvcAuthorize(PermissionNames.Pages_Host)]
+    public class TenantsController : GsvCrudController<Tenant, int, TenantDto>
     {
         private readonly ITenantAppService _tenantAppService;
-
-        public TenantsController(ITenantAppService tenantAppService)
+        public TenantsController(IRepository<Tenant> repository, ITenantAppService tenantAppService)
+            : base(repository)
         {
             _tenantAppService = tenantAppService;
         }
-
-        public async Task<ActionResult> Index()
+        
+        [HttpPost]
+        public async Task<JsonResult> MyUpdate(TenantDto input)
         {
-            var output = await _tenantAppService.GetAll(new PagedTenantResultRequestDto { MaxResultCount = int.MaxValue }); // Paging not implemented yet
-            return View(output);
+            try
+            {
+                input.IsActive = true;
+                await _tenantAppService.Update(input);
+                return Json(new { result = "success", content = "记录修改成功" });
+            }
+            catch (Exception ex)
+            {
+                throw new UserFriendlyException("表操作失败", ex.Message);
+            }
         }
 
-        public async Task<ActionResult> EditTenantModal(int tenantId)
+        [HttpPost]
+        public async Task<JsonResult> MyCreate(CreateTenantDto input)
         {
-            var tenantDto = await _tenantAppService.Get(new EntityDto(tenantId));
-            return View("_EditTenantModal", tenantDto);
+            try
+            {
+                input.IsActive = true;
+                var output = await _tenantAppService.Create(input);
+                return Json(new { result = "success", content = "记录修改成功" });
+            }
+            catch (Exception ex)
+            {
+                throw new UserFriendlyException("表操作失败", ex.Message);
+            }
         }
     }
 }

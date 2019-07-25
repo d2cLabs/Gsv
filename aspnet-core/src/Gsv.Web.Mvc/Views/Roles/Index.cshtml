@@ -1,140 +1,88 @@
-﻿@using Gsv.Web.Startup
-@model Gsv.Web.Models.Roles.RoleListViewModel
-@{
-    ViewBag.CurrentPageName = PageNames.Roles; // The menu item will be active for this page.
-}
+﻿@using Abp.Authorization.Roles;
+@model System.Collections.Generic.IReadOnlyList<Gsv.Roles.Dto.PermissionDto>
+    
 @section scripts
 {
     <environment names="Development">
         <script src="~/view-resources/Views/Roles/Index.js" asp-append-version="true"></script>
     </environment>
-
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/Roles/Index.min.js" asp-append-version="true"></script>
     </environment>
 }
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
-                <h2>
-                    @L("Roles")
-                </h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a id="RefreshButton" href="javascript:void(0);" class="waves-effect waves-block"><i class="material-icons">refresh</i>@L("Refresh")</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="body table-responsive">
-                <table class="table">
+
+<div id="mainLayout" class="easyui-layout" fit="true">
+    <div data-options="region:'west', split:true" style="width:600px">
+        <div class="easyui-layout" fit="true">
+            <div data-options="region:'north', split:true" style="height:150px">
+                <table id="dg" title="租户列表" class="easyui-datagrid"
+                        fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" >
                     <thead>
-                    <tr>
-                        <th>@L("RoleName")</th>
-                        <th>@L("DisplayName")</th>
-                        <th>@L("Actions")</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var role in Model.Roles)
-                    {
                         <tr>
-                            <td>@role.Name</td>
-                            <td>@role.DisplayName</td>
-                            <td class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">menu</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#" class="waves-effect waves-block edit-role" data-role-id="@role.Id" data-toggle="modal" data-target="#RoleEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
-                                    <li><a href="#" class="waves-effect waves-block delete-role" data-role-id="@role.Id" data-role-name="@role.Name"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
-                                </ul>
-                            </td>
+                            <th field="tenancyName" width="100">租户名称</th>
+                            <th field="name" width="100">显示名称</th>
                         </tr>
-                    }
-                    </tbody>
+                    </thead>
                 </table>
-                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#RoleCreateModal">
-                    <i class="material-icons">add</i>
-                </button>
+            </div>
+            <div data-options="region:'center'">
+                <table id="dgRole" title="租户角色" class="easyui-datagrid" toolbar="#tb"
+                    fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" >
+                    <thead>
+                        <tr>
+                            <th field="name" width="100">名称</th>
+                            <th field="displayName" width="100">显示名称</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="tb">
+                    <a name="add" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+                    <a name="remove" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+                    <a name="grant" class="easyui-linkbutton" iconCls="icon-lock" plain="true">赋予权限</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="RoleCreateModal" tabindex="-1" role="dialog" aria-labelledby="RoleCreateModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    <span>@L("CreateNewRole")</span>
-                </h4>
-            </div>
-            <div class="modal-body">
-                <form name="roleCreateForm" role="form" novalidate class="form-validation">
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input id="rolename" type="text" name="Name" required maxlength="32" minlength="2" class="validate form-control">
-                                    <label for="rolename" class="form-label">@L("RoleName")</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input id="displayname" type="text" name="DisplayName" required maxlength="32" minlength="2" class="validate form-control">
-                                    <label for="displayname" class="form-label">@L("DisplayName")</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea id="role-description" name="Description" class="validate form-control"></textarea>
-                                    <label for="role-description" class="form-label">@L("RoleDescription")</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <h4>@L("Permissions")</h4>
-                            @foreach (var permission in Model.Permissions)
-                            {
-                                <div class="col-sm-6">
-                                    <input type="checkbox" name="permission" value="@permission.Name" class="filled-in" id="permission-@permission.Name" checked="checked" />
-                                    <label for="permission-@permission.Name">@permission.DisplayName</label>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@L("Cancel")</button>
-                        <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div data-options="region:'center'">
+        <table id="dgPermission" title="权限列表" class="easyui-datagrid"
+                fit="true" fitColumns="true" rownumbers="true" singleSelect="false" striped="true" >
+            <thead>
+                <tr>
+                    <th field="ck" checkbox="true"></th>
+                    <th field="Name" width="100">名称</th>
+                    <th field="DisplayName" width="100">显示名</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var permission in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@permission.Name</td>
+                    <td>@permission.DisplayName</td>
+                </tr>
+            }
+            </tbody>
+        </table>
     </div>
 </div>
 
-<div class="modal fade" id="RoleEditModal" tabindex="-1" role="dialog" aria-labelledby="RoleEditModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-        </div>
+@*弹窗*@
+<div id="dlg" class="easyui-dialog" title="新建角色" closed="true" modal="true" buttons="#dlg-tb" align="center" style="width: 360px; padding: 10px;">
+    <form name="fm" method="post" novalidate>
+        <table class="edit-tbl">
+            <tr>
+                <th><label for="Name">名称：</label></th>
+                <td><input id="Name" name="Name" class="easyui-textbox" data-options="required:true, validType:'length[2, @AbpRoleBase.MaxNameLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><label for="DisplayName">显示名称：</label></th>
+                <td><input name="DisplayName" class="easyui-textbox" data-options="required:true, validType:'length[2, @AbpRoleBase.MaxDisplayNameLength]'" style="width: 100%"></td>
+            </tr>
+        </table>
+    </form>
+    <div id="dlg-tb">
+        <a name="save" class="easyui-linkbutton" iconCls="icon-save" style="width:90px">保存</a>
+        <a name="cancel" class="easyui-linkbutton" iconCls="icon-cancel" style="width:90px">取消</a>
     </div>
 </div>

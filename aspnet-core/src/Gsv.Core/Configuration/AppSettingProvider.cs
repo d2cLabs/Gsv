@@ -10,6 +10,7 @@ namespace Gsv.Configuration
         {
             List<SettingDefinition> lst = new List<SettingDefinition>();
             lst.AddRange(GetVISettingDefinitions(context));
+            lst.AddRange(GetConstSettingDefinitions(context));
             //return new[]
             //{
             //    new SettingDefinition(AppSettingNames.UiTheme, "red", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: true)
@@ -31,6 +32,31 @@ namespace Gsv.Configuration
                     AppSettingNames.VI.CompanyImageName, 
                     "user.png", 
                     new FixedLocalizableString("公司图标名"),
+                    scopes: SettingScopes.Tenant
+                )
+            };
+        }
+        private IEnumerable<SettingDefinition> GetConstSettingDefinitions(SettingDefinitionProviderContext context)
+        {
+            return new List<SettingDefinition>
+            {
+                new SettingDefinition(
+                    AppSettingNames.Const.UserDefaultPassword, 
+                    "123456", 
+                    new FixedLocalizableString("用户缺省密码"),
+                    scopes: SettingScopes.Tenant,
+                    isVisibleToClients: true
+                ),
+                new SettingDefinition(
+                    AppSettingNames.Const.RoleUserDefaultPassword, 
+                    "vpower@83306666", 
+                    new FixedLocalizableString("角色用户缺省密码"),
+                    scopes: SettingScopes.Tenant
+                ),
+                 new SettingDefinition(
+                    AppSettingNames.Const.Radius, 
+                    "200", 
+                    new FixedLocalizableString("场地半径"),
                     scopes: SettingScopes.Tenant
                 )
             };

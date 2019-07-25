@@ -1,77 +1,49 @@
-﻿(function () {
-    $(function () {
-
+﻿(function() {
+    $(function() {
         var _tenantService = abp.services.app.tenant;
-        var _$modal = $('#TenantCreateModal');
-        var _$form = _$modal.find('form');
-
-        _$form.validate();
-
-        $('#RefreshButton').click(function () {
-            refreshTenantList();
-        });
-
-        $('.delete-tenant').click(function () {
-            var tenantId = $(this).attr("data-tenant-id");
-            var tenancyName = $(this).attr('data-tenancy-name');
-
-            deleteTenant(tenantId, tenancyName);
-        });
-
-        $('.edit-tenant').click(function (e) {
-            var tenantId = $(this).attr("data-tenant-id");
-
-            e.preventDefault();
-            $.ajax({
-                url: abp.appPath + 'Tenants/EditTenantModal?tenantId=' + tenantId,
-                type: 'POST',
-                contentType: 'application/html',
-                success: function (content) {
-                    $('#TenantEditModal div.modal-content').html(content);
-                },
-                error: function (e) { }
+        var _$dg = $('#dg');
+        var _$dialog = $('#dlg');
+        var _$form = _$dialog.find('form');
+    
+        edit = function() {
+            var row = _$dg.datagrid('getSelected');
+            _$dialog.dialog('open').dialog('setTitle', '编辑');
+            alert(row.Id);
+            _tenantService.get(row.Id).done(function (data) {
+                alert(data);
+                _$form.form('load', data);
             });
+        };
+
+        remove = function(index) {
+
+        };
+
+        $('#tb').children('a[name="add"]').click(function (e) {
+            _$dialog.dialog('open');
+            $('#TenancyName').next('span').find('input').focus();
         });
 
-        _$form.find('button[type="submit"]').click(function (e) {
+        $('#dlg-tb').children('a[name="save"]').click(function (e) {
             e.preventDefault();
 
-            if (!_$form.valid()) {
+            if (!_$form.form('validate')) {
                 return;
             }
 
             var tenant = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
 
-            abp.ui.setBusy(_$modal);
-            _tenantService.create(tenant).done(function () {
-                _$modal.modal('hide');
+            abp.ui.setBusy(_$dialog);
+            _tenantService.createTenant(tenant).done(function () {
+                _$dialog.dialog('close');
                 location.reload(true); //reload page to see new tenant!
-            }).always(function () {
-                abp.ui.clearBusy(_$modal);
+            }).always(function() {
+                abp.ui.clearBusy(_$dialog);
             });
         });
-
-        _$modal.on('shown.bs.modal', function () {
-            _$modal.find('input:not([type=hidden]):first').focus();
+        
+        $('#dlg-tb').children('a[name="cancel"]').click(function (e) {
+            _$dialog.dialog('close');
         });
-
-        function refreshTenantList() {
-            location.reload(true); //reload page to see new tenant!
-        }
-
-        function deleteTenant(tenantId, tenancyName) {
-            abp.message.confirm(
-                abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Gsv'), tenancyName),
-                function (isConfirmed) {
-                    if (isConfirmed) {
-                        _tenantService.delete({
-                            id: tenantId
-                        }).done(function () {
-                            refreshTenantList();
-                        });
-                    }
-                }
-            );
-        }
     });
 })();

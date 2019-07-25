@@ -7,38 +7,42 @@ using Gsv.Controllers;
 using Gsv.Roles;
 using Gsv.Roles.Dto;
 using Gsv.Web.Models.Roles;
+using Abp.Web.Models;
+using Gsv.MultiTenancy;
+using Gsv.MultiTenancy.Dto;
 
 namespace Gsv.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Roles)]
+    [AbpMvcAuthorize(PermissionNames.Pages_Host)]
     public class RolesController : GsvControllerBase
     {
+        private readonly ITenantAppService _tenantAppService;
         private readonly IRoleAppService _roleAppService;
 
-        public RolesController(IRoleAppService roleAppService)
+        public RolesController(ITenantAppService tenantAppService, IRoleAppService roleAppService)
         {
+            _tenantAppService = tenantAppService;
             _roleAppService = roleAppService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var roles = (await _roleAppService.GetRolesAsync(new GetRolesInput())).Items;
-            var permissions = (await _roleAppService.GetAllPermissions()).Items;
-            var model = new RoleListViewModel
-            {
-                Roles = roles,
-                Permissions = permissions
-            };
-
-            return View(model);
+            var permissions = (await _roleAppService.GetAllPermissions()).Items;           
+            return View(permissions);
         }
 
-        public async Task<ActionResult> EditRoleModal(int roleId)
+       [DontWrapResult]
+        public async Task<JsonResult> GridData()
         {
-            var output = await _roleAppService.GetRoleForEdit(new EntityDto(roleId));
-            var model = new EditRoleModalViewModel(output);
+            var output = await _tenantAppService.GetAll(new PagedTenantResultRequestDto { MaxResultCount = int.MaxValue }); // Paging not implemented yet
+            return Json( new { rows = output.Items });
+        }
 
-            return View("_EditRoleModal", model);
+        [DontWrapResult]
+        public async Task<JsonResult> GetTenantRoles(string id)     // where id = tenantName
+        {
+            var output = await _roleAppService.GetTenantRoles(id);
+            return Json( new { rows = output.Items });
         }
     }
 }

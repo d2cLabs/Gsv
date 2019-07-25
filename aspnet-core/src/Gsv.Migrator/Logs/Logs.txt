@@ -23,3 +23,191 @@ INFO  2019-07-22 10:23:06,747 [1    ] Gsv.Migrator.Log                         -
 INFO  2019-07-22 10:23:06,826 [1    ] Gsv.Migrator.Log                         - All databases have been migrated.
 DEBUG 2019-07-22 10:23:12,372 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2019-07-22 10:23:12,372 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 14:33:11,040 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 14:33:11,085 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 14:33:11,226 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,229 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,230 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,230 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,231 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,232 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,232 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:11,237 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 14:33:11,652 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:33:12,253 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 14:33:12,289 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 14:33:12,297 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 14:33:12,301 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 14:33:12,577 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 14:33:12,577 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 14:34:04,535 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 14:34:06,944 [1    ] Gsv.Migrator.Log                         - An error occured during migration of host database:
+INFO  2019-07-25 14:34:07,032 [1    ] Gsv.Migrator.Log                         - System.Data.SqlClient.SqlException (0x80131904): 用户 'sa' 登录失败。
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass18_0.<Exists>b__0(DateTime giveUp)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c__DisplayClass12_0`2.<Execute>b__0(DbContext c, TState s)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.Execute[TState,TResult](IExecutionStrategy strategy, Func`2 operation, Func`2 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Migrations.HistoryRepository.Exists()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroDbMigrator`1.CreateOrMigrate(AbpTenantBase tenant, Action`1 seedAction) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore.EntityFrameworkCore\Zero\EntityFrameworkCore\AbpZeroDbMigrator.cs:line 74
+   at Gsv.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) in e:\Projects\Gsv\aspnet-core\src\Gsv.Migrator\MultiTenantMigrateExecuter.cs:line 62
+ClientConnectionId:6f460fd1-2f25-460a-9188-69f5cee41cab
+Error Number:18456,State:1,Class:14
+INFO  2019-07-25 14:34:07,032 [1    ] Gsv.Migrator.Log                         - Canceled migrations.
+DEBUG 2019-07-25 14:34:21,159 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 14:34:21,159 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 14:34:58,715 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 14:34:58,742 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 14:34:58,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,852 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:58,855 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 14:34:59,172 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:34:59,876 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 14:34:59,926 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 14:34:59,941 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 14:34:59,949 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 14:35:00,191 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 14:35:00,192 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 14:35:08,375 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 14:35:11,741 [1    ] Gsv.Migrator.Log                         - HOST database migration completed.
+INFO  2019-07-25 14:35:11,741 [1    ] Gsv.Migrator.Log                         - --------------------------------------------------------
+INFO  2019-07-25 14:35:11,869 [1    ] Gsv.Migrator.Log                         - All databases have been migrated.
+DEBUG 2019-07-25 14:41:18,068 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 14:41:18,069 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 14:41:26,841 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 14:41:26,869 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 14:41:26,988 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,990 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,990 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,991 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,991 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,991 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,991 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,992 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,993 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:26,998 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 14:41:27,352 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:41:28,006 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 14:41:28,048 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 14:41:28,057 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 14:41:28,061 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 14:41:28,263 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 14:41:28,264 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 14:41:34,826 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 14:41:38,086 [1    ] Gsv.Migrator.Log                         - HOST database migration completed.
+INFO  2019-07-25 14:41:38,086 [1    ] Gsv.Migrator.Log                         - --------------------------------------------------------
+INFO  2019-07-25 14:41:38,165 [1    ] Gsv.Migrator.Log                         - All databases have been migrated.
+DEBUG 2019-07-25 14:47:43,953 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 14:47:43,954 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 14:50:25,887 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 14:50:25,919 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 14:50:26,031 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,034 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,034 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,035 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,035 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,037 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,037 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,041 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 14:50:26,351 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 14:50:26,881 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 14:50:26,921 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 14:50:26,930 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 14:50:26,935 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 14:50:27,144 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 14:50:27,144 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 14:50:28,480 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 14:50:31,812 [1    ] Gsv.Migrator.Log                         - HOST database migration completed.
+INFO  2019-07-25 14:50:31,812 [1    ] Gsv.Migrator.Log                         - --------------------------------------------------------
+INFO  2019-07-25 14:50:31,950 [1    ] Gsv.Migrator.Log                         - All databases have been migrated.
+DEBUG 2019-07-25 14:50:33,592 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 14:50:33,593 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 17:55:36,082 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 17:55:36,131 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 17:55:36,230 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,232 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,234 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,234 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,238 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 17:55:36,495 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 17:55:36,985 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 17:55:37,029 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 17:55:37,040 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 17:55:37,044 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 17:55:37,328 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 17:55:37,329 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 17:55:41,341 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 17:55:57,807 [1    ] Gsv.Migrator.Log                         - An error occured during migration of host database:
+INFO  2019-07-25 17:55:57,958 [1    ] Gsv.Migrator.Log                         - System.Data.SqlClient.SqlException (0x80131904): 将 FOREIGN KEY 约束 'FK_PlaceShelves_Places_PlaceId' 引入表 'PlaceShelves' 可能会导致循环或多重级联路径。请指定 ON DELETE NO ACTION 或 ON UPDATE NO ACTION，或修改其他 FOREIGN KEY 约束。
+无法创建约束或索引。请参阅前面的错误。
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroDbMigrator`1.CreateOrMigrate(AbpTenantBase tenant, Action`1 seedAction) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore.EntityFrameworkCore\Zero\EntityFrameworkCore\AbpZeroDbMigrator.cs:line 74
+   at Gsv.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) in e:\Projects\Gsv\aspnet-core\src\Gsv.Migrator\MultiTenantMigrateExecuter.cs:line 62
+ClientConnectionId:e8fe4640-919b-4ee9-bc2d-7945cb7f6e36
+Error Number:1785,State:0,Class:16
+INFO  2019-07-25 17:55:57,964 [1    ] Gsv.Migrator.Log                         - Canceled migrations.
+DEBUG 2019-07-25 17:58:09,265 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 17:58:09,266 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-07-25 18:03:18,885 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-07-25 18:03:18,912 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-07-25 18:03:19,013 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.Migrator.GsvMigratorModule, Gsv.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.EntityFrameworkCore.GsvEntityFrameworkModule, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Gsv.GsvCoreModule, Gsv.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,018 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,018 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,018 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,018 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,022 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-07-25 18:03:19,278 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Gsv.EntityFrameworkCore.GsvDbContext, Gsv.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-07-25 18:03:19,746 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-07-25 18:03:19,779 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-07-25 18:03:19,787 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-07-25 18:03:19,792 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Gsv
+INFO  2019-07-25 18:03:19,977 [1    ] Gsv.Migrator.Log                         - Host database: server=abc.mjsoft.net;database=GsvDb;user=sa;password=*****
+INFO  2019-07-25 18:03:19,977 [1    ] Gsv.Migrator.Log                         - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2019-07-25 18:03:22,518 [1    ] Gsv.Migrator.Log                         - HOST database migration started...
+INFO  2019-07-25 18:03:27,763 [1    ] Gsv.Migrator.Log                         - HOST database migration completed.
+INFO  2019-07-25 18:03:27,763 [1    ] Gsv.Migrator.Log                         - --------------------------------------------------------
+INFO  2019-07-25 18:03:27,884 [1    ] Gsv.Migrator.Log                         - All databases have been migrated.
+DEBUG 2019-07-25 18:03:34,112 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-07-25 18:03:34,113 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

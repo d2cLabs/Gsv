@@ -11,23 +11,26 @@ using Abp.Linq.Extensions;
 using Gsv.Authorization;
 using Gsv.Authorization.Roles;
 using Gsv.Authorization.Users;
+using Gsv.MultiTenancy;
 using Gsv.Roles.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gsv.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
+    [AbpAuthorize(PermissionNames.Pages_Host)]
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
+        private readonly TenantManager _tenantManager;
 
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
+        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, TenantManager tenantManager)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _tenantManager = tenantManager;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -143,6 +146,71 @@ namespace Gsv.Roles
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
         }
+
+        #region Host Tenancy Manager
+        public async Task CreateTenantRole(string tenancyName, CreateRoleDto input)
+        {
+            CheckCreatePermission();
+
+            var tenant = await _tenantManager.FindByTenancyNameAsync(tenancyName);
+            using (CurrentUnitOfWork.SetTenantId(tenant.Id))
+            {
+                //Create role
+                var role = ObjectMapper.Map<Role>(input);
+                // role.IsStatic = true;
+                await _roleManager.CreateAsync(role);
+            }
+        }
+
+        public async Task UpdateRolePermissions(string tenancyName, UpdateRolePermissionsInput input)
+        {
+            var tenant = await _tenantManager.FindByTenancyNameAsync(tenancyName);
+            if (tenant == null) 
+                return;
+
+            using (CurrentUnitOfWork.SetTenantId(tenant.Id))
+            {
+                var role = await _roleManager.GetRoleByIdAsync(input.RoleId);
+                await _roleManager.ResetAllPermissionsAsync(role);
+                var grantedPermissions = PermissionManager
+                    .GetAllPermissions()
+                    .Where(p => input.GrantedPermissionNames.Contains(p.Name))
+                    .ToList();
+
+                await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
+            }
+        }
+
+        public async Task<ListResultDto<RoleListDto>> GetTenantRoles(string tenancyName)
+        {
+            var tenant = await _tenantManager.FindByTenancyNameAsync(tenancyName);
+            if (tenant == null) 
+                return null;
+
+            using (CurrentUnitOfWork.SetTenantId(tenant.Id))
+            {
+                return new ListResultDto<RoleListDto>(
+                    ObjectMapper.Map<List<RoleListDto>>(
+                        _roleManager.Roles.OrderBy(t => t.Name).ToList()
+                    )
+                );
+            }
+        }
+        public async Task<List<string>> GetRolePermissionNames(string tenancyName, int roleId)
+        {
+            var tenant = await _tenantManager.FindByTenancyNameAsync(tenancyName);
+            List<string> lst = new List<string>();
+            using (CurrentUnitOfWork.SetTenantId(tenant.Id))
+            {
+                var permissions = await _roleManager.GetGrantedPermissionsAsync(roleId);
+                foreach (Permission p in permissions)
+                    lst.Add(p.Name);
+            }
+            return lst;
+        }
+        
+        #endregion
+
     }
 }
 

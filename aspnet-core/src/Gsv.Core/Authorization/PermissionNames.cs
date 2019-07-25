@@ -2,10 +2,19 @@
 {
     public static class PermissionNames
     {
-        public const string Pages_Tenants = "Pages.Tenants";
+        // Host管理
+        public const string Pages_Host = "Pages.Host";
+        
+        // 系统管理工作
+        public const string Pages_Setup = "Pages.Setup";                // 1. 系统设置管理
+        public const string Pages_Types = "Pages.Types";                // 2. 各种类型
 
-        public const string Pages_Users = "Pages.Users";
+        public const string Pages_Objects = "Pages.Objects";            // 3. 标的管理
+        public const string Pages_Staffing = "Pages.Staffing";          // 4. 员工管理
 
-        public const string Pages_Roles = "Pages.Roles";
+
+        public const string Pages_Watcher = "Pages.Watcher";            // 5. 场地监看
+        // SuperVision
+        public const string Pages_Supervisor = "Pages.Supervisor";      // 6. 监管
     }
 }

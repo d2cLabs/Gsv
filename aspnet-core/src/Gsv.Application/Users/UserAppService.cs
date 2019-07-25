@@ -24,7 +24,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gsv.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users)]
+    [AbpAuthorize(PermissionNames.Pages_Setup)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;

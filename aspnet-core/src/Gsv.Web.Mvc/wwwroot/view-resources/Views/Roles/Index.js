@@ -1,86 +1,99 @@
-﻿(function () {
-	$(function () {
+﻿(function() {
+    $(function() {
+        var _roleService = abp.services.app.role;
+        var _$dg = $('#dgRole');
+        var _$dialog = $('#dlg');
+        var _$form = _$dialog.find('form');
+        var _tenancyName = null;
 
-		var _roleService = abp.services.app.role;
-		var _$modal = $('#RoleCreateModal');
-		var _$form = _$modal.find('form');
+        // datagrid's url and onSelect event
+        $('#dg').datagrid({
+            url: 'Roles/GridData',
+            onSelect: function (index, row) {
+                _tenancyName = row.tenancyName;
+                _$dg.datagrid({
+                    url: 'Roles/GetTenantRoles/' + _tenancyName
+                })
+            }
+        });
 
-		_$form.validate({
-		});
+       _$dg.datagrid({
+            onSelect: function (index, row) {
+                $('#dgPermission').datagrid('clearChecked')
+                _roleService.getRolePermissionNames(_tenancyName, row.id).done(function (data) {
+                    var rows = $('#dgPermission').datagrid('getRows');
+                    $.each(data, function (i, name) {
+                        $.each(rows, function (j, r) {
+                            if (r.Name === name) {
+                                $('#dgPermission').datagrid('checkRow', j);
+                            }
+                        });
+                    });
+                });
+            }
+        })
 
-		$('#RefreshButton').click(function () {
-			refreshRoleList();
-		});
+        $('#tb').children('a[name="add"]').click(function (e) {
+            _$dialog.dialog('open');
+            _$fm.form('clear');
+            $('#Name').next('span').find('input').focus();
+        });
 
-		$('.delete-role').click(function () {
-			var roleId = $(this).attr("data-role-id");
-			var roleName = $(this).attr('data-role-name');
+        $('#tb').children('a[name="remove"]').click(function (e) {
+            let row = _$dg.datagrid('getSelected');
+            if (!row) {
+                abp.notify.error("选择要删除的行", "", { positionClass : 'toast-top-center'} );
+                return;
+            }
+            abp.message.confirm('确定删除这一行吗？', '请确定', function (isConfirmed) {
+                if (isConfirmed) {
+                    _roleService.removeRole(tenancyName, row.name).done(function () {
+                        _$dialog.dialog('close');
+                        _$dg.datagrid('reload'); 
+                   });
+                }
+            });
+        });
 
-			deleteRole(roleId, roleName);
-		});
+        $('#dlg-tb').children('a[name="save"]').click(function (e) {
+            e.preventDefault();
 
-		$('.edit-role').click(function (e) {
-			var roleId = $(this).attr("data-role-id");
+            if (!_$form.form('validate')) {
+                return;
+            }
 
-			e.preventDefault();
-			$.ajax({
-				url: abp.appPath + 'Roles/EditRoleModal?roleId=' + roleId,
-				type: 'POST',
-				contentType: 'application/html',
-				success: function (content) {
-					$('#RoleEditModal div.modal-content').html(content);
-				},
-				error: function (e) { }
-			});
-		});
+            var role = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
 
-		_$form.find('button[type="submit"]').click(function (e) {
-			e.preventDefault();
+            abp.ui.setBusy(_$dialog);
+            _roleService.createTenantRole(_tenancyName, role).done(function () {
+                _$dialog.dialog('close');
+                _$dg.datagrid('reload'); 
+            }).always(function() {
+                abp.ui.clearBusy(_$dialog);
+            });
+        });
 
-			if (!_$form.valid()) {
-				return;
-			}
+        $('#dlg-tb').children('a[name="cancel"]').click(function (e) {
+            _$dialog.dialog('close');
+        });
 
-			var role = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
-			role.permissions = [];
-			var _$permissionCheckboxes = $("input[name='permission']:checked");
-			if (_$permissionCheckboxes) {
-				for (var permissionIndex = 0; permissionIndex < _$permissionCheckboxes.length; permissionIndex++) {
-					var _$permissionCheckbox = $(_$permissionCheckboxes[permissionIndex]);
-					role.permissions.push(_$permissionCheckbox.val());
-				}
-			}
+        // updateRolePermissions
+        $('#tb').children('a[name="grant"]').click(function (e) {
+            var rows = $('#dgPermission').datagrid('getChecked');
+            if (rows.length > 0)
+            {
+                var id = _$dg.datagrid('getSelected').id;
+                var names = [];
+                for (var i = 0; i < rows.length; i++)
+                    names.push(rows[i].Name);
 
-			abp.ui.setBusy(_$modal);
-			_roleService.create(role).done(function () {
-				_$modal.modal('hide');
-				location.reload(true); //reload page to see new role!
-			}).always(function () {
-				abp.ui.clearBusy(_$modal);
-			});
-		});
-
-		_$modal.on('shown.bs.modal', function () {
-			_$modal.find('input:not([type=hidden]):first').focus();
-		});
-
-		function refreshRoleList() {
-			location.reload(true); //reload page to see new role!
-		}
-
-		function deleteRole(roleId, roleName) {
-			abp.message.confirm(
-                abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'Gsv'), roleName),
-				function (isConfirmed) {
-					if (isConfirmed) {
-						_roleService.delete({
-							id: roleId
-						}).done(function () {
-							refreshRoleList();
-						});
-					}
-				}
-			);
-		}
-	});
+                abp.ui.setBusy(_$dialog);
+                _roleService.updateRolePermissions(_tenancyName, {RoleId: id, GrantedPermissionNames: names}).done(function () {
+                    abp.notify.info("成功授权");
+                }).always(function() {
+                    abp.ui.clearBusy(_$dialog);
+                });
+            }
+        });
+    });
 })();

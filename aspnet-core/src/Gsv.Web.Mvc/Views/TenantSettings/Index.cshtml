@@ -1,0 +1,53 @@
+@model System.Collections.Generic.IEnumerable<Abp.Configuration.SettingDefinition>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            // submit Feature property changes
+            $('#tb').children('a[name="submit"]').click(function (e) {
+                var rows = $('#dg').propertygrid("getChanges", "updated");
+                if (rows.length == 0) return;
+
+                abp.services.app.configuration.changeSettingsForTenant(rows).done(function () {
+                    abp.notify.info("成功提交更改!")
+                });
+            });
+        });
+    </script>
+}
+
+<div id="layout" class="easyui-layout" fit="true">
+    <div data-options="region:'west', split:true" style="width:50%">
+        <table id="dg" title="设置值表" class="easyui-propertygrid" 
+            showGroup="true" scrollbarSize="0" toolbar="#tb" url="TenantSettings/GridData">
+        </table>
+        <div id="tb">
+            <a name="submit" class="easyui-linkbutton" iconCls="icon-save" plain="true">提交更新</a>
+        </div>
+    </div>
+    <div data-options="region:'center'">
+        <table title='缺省预设设置' class="easyui-datagrid"
+                fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true">
+            <thead>
+                <tr>
+                    <th field="name" width="100">名称</th>
+                    <th field="displayName" width="100">显示名称</th>
+                    <th field="scope" width="60">作用域</th>
+                    <th field="defaultValue" width="50">缺省值</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var sd in Model)
+            {
+                <tr>
+                    <td>@sd.Name</td>
+                    <td>@sd.DisplayName</td>
+                    <td>@sd.Scopes</td>
+                    <td>@sd.DefaultValue</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

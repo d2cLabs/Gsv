@@ -12,122 +12,38 @@ namespace Gsv.Web.Startup
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Home,
-                        L("HomePage"),
-                        url: "",
-                        icon: "home",
-                        requiresAuthentication: true
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Tenants,
-                        L("Tenants"),
-                        url: "Tenants",
-                        icon: "business",
-                        requiredPermissionName: PermissionNames.Pages_Tenants
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Users,
-                        L("Users"),
-                        url: "Users",
-                        icon: "people",
-                        requiredPermissionName: PermissionNames.Pages_Users
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Roles,
-                        L("Roles"),
-                        url: "Roles",
-                        icon: "local_offer",
-                        requiredPermissionName: PermissionNames.Pages_Roles
-                    )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.About,
-                        L("About"),
-                        url: "About",
-                        icon: "info"
-                    )
-                ).AddItem( // Menu items below is just for demonstration!
-                    new MenuItemDefinition(
-                        "MultiLevelMenu",
-                        L("MultiLevelMenu"),
-                        icon: "menu"
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetBoilerplate",
-                            new FixedLocalizableString("ASP.NET Boilerplate")
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetboilerplate.com?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateTemplates",
-                                new FixedLocalizableString("Templates"),
-                                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateSamples",
-                                new FixedLocalizableString("Samples"),
-                                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
-                            )
-                        )
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetZero",
-                            new FixedLocalizableString("ASP.NET Zero")
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetzero.com?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDescription",
-                                new FixedLocalizableString("Description"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#description"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFeatures",
-                                new FixedLocalizableString("Features"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#features"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroPricing",
-                                new FixedLocalizableString("Pricing"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#pricing"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFaq",
-                                new FixedLocalizableString("Faq"),
-                                url: "https://aspnetzero.com/Faq?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetzero.com/Documents?ref=abptmpl"
-                            )
-                        )
-                    )
+                // Host
+                .AddItem(new MenuItemDefinition(PermissionNames.Pages_Host, new FixedLocalizableString("配置"), icon: "fa fa-home", requiredPermissionName: PermissionNames.Pages_Host)
+                    .AddItem(new MenuItemDefinition("Host_Tenants", new FixedLocalizableString("租户"), url: "Tenants"))
+                    .AddItem(new MenuItemDefinition("Admin_Roles", new FixedLocalizableString("用户角色"), url: "Roles"))
+
+                // Setup
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Setup, new FixedLocalizableString("配置"), icon: "fa fa-globe", requiredPermissionName: PermissionNames.Pages_Setup)
+                    .AddItem(new MenuItemDefinition("Admin_Settings", new FixedLocalizableString("全局设置"), url: "TenantSettings"))
+                    .AddItem(new MenuItemDefinition("Admin_Users", new FixedLocalizableString("用户"), url: "Users"))
+                // Types
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Types, new FixedLocalizableString("类型设置"), icon: "fa fa-list", requiredPermissionName: PermissionNames.Pages_Types)
+                    .AddItem(new MenuItemDefinition("Type_Categories", new FixedLocalizableString("品类"), url: "Categories"))
+                    .AddItem(new MenuItemDefinition("Type_Sources", new FixedLocalizableString("进货来源"), url: "Sources"))
+                // Objects
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Objects, new FixedLocalizableString("标的管理"), icon: "fa fa-file", requiredPermissionName: PermissionNames.Pages_Objects)
+                    .AddItem(new MenuItemDefinition("Object_Capitals", new FixedLocalizableString("资本方"), url: "Capitals"))
+                    .AddItem(new MenuItemDefinition("Object_Place", new FixedLocalizableString("场地"), url: "Places"))
+                    .AddItem(new MenuItemDefinition("Object_Objects", new FixedLocalizableString("监管标的"), url: "Objects"))
+                // Staffs
+                    .AddItem(new MenuItemDefinition("Staffing_Workers", new FixedLocalizableString("工作人员"), url: "Workers"))
+                    .AddItem(new MenuItemDefinition("Staffing_PlaceWorkres", new FixedLocalizableString("场地员工"), url: "PlaceWorkers"))
+
+                // Sites
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Watcher, new FixedLocalizableString("场地监看"), icon: "fa fa-th-large", requiredPermissionName: PermissionNames.Pages_Watcher)
+                    .AddItem(new MenuItemDefinition("Watcher_InStocks", new FixedLocalizableString("入库单"), url: ""))
+                    .AddItem(new MenuItemDefinition("Watcher_OutStocks", new FixedLocalizableString("出库单"), url: ""))
+
+                // Supervision
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Supervisor, new FixedLocalizableString("全局监管"), icon: "fa fa-list", requiredPermissionName: PermissionNames.Pages_Supervisor)
+                    .AddItem(new MenuItemDefinition("Supervisor_Home", new FixedLocalizableString("看板"), url: ""))
+                    .AddItem(new MenuItemDefinition("Supervisor_InStocks", new FixedLocalizableString("入库单"), url: ""))
+                    .AddItem(new MenuItemDefinition("Supervisor_OutStocks", new FixedLocalizableString("出库单"), url: ""))
                 );
         }
 
