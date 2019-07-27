@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Castle.Facilities.Logging;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
@@ -13,7 +14,12 @@ using Gsv.Configuration;
 using Gsv.Identity;
 using Gsv.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
-
+using Senparc.CO2NET;
+using Senparc.CO2NET.RegisterServices;
+using Senparc.Weixin;
+using Senparc.Weixin.Entities;
+using Senparc.Weixin.RegisterServices;
+using Senparc.Weixin.Work;
 
 namespace Gsv.Web.Startup
 {
@@ -28,6 +34,7 @@ namespace Gsv.Web.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            // App Cookie
             services.ConfigureApplicationCookie(options => {
                 options.ExpireTimeSpan = TimeSpan.FromHours(12);
             });
@@ -44,6 +51,10 @@ namespace Gsv.Web.Startup
 
             services.AddSignalR();
 
+            // Weixin
+            services.AddSenparcGlobalServices(_appConfiguration)            // Senparc.CO2NET
+                    .AddSenparcWeixinServices(_appConfiguration);           // Senparc.Weixin
+
             // Configure Abp and Dependency Injection
             return services.AddAbp<GsvWebMvcModule>(
                 // Configure Log4Net logging
@@ -53,7 +64,8 @@ namespace Gsv.Web.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+            IOptions<SenparcSetting> senparcSetting, IOptions<SenparcWeixinSetting> senparcWeixinSetting)
         {
             app.UseAbp(); // Initializes ABP framework.
 
@@ -87,6 +99,12 @@ namespace Gsv.Web.Startup
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Start CO2NET register
+            IRegisterService register = RegisterService.Start(env, senparcSetting.Value)
+                .UseSenparcGlobal();
+            // Weixin register
+            register.UseSenparcWeixin(senparcWeixinSetting.Value, senparcSetting.Value);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Gsv.EntityFrameworkCore.Seed
             new TenantRoleAndUserBuilder(context, 1).Create();
 
             // GsvEntities seed
-            new GsvEntitiesBuilder(context, 1).Create();
+            new DefaultRoleAndUserBuilder(context, 1).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

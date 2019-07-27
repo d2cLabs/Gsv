@@ -18,7 +18,7 @@
         abp.notifications.showUiNotifyForUserNotification(userNotification);
 
         //Desktop notification
-        Push.create("Clc", {
+        Push.create("Gsv", {
             body: userNotification.notification.data.message,
             icon: abp.appPath + 'images/app-logo-small.png',
             timeout: 6000,
@@ -27,6 +27,34 @@
                 this.close();
             }
         });
+    });
+
+    // plugins for jQuery
+    $.extend({
+        displayCapitalText : function (val) {
+            var capitals = $('#capital').combobox('getData');
+            for (var i = 0; i < capitals.length; i++) {
+                if (val === parseInt(capitals[i].value)) 
+                    return capitals[i].displayText;
+            };
+            return val;
+        },
+        displayCategoryText : function (val) {
+            var categories = $('#category').combobox('getData');
+            for (var i = 0; i < categories.length; i++) {
+                if (val === parseInt(categories[i].value)) 
+                    return categories[i].displayText;
+            };
+            return val;
+        },
+        displayCargoTypeText : function (val) {
+            var types = $('#cargoType').combobox('getData');
+            for (var i = 0; i < types.length; i++) {
+                if (val === parseInt(types[i].value)) 
+                    return types[i].displayText;
+            };
+            return val;
+        },
     });
 
     //serializeFormToObject plugin for jQuery

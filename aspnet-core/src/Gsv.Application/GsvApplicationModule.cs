@@ -25,6 +25,13 @@ namespace Gsv
                 // Scan the assembly for classes which inherit from AutoMapper.Profile
                 cfg => cfg.AddProfiles(thisAssembly)
             );
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(mapper =>
+            {
+                // common
+                mapper.CreateMap<string, bool>().ConvertUsing(s => s == "on" ? true : false);
+                mapper.CreateMap<bool, string>().ConvertUsing(s => s ? "on" : "");
+            });
         }
     }
 }

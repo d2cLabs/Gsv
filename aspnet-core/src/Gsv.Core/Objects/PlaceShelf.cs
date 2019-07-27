@@ -11,7 +11,7 @@ namespace Gsv.Objects
     [Description("场地货架")]
     public class PlaceShelf : Entity, IMustHaveTenant
     {
-        public const int MaxCnLength = 12;
+        public const int MaxIdentifierLength = 12;
  
         // Implement of IMustHaveTenant
         public int TenantId { get; set; }
@@ -27,7 +27,7 @@ namespace Gsv.Objects
         /// 编号（识别号）
         /// </summary>
         [Required]
-        [StringLength(MaxCnLength)]
+        [StringLength(MaxIdentifierLength)]
         public string Identifier { get; set; }
         
         /// <summary>
@@ -37,9 +37,6 @@ namespace Gsv.Objects
         public int CargoTypeId { get; set; }
 
         public virtual CargoType CargoType { get; set; }
-
-
-        [StringLength(GsvConsts.NormalStringFieldLength)]
 
         public float CurrentInventory { get; set; }
         public DateTime InventoryLastTime { get; set; }

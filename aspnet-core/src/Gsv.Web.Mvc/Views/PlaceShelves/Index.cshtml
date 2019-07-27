@@ -1,0 +1,86 @@
+﻿@using Gsv
+@using Gsv.Objects
+@{
+    Layout = "~/Views/Shared/_CrudLayout.cshtml";
+}
+
+@section customScript
+{
+    <script type="text/javascript">
+        crud.parentField = 'place';
+        crud.dgDefault.name = 'PlaceShelves';
+        crud.dgDefault.sortName = 'CargoTypeId'
+        crud.dgDefault.columns = [[
+            { field: "name", title: "名称", width: 100 },
+            { field: "identifier", title: "辨识号", width: 80 },
+            { field: "cargoTypeId", title: "品类", width: 80, formatter: $.displayCargoTypeText },      
+        ]];        
+    </script>
+}
+
+@section endScript
+{
+    <script type="text/javascript">
+        crud.startfunction = function () {
+            abp.services.app.object.getComboItems('CargoType').done(function(d) { 
+                crud.setComboBox('#cargoType', d); 
+            });
+
+            abp.services.app.object.getComboItems('Place').done(function(d) {
+                crud.setComboBox('#place', d);
+                var treeData = [];
+                d.forEach( function (val, index, arr) {
+                    treeData.push({ id: val.value, text: val.displayText });
+                });
+                $('#tree').tree({
+                    data: treeData,
+                    onSelect: function (node) {
+                        crud.parentId = node.id;
+                        $('#datagrid').datagrid({
+                            url: crud.dgDefault.name + '/GetPagedData/' + 'PlaceId=' + node.id
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+}
+
+@section headHtml
+{
+    <div id="cc" class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'west', split:true, minWidth:80, width:200">
+            <ul id="tree" class="easyui-tree" style="margin-top:6px"></ul>
+        </div>
+        <div data-options="region:'center', border:false">
+}
+@section footHtml
+{
+        </div>
+    </div>
+}
+
+@*弹窗*@
+<div id="dlg" class="easyui-dialog" closed="true" modal="true" buttons="#dlg-buttons" align="center" style="width: 600px; padding: 10px;">
+    <form id="fm" class="easyui-form" method="post" novalidate>
+        <table class="edit-tbl">
+            <input id="id" name="id" type="hidden">
+            <tr>
+                <th><label for="placeId">场所：</label></th>
+                <td><input id="place" name="placeId" class="easyui-combobox" readonly="true" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <th><Label for="name">货架名称:</Label></th>
+                <td><input name="name" class="easyui-textbox" data-options="required:true, validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><Label for="identifier">辨识号:</Label></th>
+                <td><input name="identifier" class="easyui-textbox" data-options="validType:'length[1, @PlaceShelf.MaxIdentifierLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><label for="cargoTypeId">品类：</label></th>
+                <td><input id="cargoType" name="cargoTypeId" class="easyui-combobox" style="width: 100%" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

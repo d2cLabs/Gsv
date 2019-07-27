@@ -8,7 +8,9 @@ using Gsv.Authorization.Users;
 using Gsv.Configuration;
 using Gsv.Localization;
 using Gsv.MultiTenancy;
+using Gsv.Objects.Cache;
 using Gsv.Timing;
+using Gsv.Types.Cache;
 
 namespace Gsv
 {
@@ -17,6 +19,7 @@ namespace Gsv
     {
         public override void PreInitialize()
         {
+            Configuration.Auditing.IsEnabled = false;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
 
             // Declare entity types
@@ -38,6 +41,15 @@ namespace Gsv
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(GsvCoreModule).GetAssembly());
+            
+            // Cache for Types
+            IocManager.Register<ICategoryCache, CategoryCache>();
+            //IocManager.Register<ITaskTypeCache, TaskTypeCache>();
+
+            // Cache for Objects
+            IocManager.Register<ICapitalCache, CapitalCache>();
+            IocManager.Register<IPlaceCache, PlaceCache>();
+            IocManager.Register<ICargoTypeCache, CargoTypeCache>();
         }
 
         public override void PostInitialize()

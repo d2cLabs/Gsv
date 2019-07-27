@@ -1,0 +1,108 @@
+﻿@using Gsv
+@{
+    Layout = "~/Views/Shared/_CrudLayout.cshtml";
+}
+
+@section customScript
+{
+    <script type="text/javascript">
+        crud.parentField = 'place';
+        crud.dgDefault.name = 'Objects';
+        crud.dgDefault.sortName = 'placeId';
+        crud.dgDefault.columns = [[
+            { field: "capitalId", title: "资本方", width: 100, formatter: $.displayCapitalText },
+            { field: "categoryId", title: "品类", width: 100, formatter: $.displayCategoryText },
+            { field: "quantity", title: "贷款数量", width: 80 },
+            { field: "isFixedPrice", title: "采用固定价格", width: 80 },         
+            { field: "fixedPrice", title: "固定价格", width: 80 },
+            { field: "remark", title: "备注", width: 100 },
+            { field: "riskRatio", title: "红线", width: 100 }
+        ]];        
+    </script>
+}
+
+@section endScript
+{
+    <script type="text/javascript">
+        crud.startfunction = function () {
+            abp.services.app.object.getComboItems('Capital').done(function(d) { 
+                crud.setComboBox('#capital', d); 
+            });
+            abp.services.app.type.getComboItems('Category').done(function(d) { 
+                crud.setComboBox('#category', d); 
+            });
+
+            abp.services.app.object.getComboItems('Place').done(function(d) {
+                crud.setComboBox('#place', d);
+                var treeData = [];
+                d.forEach( function (val, index, arr) {
+                    treeData.push({ id: val.value, text: val.displayText });
+                });
+                $('#tree').tree({
+                    data: treeData,
+                    onSelect: function (node) {
+                        crud.parentId = node.id;
+                        $('#datagrid').datagrid({
+                            url: crud.dgDefault.name + '/GetPagedData/' + '南通'  //'PlaceId=' + node.id
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+}
+
+@section headHtml
+{
+    <div id="cc" class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'west', split:true, minWidth:80, width:200">
+            <ul id="tree" class="easyui-tree" style="margin-top:6px"></ul>
+        </div>
+        <div data-options="region:'center', border:false">
+}
+@section footHtml
+{
+        </div>
+    </div>
+}
+
+@*弹窗*@
+<div id="dlg" class="easyui-dialog" closed="true" modal="true" buttons="#dlg-buttons" align="center" style="width: 600px; padding: 10px;">
+    <form id="fm" class="easyui-form" method="post" novalidate>
+        <table class="edit-tbl">
+            <input id="id" name="id" type="hidden">
+            <tr>
+                <th><label for="placeId">场所：</label></th>
+                <td><input id="place" name="placeId" class="easyui-combobox" readonly="true" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <th><label for="capitalId">资本方：</label></th>
+                <td><input id="capital" name="capitalId" class="easyui-combobox" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <th><label for="categoryId">基本品类：</label></th>
+                <td><input id="category" name="categoryId" class="easyui-combobox" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <th><Label for="quantity">重量:</Label></th>
+                <td><input name="quantity" class="easyui-numberbox" style="width: 100%"></td>
+            </tr>
+            <tr>            
+                <th><Label for="isFixedPrice">采用定价:</Label></th>
+                <td><input name="isFixedPrice" class="easyui-switchbutton" data-options="height:24,onText:'是',offText:'否'"></td>
+            </tr>
+            <tr>
+                <th><Label for="fixedPrice">固定价格:</Label></th>
+                <td><input name="fixedPrice" class="easyui-numberbox" style="width: 100%"></td>
+            </tr>
+            <tr>
+                 <th><Label for="remark">备注:</Label></th>
+                <td><input name="remark" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><Label for="riskRatio">红线:</Label></th>
+                <td><input name="riskRatio" class="easyui-numberbox" style="width: 100%"></td>
+            </tr>
+        </table>
+    </form>
+</div>

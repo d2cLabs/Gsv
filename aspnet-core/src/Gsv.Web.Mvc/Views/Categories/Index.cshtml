@@ -1,0 +1,43 @@
+﻿@using Gsv.Types
+@{
+    Layout = "~/Views/Shared/_CrudLayout.cshtml";
+}
+
+@section customScript
+{
+    <script type="text/javascript">
+        crud.dgDefault.name = 'Categories';
+        crud.dgDefault.sortName = 'cn';
+        crud.dgDefault.columns = [[
+            { field: "cn", title: "序号", width: 60, sortable: true },
+            { field: "name", title: "品类名称", width: 100 },
+            { field: "unitName", title: "单位", width: 80 },
+            { field: "currentPrice", title: "最新价格", width: 100 },
+       ]];
+    </script>
+}
+
+@*弹窗*@
+<div id="dlg" class="easyui-dialog" closed="true" modal="true" buttons="#dlg-buttons" align="center" style="width: 400px; padding: 10px;">
+    <form id="fm" class="easyui-form" method="post" novalidate>
+        <table class="edit-tbl">
+            <input id="id" name="id" type="hidden">
+            <tr>
+                <th><label for="cn">序号：</label></th>
+                <td><input name="cn" class="easyui-textbox" data-options="required:true, validType:'length[1, @Category.MaxCnLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><Label for="name">品类名称:</Label></th>
+                <td><input name="name" class="easyui-textbox" data-options="required:true, validType:'length[1, @Category.MaxNameLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><Label for="unitName">单位:</Label></th>
+                <td><input name="unitName" class="easyui-textbox" data-options="required:true, validType:'length[1, @Category.MaxNameLength]'" style="width: 100%"></td>
+            </tr>
+            <tr>
+                <th><Label for="currentPrice">最新价格:</Label></th>
+                <td><input name="currentPrice" class="easyui-numberbox" data-options="precision:4" style="width: 100%"></td>
+            </tr>
+        </table>
+    </form>
+</div>

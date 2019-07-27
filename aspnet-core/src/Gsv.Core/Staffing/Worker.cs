@@ -38,11 +38,12 @@ namespace Gsv.Staffing
         [StringLength(MaxPasswordLength)]
         public string Password { get; set; }
 
+        [StringLength(GsvConsts.MobileLength)]
+         public string Mobile { get; set; }
+
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string WeixinDeviceId { get ; set; }
 
-        [StringLength(GsvConsts.MobileLength)]
-        public string Mobile { get; set; }
     }
 }
 

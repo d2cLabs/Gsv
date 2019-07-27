@@ -23,14 +23,17 @@ namespace Gsv.Web.Startup
                     .AddItem(new MenuItemDefinition("Admin_Users", new FixedLocalizableString("用户"), url: "Users"))
                 // Types
                 ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Types, new FixedLocalizableString("类型设置"), icon: "fa fa-list", requiredPermissionName: PermissionNames.Pages_Types)
-                    .AddItem(new MenuItemDefinition("Type_Categories", new FixedLocalizableString("品类"), url: "Categories"))
+                    .AddItem(new MenuItemDefinition("Type_Categories", new FixedLocalizableString("基本品类"), url: "Categories"))
                     .AddItem(new MenuItemDefinition("Type_Sources", new FixedLocalizableString("进货来源"), url: "Sources"))
                 // Objects
                 ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Objects, new FixedLocalizableString("标的管理"), icon: "fa fa-file", requiredPermissionName: PermissionNames.Pages_Objects)
                     .AddItem(new MenuItemDefinition("Object_Capitals", new FixedLocalizableString("资本方"), url: "Capitals"))
-                    .AddItem(new MenuItemDefinition("Object_Place", new FixedLocalizableString("场地"), url: "Places"))
+                    .AddItem(new MenuItemDefinition("Object_Places", new FixedLocalizableString("场地"), url: "Places"))
                     .AddItem(new MenuItemDefinition("Object_Objects", new FixedLocalizableString("监管标的"), url: "Objects"))
+                    .AddItem(new MenuItemDefinition("Object_CargoTypes", new FixedLocalizableString("场地品类"), url: "CargoTypes"))
+                     .AddItem(new MenuItemDefinition("Object_PlaceShelves", new FixedLocalizableString("场地货架"), url: "PlaceShelves"))
                 // Staffs
+                ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Staffing, new FixedLocalizableString("员工管理"), icon: "fa fa-file", requiredPermissionName: PermissionNames.Pages_Staffing)
                     .AddItem(new MenuItemDefinition("Staffing_Workers", new FixedLocalizableString("工作人员"), url: "Workers"))
                     .AddItem(new MenuItemDefinition("Staffing_PlaceWorkres", new FixedLocalizableString("场地员工"), url: "PlaceWorkers"))
 

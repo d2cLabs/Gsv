@@ -13,38 +13,21 @@ using Abp.Configuration;
 
 namespace Gsv.EntityFrameworkCore.Seed.Tenants
 {
-    public class GsvEntitiesBuilder
+    public class DefaultRoleAndUserBuilder
     {
         private readonly GsvDbContext _context;
         private readonly int _tenantId;
 
-        public GsvEntitiesBuilder(GsvDbContext context, int tenantId)
+        public DefaultRoleAndUserBuilder(GsvDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;
         }
-
         public void Create()
         {
-            CreateSourceEntity();
-            CreateDefaultRoleAndUser();
+            CreateRoleAndUser();
         }
-
-        private void CreateSourceEntity()
-        {
-            if (_context.Sources.Count() == 0)
-            {
-                var sources = new List<Source>() 
-                {
-                    new Source() { Cn = "01", Name = "回笼" },
-                    new Source() { Cn = "02", Name = "自购" }
-                };
-                _context.Sources.AddRange(sources);
-                _context.SaveChanges();
-            }
-        }
-
-        private void CreateDefaultRoleAndUser()
+        private void CreateRoleAndUser()
         {
             // supervisor role
             var role = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Supervisor);
@@ -94,7 +77,7 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
                     UserName = StaticRoleNames.Tenants.Watcher,
                     Name = StaticRoleNames.Tenants.Watcher,
                     Surname = StaticRoleNames.Tenants.Watcher,
-                    EmailAddress = "watcher@126.com",
+                    EmailAddress = "watcher@defaulttenant.com",
                     Roles = new List<UserRole>()
                 };
 
