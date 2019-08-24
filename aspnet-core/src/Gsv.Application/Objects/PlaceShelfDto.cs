@@ -15,14 +15,9 @@ namespace Gsv.Objects
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// 编号（识别号）
-        /// </summary>
-        [StringLength(PlaceShelf.MaxIdentifierLength)]
-        public string Identifier { get; set; }
         
         /// <summary>
-        /// PlaceCargoTypeList
+        /// CargoType
         /// </summary>
         [Required]
         public int CargoTypeId { get; set; }

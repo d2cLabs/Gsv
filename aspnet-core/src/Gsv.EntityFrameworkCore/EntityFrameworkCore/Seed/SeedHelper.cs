@@ -28,8 +28,8 @@ namespace Gsv.EntityFrameworkCore.Seed
             new DefaultTenantBuilder(context).Create();
             new TenantRoleAndUserBuilder(context, 1).Create();
 
-            // GsvEntities seed
-            new DefaultRoleAndUserBuilder(context, 1).Create();
+            // EntityPreDataBuiler
+            new BaseEntitySeedBuilder(context, 1).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

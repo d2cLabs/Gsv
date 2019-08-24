@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/wx.css">
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    @RenderSection("header", required: false)
+</head>
+<body ontouchstart>
+    @RenderBody()
+  
+    <script type="text/javascript" src="~/js/zepto.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
+
+    @RenderSection("footer", required: false)
+</body>
+</html>

@@ -1,99 +1,103 @@
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.IO;
-using System.Xml.Linq;
 using Gsv.Configuration;
 using Gsv.Controllers;
+using Gsv.Web.MessageHandlers;
+
+using Senparc.CO2NET.HttpUtility;
 using Senparc.Weixin.Work;
 using Senparc.Weixin.Work.Entities;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Hosting;
+using Gsv.Web.Models.Weixin;
+using System;
+using System.Security.Principal;
+using System.Collections.Generic;
+using System.Linq;
+using Gsv.Tasks;
+using Gsv.Types;
 
 namespace Gsv.Web.Controllers
 {
+    // Base
     [IgnoreAntiforgeryToken]
+    [Authorize(AuthenticationSchemes = "Cookies")]
     public class WeixinController : GsvControllerBase
     {
-        private readonly string _token;
-        private readonly string _encodingAESKey;
-        private readonly string _appId;
+        public TaskManager TaskManager { get; set; }
+        private readonly string _secret;
+        private readonly string _agentId;
+        private readonly string _corpId;
 
-        public WeixinController(IHostingEnvironment env)
+        private readonly IInStockAppService _inStockAppService;
+
+        public WeixinController(IHostingEnvironment env,
+            IInStockAppService inStockAppService)
         {
             var appConfiguration = env.GetAppConfiguration();
-            _token = appConfiguration["SenparcWeixinSetting:Token"];
-            _encodingAESKey = appConfiguration["SenparcWeixinSetting:EncodingAESKey"];
+            _secret = appConfiguration[string.Format("SenparcWeixinSetting:{0}:Secret", "App01")];
+            _agentId = appConfiguration[string.Format("SenparcWeixinSetting:{0}:AgentId", "App01")];
+            _corpId = appConfiguration["SenparcWeixinSetting:CorpId"];
+
+            _inStockAppService = inStockAppService;
         }
 
-        /// <summary> 
-        /// Get index
-        /// </summary> 
-        [HttpGet] 
-        [ActionName("Index")] 
-        public ActionResult Get(string id, PostModel post, string echostr)
+        #region InReceipt 
+
+        public ActionResult InList()
         {
-            // Logger.Warn($"微信Get {id}");
-            //int tenantId = DomainManager.GetTenantIdByName(id);
-            //if (tenantId == 0) {
-            //    return Content("没有对应的公司编号");
-            // }
-            string token = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.Token, tenantId).Result;
-            string aeskey = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.EncodingAESKey, tenantId).Result;
-            string corpId = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.CorpId, tenantId).Result;
+            return View(GetInListViewModel());
+        }
 
-            var verifyUrl = Signature.VerifyURL(token, aeskey, corpId, msg_signature, timestamp, nonce, echostr); 
-            if (verifyUrl != null) 
-            { 
-                return Content(verifyUrl); 
-            } 
-            else 
-            { 
-                return Content("Error"); 
-            } 
+        public ActionResult InBill()
+        {
+            return View();
         } 
- 
-        /// <summary> 
-        ///  
-        /// </summary> 
-        /// <param name="postModel"></param> 
-        /// <returns></returns> 
+
         [HttpPost]
-        [ActionName("Index")]
-        public ActionResult Post(string id, PostModel postModel) //string msg_signature = "", string timestamp = "", string nonce = "")
-        { 
-            int tenantId = DomainManager.GetTenantIdByName(id);
-            if (tenantId == 0) {
-                return Content("没有对应的公司编号");
-            }
+        public ActionResult InsertInBill()
+        {
+            return RedirectToAction("InList");
+        }
+        #endregion
 
-            string token = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.Token, tenantId).Result;
-            string aeskey = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.EncodingAESKey, tenantId).Result;
-            string corpId = SettingManager.GetSettingValueForTenantAsync(SettingNames.Weixin.CorpId, tenantId).Result;
+        #region Utils
 
-            postModel.Token = token; 
-            postModel.EncodingAESKey = aeskey; 
-            postModel.CorpId = corpId;
+        private int GetObjectId()
+        {
+            var claim = HttpContext.User.Claims.First(x => x.Type == "ObjectID");
+            return int.Parse(claim.Value);
+        }
 
-            var maxRecordCount = 10;
-            var inputStream = new MemoryStream();
-            Request.Body.CopyTo(inputStream);
-            try
+        private ListViewModel GetInListViewModel()
+        {
+            var obj = TaskManager.GetObject(GetObjectId());
+            ListViewModel vm = new ListViewModel();
+            vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
+            vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Shelves = TaskManager.GetObjectShelves(obj.Id);
+
+            var items = _inStockAppService.GetInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
+            vm.Items = new List<ItemInfo>();
+            double total = 0.0;
+            foreach (var item in items)
             {
-                var messageHandler = new WorkCustomMessageHandler(inputStream, postModel, maxRecordCount);
-                messageHandler.WeixinAppService = _weixinAppService;
-                messageHandler.TenantId = tenantId;
-                messageHandler.OmitRepeatedMessage = true;
-                Logger.Warn($"微信Request={messageHandler.TenantId} {messageHandler.WeixinAppService.ToString()}");
-                messageHandler.Execute();
+                vm.Items.Add(new ItemInfo {
+                    CreateTime = item.CreateTime.ToString("HH:mm:ss"),
+                    Shelf = item.PlaceShelfName,
+                    Quantity = item.Quantity.ToString("F2"),
+                    CreateWorker = item.WorkerName,
+                });
+                total += item.Quantity;
+            }
+            vm.TodaySummary = string.Format("今日笔数({0})  进库总重({1:F2})", items.Count, total);
+        
+            return vm;
+        }
 
-                // var ret = new Senparc.Weixin.MP.CoreMvcExtension.FixWeixinBugWeixinResult(messageHandler);
-                // Logger.Warn($"微信Response={messageHandler.FinalResponseDocument.ToString()}");
-                return Content(messageHandler.FinalResponseDocument.ToString(), "text/xml");
-            }
-            catch (Exception ex) {
-                Logger.Error($"微信MessageHandle错误 {ex.Message}");
-                return Content("");
-            }
-        } 
+        #endregion 
     }
 }

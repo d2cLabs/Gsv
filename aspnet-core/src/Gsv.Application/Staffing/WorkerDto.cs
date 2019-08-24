@@ -33,10 +33,10 @@ namespace Gsv.Staffing
         public byte[] Photo { get; set; }
 
         /// <summary>
-        /// 微信设备ID
+        /// PlaceList
         /// </summary>
         [StringLength(GsvConsts.NormalStringFieldLength)]
-        public string WeixinDeviceId { get ; set; }
+        public string PlaceList { get ; set; }
 
         /// <summary>
         /// 手机

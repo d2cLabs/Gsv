@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gsv.Migrations
 {
     [DbContext(typeof(GsvDbContext))]
-    [Migration("20190725100259_gsv1")]
-    partial class gsv1
+    [Migration("20190824080128_gsv")]
+    partial class gsv
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1109,7 +1109,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cn")
+                    b.HasIndex("TenantId", "Cn")
                         .IsUnique();
 
                     b.ToTable("Capitals");
@@ -1137,7 +1137,9 @@ namespace Gsv.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("PlaceId", "CategoryId", "TypeName")
+                    b.HasIndex("PlaceId");
+
+                    b.HasIndex("TenantId", "PlaceId", "CategoryId", "TypeName")
                         .IsUnique();
 
                     b.ToTable("CargoTypes");
@@ -1160,7 +1162,6 @@ namespace Gsv.Migrations
                     b.Property<int>("Quantity");
 
                     b.Property<string>("Remark")
-                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<float>("RiskRatio");
@@ -1171,11 +1172,13 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CapitalId");
+
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("PlaceId");
 
-                    b.HasIndex("CapitalId", "PlaceId", "CategoryId")
+                    b.HasIndex("TenantId", "CapitalId", "PlaceId", "CategoryId")
                         .IsUnique();
 
                     b.ToTable("Objects");
@@ -1209,7 +1212,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cn")
+                    b.HasIndex("TenantId", "Cn")
                         .IsUnique();
 
                     b.ToTable("Places");
@@ -1223,18 +1226,15 @@ namespace Gsv.Migrations
 
                     b.Property<int>("CargoTypeId");
 
-                    b.Property<float>("CurrentInventory")
-                        .HasMaxLength(50);
+                    b.Property<float?>("Inventory");
 
-                    b.Property<string>("Identifier")
-                        .IsRequired()
-                        .HasMaxLength(12);
-
-                    b.Property<DateTime>("InventoryLastTime");
+                    b.Property<DateTime?>("ModifiedTime");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
+
+                    b.Property<int>("PlaceId");
 
                     b.Property<int>("TenantId");
 
@@ -1242,30 +1242,12 @@ namespace Gsv.Migrations
 
                     b.HasIndex("CargoTypeId");
 
-                    b.HasIndex("Name", "CargoTypeId")
+                    b.HasIndex("PlaceId");
+
+                    b.HasIndex("TenantId", "Name", "CargoTypeId")
                         .IsUnique();
 
                     b.ToTable("PlaceShelves");
-                });
-
-            modelBuilder.Entity("Gsv.Staffing.PlaceWorker", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PlaceId");
-
-                    b.Property<int>("TenantId");
-
-                    b.Property<string>("WorkerList")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
-
-                    b.ToTable("PlaceWorkers");
                 });
 
             modelBuilder.Entity("Gsv.Staffing.Worker", b =>
@@ -1289,14 +1271,14 @@ namespace Gsv.Migrations
                         .IsRequired()
                         .HasMaxLength(12);
 
-                    b.Property<int>("TenantId");
-
-                    b.Property<string>("WeixinDeviceId")
+                    b.Property<string>("PlaceList")
                         .HasMaxLength(50);
+
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cn")
+                    b.HasIndex("TenantId", "Cn")
                         .IsUnique();
 
                     b.ToTable("Workers");
@@ -1308,7 +1290,9 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CarryoutTime");
+                    b.Property<DateTime>("CarryoutDate");
+
+                    b.Property<DateTime>("CreateTime");
 
                     b.Property<int?>("PlaceShelfId");
 
@@ -1330,6 +1314,8 @@ namespace Gsv.Migrations
 
                     b.HasIndex("WorkerId");
 
+                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+
                     b.ToTable("InStocks");
                 });
 
@@ -1339,7 +1325,9 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CarryoutTime");
+                    b.Property<DateTime>("CarryoutDate");
+
+                    b.Property<DateTime>("CreateTime");
 
                     b.Property<byte[]>("Photo");
 
@@ -1362,6 +1350,8 @@ namespace Gsv.Migrations
 
                     b.HasIndex("WorkerId");
 
+                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+
                     b.ToTable("Inspects");
                 });
 
@@ -1371,7 +1361,9 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CarryoutTime");
+                    b.Property<DateTime>("CarryoutDate");
+
+                    b.Property<DateTime>("CreateTime");
 
                     b.Property<int?>("PlaceShelfId");
 
@@ -1389,6 +1381,8 @@ namespace Gsv.Migrations
 
                     b.HasIndex("WorkerId");
 
+                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+
                     b.ToTable("OutStocks");
                 });
 
@@ -1398,7 +1392,9 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CarryoutTime");
+                    b.Property<DateTime>("CarryoutDate");
+
+                    b.Property<DateTime>("CreateTime");
 
                     b.Property<float>("Deviation");
 
@@ -1410,9 +1406,15 @@ namespace Gsv.Migrations
 
                     b.Property<int>("TenantId");
 
+                    b.Property<int>("WorkerId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PlaceShelfId");
+
+                    b.HasIndex("WorkerId");
+
+                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
 
                     b.ToTable("Stocktakings");
                 });
@@ -1441,7 +1443,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cn")
+                    b.HasIndex("TenantId", "Cn")
                         .IsUnique();
 
                     b.ToTable("Categories");
@@ -1465,7 +1467,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cn")
+                    b.HasIndex("TenantId", "Cn")
                         .IsUnique();
 
                     b.ToTable("Sources");
@@ -1650,7 +1652,7 @@ namespace Gsv.Migrations
                     b.HasOne("Gsv.Objects.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Gsv.Objects.Object", b =>
@@ -1677,12 +1679,9 @@ namespace Gsv.Migrations
                         .WithMany()
                         .HasForeignKey("CargoTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
 
-            modelBuilder.Entity("Gsv.Staffing.PlaceWorker", b =>
-                {
-                    b.HasOne("Gsv.Objects.Place", "Place")
-                        .WithMany()
+                    b.HasOne("Gsv.Objects.Place")
+                        .WithMany("Shelves")
                         .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -1698,7 +1697,7 @@ namespace Gsv.Migrations
                         .HasForeignKey("SourceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gsv.Staffing.Worker", "Worker")
+                    b.HasOne("Gsv.Staffing.Worker", "CreateWorker")
                         .WithMany()
                         .HasForeignKey("WorkerId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1733,6 +1732,11 @@ namespace Gsv.Migrations
                     b.HasOne("Gsv.Objects.PlaceShelf", "PlaceShelf")
                         .WithMany()
                         .HasForeignKey("PlaceShelfId");
+
+                    b.HasOne("Gsv.Staffing.Worker", "Worker")
+                        .WithMany()
+                        .HasForeignKey("WorkerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

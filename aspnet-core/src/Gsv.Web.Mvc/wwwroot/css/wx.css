@@ -1,0 +1,33 @@
+body,html{
+    height:100%;
+    -webkit-tap-highlight-color:transparent
+}
+body{
+    font-family:-apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    background-color:#ededed
+}
+
+.header{
+    background-color: blue;
+}
+.header .header__title {
+    text-align: center;
+    padding: 5px;
+    color: white;    
+}
+
+.header .header__desc {
+    padding: 5px;
+    color: whitesmoke;    
+}
+
+
+.weui-media-box_appmsg .weui-media-box__hd2 {
+    margin-right: .8em;
+    height: 110px;
+    width: 95px;
+    line-height: 100px;
+    text-align: center;
+}
+
+

@@ -19,11 +19,12 @@ namespace Gsv.Tasks
         // Implement of IMustHaveTenant
         public int TenantId { get; set; }
 
+        public DateTime CarryoutDate { get; set; }
 
-        public DateTime CarryoutTime { get; set; }
-
+        [Required]
         public int WorkerId { get; set; }
-        public virtual Worker Worker { get; set; }
+        public virtual Worker CreateWorker { get; set; }
+        public DateTime CreateTime { get; set; }
 
         /// <summary>
         /// 场地Id

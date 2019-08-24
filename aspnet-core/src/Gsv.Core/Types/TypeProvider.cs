@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Abp.Application.Services.Dto;
 using Abp.Dependency;
-using Gsv.Types.Cache;
+using Gsv.Caches;
 
 namespace Gsv.Types
 {

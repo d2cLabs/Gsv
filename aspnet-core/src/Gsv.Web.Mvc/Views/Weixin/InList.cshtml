@@ -1,0 +1,51 @@
+@{
+    ViewBag.Title = "进库单";
+    Layout = "~/Views/Shared/_WeixinLayout.cshtml";
+}
+
+<form name="fm" action ="/Weixin/InBill" method="post" onsubmit="checkSubmit()">
+    <a href="javascript:add();">    
+        <div class="header">
+            <div class="header__title">
+                <h3>场地名称</h3>
+            </div>
+            <div class="header__desc">
+                <p>重量：10000克</p>
+            </div>
+        </div>
+    </a>
+
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_text">
+            <h3 class="weui-media-box__title">1 柜台名称</h3>
+            <p class="weui-media-box__desc"> 两个</p>
+        </div>
+        <div class="weui-media-box weui-media-box_text">
+            <h3 class="weui-media-box__title">2 柜台名称</h3>
+            <p class="weui-media-box__desc"> 三个</p>
+        </div>
+        <div class="weui-media-box weui-media-box_text">
+            <h3 class="weui-media-box__title">3 柜台名称</h3>
+            <p class="weui-media-box__desc"> 四个</p>
+        </div>
+    </div>
+</div>
+</form>
+
+@section footer
+{
+    <script type="text/javascript">
+        var checkSubmitFlg = false; 
+
+        function add() {
+            window.fm.submit();
+        }
+
+        function checkSubmit(){ 
+            if(checkSubmitFlg == true) return false; //当表单被提交过一次后checkSubmitFlg将变为true,根据判断将无法进行提交。
+            checkSubmitFlg = true; 
+            return true; 
+        } 
+    </script>
+}

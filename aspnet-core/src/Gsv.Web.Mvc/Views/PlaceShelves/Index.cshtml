@@ -12,7 +12,6 @@
         crud.dgDefault.sortName = 'CargoTypeId'
         crud.dgDefault.columns = [[
             { field: "name", title: "名称", width: 100 },
-            { field: "identifier", title: "辨识号", width: 80 },
             { field: "cargoTypeId", title: "品类", width: 80, formatter: $.displayCargoTypeText },      
         ]];        
     </script>
@@ -72,10 +71,6 @@
             <tr>
                 <th><Label for="name">货架名称:</Label></th>
                 <td><input name="name" class="easyui-textbox" data-options="required:true, validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
-            </tr>
-            <tr>
-                <th><Label for="identifier">辨识号:</Label></th>
-                <td><input name="identifier" class="easyui-textbox" data-options="validType:'length[1, @PlaceShelf.MaxIdentifierLength]'" style="width: 100%"></td>
             </tr>
             <tr>
                 <th><label for="cargoTypeId">品类：</label></th>

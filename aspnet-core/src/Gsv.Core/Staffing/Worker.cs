@@ -42,8 +42,7 @@ namespace Gsv.Staffing
          public string Mobile { get; set; }
 
         [StringLength(GsvConsts.NormalStringFieldLength)]
-        public string WeixinDeviceId { get ; set; }
-
+        public string PlaceList { get ; set; }
     }
 }
 

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 
-namespace Gsv.Types
+namespace Gsv.Types.Dto
 {
     [AutoMap(typeof(Category))]
     public class CategoryDto : EntityDto

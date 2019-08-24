@@ -10,7 +10,6 @@ using Gsv.Localization;
 using Gsv.MultiTenancy;
 using Gsv.Objects.Cache;
 using Gsv.Timing;
-using Gsv.Types.Cache;
 
 namespace Gsv
 {
@@ -42,13 +41,9 @@ namespace Gsv
         {
             IocManager.RegisterAssemblyByConvention(typeof(GsvCoreModule).GetAssembly());
             
-            // Cache for Types
-            IocManager.Register<ICategoryCache, CategoryCache>();
-            //IocManager.Register<ITaskTypeCache, TaskTypeCache>();
 
             // Cache for Objects
             IocManager.Register<ICapitalCache, CapitalCache>();
-            IocManager.Register<IPlaceCache, PlaceCache>();
             IocManager.Register<ICargoTypeCache, CargoTypeCache>();
         }
 

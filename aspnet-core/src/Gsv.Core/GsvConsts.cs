@@ -8,6 +8,9 @@
 
         public const bool MultiTenancyEnabled = true;
 
+        public const string UserEmailServerName = "@tenant.com";
+        public const int EntityListCacheSlidingExpireTime = 20;
+
         public const int NormalStringFieldLength = 50;
 
         public const int MobileLength = 11;

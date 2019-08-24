@@ -1,0 +1,60 @@
+@model Gsv.Web.Models.Weixin.LoginViewModel
+@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_WeixinLayout.cshtml";
+}
+
+<form class="weui-cells weui-cells_form" action ="/WeixinAccount/Login" method="post" onsubmit="checkSubmit()">
+    @Html.ValidationSummary()
+    <div class="weui-cells__title">员工登录</div>
+    <div  class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="workerCn" class="weui-label">工号:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="workerCn" type="text" placeholder="请输入工号" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="Password" class="weui-label">密码:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="password" type="password" placeholder="请输入密码" />
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd"><label for="" class="weui-label">标的:</label></div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="objectId">
+                    @for (int i = 0; i < Model.Objects.Count; i++)
+                    {
+                        var content = string.Format("{0}({1})", Model.Objects[i].PlaceName, Model.Objects[i].CategoryName);
+                        if (i == 0) 
+                        {
+                            <option selected="" value="@Model.Objects[i].ObjectId">@content</option>
+                        }
+                        else 
+                        {
+                            <option value="@Model.Objects[i].ObjectId">@content</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <input type="submit" value="登录" class="weui-btn weui-btn_primary" />
+        </div>
+        <input type="hidden" id="returnUrl" name="ReturnUrl" value="@Model.ReturnUrl" />
+    </div>
+</form>
+
+@section footer
+{
+    <script type="text/javascript">
+        var checkSubmitFlg = false; 
+
+        function checkSubmit(){ 
+            if(checkSubmitFlg == true) return false; //当表单被提交过一次后checkSubmitFlg将变为true,根据判断将无法进行提交。
+            checkSubmitFlg = true; 
+            return true; 
+        } 
+    </script>
+}

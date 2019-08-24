@@ -1,11 +1,7 @@
 ﻿using System.Linq;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Abp.Authorization;
 using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
-using Abp.MultiTenancy;
 using Gsv.Authorization;
 using Gsv.Authorization.Roles;
 using Gsv.Authorization.Users;
@@ -25,65 +21,66 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
 
         public void Create()
         {
-            CreateRolesAndUsers();
+            // Admin RoleAndUser
+            string[] permissions = new string[] {
+                PermissionNames.Pages_Setup, PermissionNames.Pages_Types, PermissionNames.Pages_Objects, PermissionNames.Pages_Staffing
+            };
+            CreateRoleAndUser(StaticRoleNames.Tenants.Admin, permissions, AbpUserBase.AdminUserName, User.DefaultPassword);
+
+            // Supervisor RoleAndUser
+            permissions = new string[] { PermissionNames.Pages_Supervisor };
+            CreateRole(StaticRoleNames.Tenants.Supervisor, permissions);
+
+            
+            // Watcher
+            permissions = new string[] { PermissionNames.Pages_Watcher };
+
+            CreateRole(StaticRoleNames.Tenants.Watcher, permissions);
+
         }
 
-        private void CreateRolesAndUsers()
+        private void CreateRoleAndUser(string roleName, string[] permissions, string userName, string password)
         {
-            // Admin role
-
-            var adminRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
-            if (adminRole == null)
+            var role = CreateRole(roleName, permissions);
+            if (role == null) 
+                return;
+            // user
+            var user = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == userName);
+            if (user == null)
             {
-                adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin) { IsStatic = true }).Entity;
+                user = User.CreateUser(_tenantId, userName, password);
+                _context.Users.Add(user);
+                _context.SaveChanges();
+
+                // Assign role to user
+                _context.UserRoles.Add(new UserRole(_tenantId, user.Id, role.Id));
                 _context.SaveChanges();
             }
+        }
 
-            // Grant all permissions to admin role
-
-            var grantedPermissions = _context.Permissions.IgnoreQueryFilters()
-                .OfType<RolePermissionSetting>()
-                .Where(p => p.TenantId == _tenantId && p.RoleId == adminRole.Id)
-                .Select(p => p.Name)
-                .ToList();
-
-            var permissions = PermissionFinder
-                .GetAllPermissions(new GsvAuthorizationProvider())
-                .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
-                            !grantedPermissions.Contains(p.Name))
-                .ToList();
-
-            if (permissions.Any())
+        private Role CreateRole(string name, string[] permissions)
+        {
+            // role
+            var role = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == name);
+            if (role == null)
             {
+                role = _context.Roles.Add(new Role(_tenantId, name, name) { IsStatic = true }).Entity;
+                _context.SaveChanges();
+
+                // Grant permission to role
                 _context.Permissions.AddRange(
-                    permissions.Select(permission => new RolePermissionSetting
-                    {
-                        TenantId = _tenantId,
-                        Name = permission.Name,
-                        IsGranted = true,
-                        RoleId = adminRole.Id
+                    permissions.Select(permission => new RolePermissionSetting 
+                    { 
+                        TenantId = _tenantId, 
+                        Name = permission, 
+                        IsGranted = true, 
+                        RoleId = role.Id
                     })
                 );
                 _context.SaveChanges();
             }
-
-            // Admin user
-
-            var adminUser = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == AbpUserBase.AdminUserName);
-            if (adminUser == null)
-            {
-                adminUser = User.CreateTenantAdminUser(_tenantId, "admin@defaulttenant.com");
-                adminUser.Password = new PasswordHasher<User>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(adminUser, "123qwe");
-                adminUser.IsEmailConfirmed = true;
-                adminUser.IsActive = true;
-
-                _context.Users.Add(adminUser);
-                _context.SaveChanges();
-
-                // Assign Admin role to admin user
-                _context.UserRoles.Add(new UserRole(_tenantId, adminUser.Id, adminRole.Id));
-                _context.SaveChanges();
-            }
+             
+            return role;
         }
     }
 }

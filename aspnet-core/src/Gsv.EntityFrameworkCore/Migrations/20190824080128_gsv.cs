@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gsv.Migrations
 {
-    public partial class gsv1 : Migration
+    public partial class gsv : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -86,8 +86,8 @@ namespace Gsv.Migrations
                     Cn = table.Column<string>(maxLength: 6, nullable: false),
                     Name = table.Column<string>(maxLength: 12, nullable: false),
                     Password = table.Column<string>(maxLength: 12, nullable: false),
-                    WeixinDeviceId = table.Column<string>(maxLength: 50, nullable: true),
-                    Mobile = table.Column<string>(maxLength: 11, nullable: true)
+                    Mobile = table.Column<string>(maxLength: 11, nullable: true),
+                    PlaceList = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -120,7 +120,7 @@ namespace Gsv.Migrations
                         column: x => x.PlaceId,
                         principalTable: "Places",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,7 +136,7 @@ namespace Gsv.Migrations
                     Quantity = table.Column<int>(nullable: false),
                     isFixedPrice = table.Column<bool>(nullable: false),
                     FixedPrice = table.Column<float>(nullable: false),
-                    Remark = table.Column<string>(maxLength: 50, nullable: false),
+                    Remark = table.Column<string>(maxLength: 50, nullable: true),
                     RiskRatio = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
@@ -163,38 +163,17 @@ namespace Gsv.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlaceWorkers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TenantId = table.Column<int>(nullable: false),
-                    PlaceId = table.Column<int>(nullable: false),
-                    WorkerList = table.Column<string>(maxLength: 50, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlaceWorkers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PlaceWorkers_Places_PlaceId",
-                        column: x => x.PlaceId,
-                        principalTable: "Places",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PlaceShelves",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: false),
+                    PlaceId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Identifier = table.Column<string>(maxLength: 12, nullable: false),
                     CargoTypeId = table.Column<int>(nullable: false),
-                    CurrentInventory = table.Column<float>(maxLength: 50, nullable: false),
-                    InventoryLastTime = table.Column<DateTime>(nullable: false)
+                    Inventory = table.Column<float>(nullable: true),
+                    ModifiedTime = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -203,6 +182,12 @@ namespace Gsv.Migrations
                         name: "FK_PlaceShelves_CargoTypes_CargoTypeId",
                         column: x => x.CargoTypeId,
                         principalTable: "CargoTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlaceShelves_Places_PlaceId",
+                        column: x => x.PlaceId,
+                        principalTable: "Places",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -214,8 +199,9 @@ namespace Gsv.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: false),
-                    CarryoutTime = table.Column<DateTime>(nullable: false),
+                    CarryoutDate = table.Column<DateTime>(nullable: false),
                     WorkerId = table.Column<int>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
                     ShelfId = table.Column<int>(nullable: false),
                     PlaceShelfId = table.Column<int>(nullable: true),
                     Purity = table.Column<float>(nullable: false),
@@ -246,8 +232,9 @@ namespace Gsv.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: false),
-                    CarryoutTime = table.Column<DateTime>(nullable: false),
+                    CarryoutDate = table.Column<DateTime>(nullable: false),
                     WorkerId = table.Column<int>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
                     ShelfId = table.Column<int>(nullable: false),
                     PlaceShelfId = table.Column<int>(nullable: true),
                     Quantity = table.Column<float>(nullable: false),
@@ -283,8 +270,9 @@ namespace Gsv.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: false),
-                    CarryoutTime = table.Column<DateTime>(nullable: false),
+                    CarryoutDate = table.Column<DateTime>(nullable: false),
                     WorkerId = table.Column<int>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
                     ShelfId = table.Column<int>(nullable: false),
                     PlaceShelfId = table.Column<int>(nullable: true),
                     Quantity = table.Column<float>(nullable: false)
@@ -313,7 +301,9 @@ namespace Gsv.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: false),
-                    CarryoutTime = table.Column<DateTime>(nullable: false),
+                    CarryoutDate = table.Column<DateTime>(nullable: false),
+                    WorkerId = table.Column<int>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
                     ShelfId = table.Column<int>(nullable: false),
                     PlaceShelfId = table.Column<int>(nullable: true),
                     Inventory = table.Column<float>(nullable: false),
@@ -328,12 +318,18 @@ namespace Gsv.Migrations
                         principalTable: "PlaceShelves",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Stocktakings_Workers_WorkerId",
+                        column: x => x.WorkerId,
+                        principalTable: "Workers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Capitals_Cn",
+                name: "IX_Capitals_TenantId_Cn",
                 table: "Capitals",
-                column: "Cn",
+                columns: new[] { "TenantId", "Cn" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -342,15 +338,20 @@ namespace Gsv.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CargoTypes_PlaceId_CategoryId_TypeName",
+                name: "IX_CargoTypes_PlaceId",
                 table: "CargoTypes",
-                columns: new[] { "PlaceId", "CategoryId", "TypeName" },
+                column: "PlaceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CargoTypes_TenantId_PlaceId_CategoryId_TypeName",
+                table: "CargoTypes",
+                columns: new[] { "TenantId", "PlaceId", "CategoryId", "TypeName" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_Cn",
+                name: "IX_Categories_TenantId_Cn",
                 table: "Categories",
-                column: "Cn",
+                columns: new[] { "TenantId", "Cn" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -362,6 +363,11 @@ namespace Gsv.Migrations
                 name: "IX_Inspects_WorkerId",
                 table: "Inspects",
                 column: "WorkerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Inspects_TenantId_CarryoutDate_ShelfId",
+                table: "Inspects",
+                columns: new[] { "TenantId", "CarryoutDate", "ShelfId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_InStocks_PlaceShelfId",
@@ -379,6 +385,16 @@ namespace Gsv.Migrations
                 column: "WorkerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_InStocks_TenantId_CarryoutDate_ShelfId",
+                table: "InStocks",
+                columns: new[] { "TenantId", "CarryoutDate", "ShelfId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Objects_CapitalId",
+                table: "Objects",
+                column: "CapitalId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Objects_CategoryId",
                 table: "Objects",
                 column: "CategoryId");
@@ -389,9 +405,9 @@ namespace Gsv.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Objects_CapitalId_PlaceId_CategoryId",
+                name: "IX_Objects_TenantId_CapitalId_PlaceId_CategoryId",
                 table: "Objects",
-                columns: new[] { "CapitalId", "PlaceId", "CategoryId" },
+                columns: new[] { "TenantId", "CapitalId", "PlaceId", "CategoryId" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -405,9 +421,14 @@ namespace Gsv.Migrations
                 column: "WorkerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Places_Cn",
+                name: "IX_OutStocks_TenantId_CarryoutDate_ShelfId",
+                table: "OutStocks",
+                columns: new[] { "TenantId", "CarryoutDate", "ShelfId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Places_TenantId_Cn",
                 table: "Places",
-                column: "Cn",
+                columns: new[] { "TenantId", "Cn" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -416,20 +437,20 @@ namespace Gsv.Migrations
                 column: "CargoTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlaceShelves_Name_CargoTypeId",
+                name: "IX_PlaceShelves_PlaceId",
                 table: "PlaceShelves",
-                columns: new[] { "Name", "CargoTypeId" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PlaceWorkers_PlaceId",
-                table: "PlaceWorkers",
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sources_Cn",
+                name: "IX_PlaceShelves_TenantId_Name_CargoTypeId",
+                table: "PlaceShelves",
+                columns: new[] { "TenantId", "Name", "CargoTypeId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sources_TenantId_Cn",
                 table: "Sources",
-                column: "Cn",
+                columns: new[] { "TenantId", "Cn" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -438,9 +459,19 @@ namespace Gsv.Migrations
                 column: "PlaceShelfId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Workers_Cn",
+                name: "IX_Stocktakings_WorkerId",
+                table: "Stocktakings",
+                column: "WorkerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stocktakings_TenantId_CarryoutDate_ShelfId",
+                table: "Stocktakings",
+                columns: new[] { "TenantId", "CarryoutDate", "ShelfId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workers_TenantId_Cn",
                 table: "Workers",
-                column: "Cn",
+                columns: new[] { "TenantId", "Cn" },
                 unique: true);
         }
 
@@ -459,9 +490,6 @@ namespace Gsv.Migrations
                 name: "OutStocks");
 
             migrationBuilder.DropTable(
-                name: "PlaceWorkers");
-
-            migrationBuilder.DropTable(
                 name: "Stocktakings");
 
             migrationBuilder.DropTable(
@@ -471,10 +499,10 @@ namespace Gsv.Migrations
                 name: "Capitals");
 
             migrationBuilder.DropTable(
-                name: "Workers");
+                name: "PlaceShelves");
 
             migrationBuilder.DropTable(
-                name: "PlaceShelves");
+                name: "Workers");
 
             migrationBuilder.DropTable(
                 name: "CargoTypes");

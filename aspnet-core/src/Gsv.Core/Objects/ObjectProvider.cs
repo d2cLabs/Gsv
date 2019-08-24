@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Abp.Application.Services.Dto;
 using Abp.Dependency;
+using Gsv.Caches;
 using Gsv.Objects.Cache;
 
 namespace Gsv.Objects
@@ -51,7 +52,7 @@ namespace Gsv.Objects
 
         public string GetPlaceNameById(int id)
         {
-            return _placeCache.GetById(id).Name;
+            return _placeCache.Get(id).Name;
         }
         
         public string GetCapitalNameById(int id)

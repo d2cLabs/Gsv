@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 
 namespace Gsv.Objects
@@ -45,6 +47,8 @@ namespace Gsv.Objects
         /// </summary>
         public double? Latitude { get; set; }
 
+        [ForeignKey("PlaceId")]
+        public virtual List<PlaceShelf> Shelves { get; set; }
     }
 }
 

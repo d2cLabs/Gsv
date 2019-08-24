@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ using Senparc.Weixin;
 using Senparc.Weixin.Entities;
 using Senparc.Weixin.RegisterServices;
 using Senparc.Weixin.Work;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Gsv.Web.Startup
 {
@@ -33,17 +35,17 @@ namespace Gsv.Web.Startup
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
-            // App Cookie
-            services.ConfigureApplicationCookie(options => {
-                options.ExpireTimeSpan = TimeSpan.FromHours(12);
-            });
-            
+        {           
             // MVC
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
             );
 
+            services.AddAuthentication()
+                .AddCookie(options => {
+                    options.LoginPath = new PathString("/WeixinAccount/Login/"); 
+                });
+                
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 

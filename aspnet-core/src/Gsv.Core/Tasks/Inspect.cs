@@ -20,11 +20,11 @@ namespace Gsv.Tasks
         public int TenantId { get; set; }
 
 
-        public DateTime CarryoutTime { get; set; }
-
+        public DateTime CarryoutDate { get; set; }
         [Required]
         public int WorkerId { get; set; }
         public virtual Worker Worker { get; set; }
+        public DateTime CreateTime { get; set; }
 
         /// <summary>
         /// 场地Id

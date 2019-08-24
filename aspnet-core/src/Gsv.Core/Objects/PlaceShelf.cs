@@ -11,11 +11,12 @@ namespace Gsv.Objects
     [Description("场地货架")]
     public class PlaceShelf : Entity, IMustHaveTenant
     {
-        public const int MaxIdentifierLength = 12;
- 
         // Implement of IMustHaveTenant
         public int TenantId { get; set; }
        
+        // 所属场地
+        public int PlaceId { get; set; }
+
         /// <summary>
         /// 场地货架名称
         /// </summary>
@@ -23,23 +24,17 @@ namespace Gsv.Objects
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// 编号（识别号）
-        /// </summary>
-        [Required]
-        [StringLength(MaxIdentifierLength)]
-        public string Identifier { get; set; }
         
         /// <summary>
-        /// PlaceCargoTypeList
+        /// CargoType
         /// </summary>
         [Required]
         public int CargoTypeId { get; set; }
 
         public virtual CargoType CargoType { get; set; }
 
-        public float CurrentInventory { get; set; }
-        public DateTime InventoryLastTime { get; set; }
+        public float? Inventory { get; set; }
+        public DateTime? ModifiedTime { get; set; }
     }
 }
 
