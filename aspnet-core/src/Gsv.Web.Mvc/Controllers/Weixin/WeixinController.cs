@@ -1,24 +1,12 @@
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Gsv.Configuration;
 using Gsv.Controllers;
-using Gsv.Web.MessageHandlers;
-
-using Senparc.CO2NET.HttpUtility;
-using Senparc.Weixin.Work;
-using Senparc.Weixin.Work.Entities;
 using Gsv.Web.Models.Weixin;
-using System;
-using System.Security.Principal;
 using System.Collections.Generic;
 using System.Linq;
 using Gsv.Tasks;
-using Gsv.Types;
 
 namespace Gsv.Web.Controllers
 {
@@ -32,17 +20,16 @@ namespace Gsv.Web.Controllers
         private readonly string _agentId;
         private readonly string _corpId;
 
-        private readonly IInStockAppService _inStockAppService;
+        private readonly ITaskAppService _taskAppService;
 
-        public WeixinController(IHostingEnvironment env,
-            IInStockAppService inStockAppService)
+        public WeixinController(IHostingEnvironment env, ITaskAppService taskAppService)
         {
             var appConfiguration = env.GetAppConfiguration();
             _secret = appConfiguration[string.Format("SenparcWeixinSetting:{0}:Secret", "App01")];
             _agentId = appConfiguration[string.Format("SenparcWeixinSetting:{0}:AgentId", "App01")];
             _corpId = appConfiguration["SenparcWeixinSetting:CorpId"];
 
-            _inStockAppService = inStockAppService;
+            _taskAppService = taskAppService;
         }
 
         #region InReceipt 
@@ -80,7 +67,7 @@ namespace Gsv.Web.Controllers
             vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
             vm.Shelves = TaskManager.GetObjectShelves(obj.Id);
 
-            var items = _inStockAppService.GetInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -89,7 +76,7 @@ namespace Gsv.Web.Controllers
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
                     Shelf = item.PlaceShelfName,
                     Quantity = item.Quantity.ToString("F2"),
-                    CreateWorker = item.WorkerName,
+                    CreateWorker = item.CreateWorkerName,
                 });
                 total += item.Quantity;
             }

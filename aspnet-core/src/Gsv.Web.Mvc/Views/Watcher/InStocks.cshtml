@@ -1,0 +1,26 @@
+@{
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+@section taskScripts
+{
+    <script type="text/javascript">
+        task.controllerName = 'Watcher';
+        task.columns = [[
+            { field: "carryoutDate", title: "日期", width: 80, formatter: $.dateFormatter },
+            { field: "sourceName", title: "来源", width: 50 },
+            { field: "quantity", title: "重量", width: 80 },
+            { field: "createWorkerName", title: "创建人", width: 80 },
+            { field: "createTime", title: "时间", width: 80, formatter: $.timeFormatter },
+        ]];
+
+        task.loadList = function () {  
+            // alert(dd); alert(shelfId);  
+            if (task.objectRow == null) return;       
+            $('#dgList').datagrid({
+                url: '/' + task.controllerName + '/GridDataInStock',
+                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId }
+            });
+        }
+    </script>
+}

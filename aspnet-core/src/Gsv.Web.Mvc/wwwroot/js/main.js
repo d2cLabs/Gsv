@@ -55,6 +55,18 @@
             };
             return val;
         },
+
+        dateFormatter: function (val) {
+            if (val) return val.substr(0, 10);
+        },
+        
+        timeFormatter: function (val) {
+            if (val) return val.substr(11, 7);
+        },
+        
+        datetimeFormatter: function (val) {
+            if (val) return val.substr(0, 10) + ' ' + val.substr(11, 7);
+        },       
     });
 
     //serializeFormToObject plugin for jQuery

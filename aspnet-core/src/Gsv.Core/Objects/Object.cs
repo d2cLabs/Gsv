@@ -37,15 +37,15 @@ namespace Gsv.Objects
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public int Quantity{ get ; set; }
+        public float Quantity{ get ; set; }
+        public float YellowQuantity{ get ; set; }
 
         public bool isFixedPrice { get; set; }
 
-        public float FixedPrice { get; set; }
+        public float? FixedPrice { get; set; }
 
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string Remark { get; set; }
-        public float RiskRatio { get; set; }
     }
 }
 

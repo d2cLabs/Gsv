@@ -31,13 +31,17 @@ namespace Gsv.Users.Dto
 
         public string[] RoleNames { get; set; }
 
-        [Required]
+        // [Required]
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         [DisableAuditing]
         public string Password { get; set; }
 
         public void Normalize()
         {
+            if (Password == null)
+            {
+                Password = User.UserDefaultPassword;
+            }
             if (RoleNames == null)
             {
                 RoleNames = new string[0];

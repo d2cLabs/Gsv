@@ -10,8 +10,8 @@
         crud.dgDefault.name = 'CargoTypes';
         crud.dgDefault.sortName = 'placeId'
         crud.dgDefault.columns = [[
-            { field: "typeName", title: "类名", width: 80 },
-            { field: "categoryId", title: "基本品类", width: 100, formatter: $.displayCategoryText },
+            { field: "typeName", title: "货物类型名称", width: 80 },
+            { field: "categoryId", title: "抵押物类型", width: 100, formatter: $.displayCategoryText },
             { field: "ratio", title: "折算比例", width: 80 }        
         ]];        
     </script>
@@ -69,11 +69,11 @@
                 <td><input id="place" name="placeId" class="easyui-combobox" readonly="true" style="width: 100%" /></td>
             </tr>
             <tr>
-                <th><Label for="typeName">类名:</Label></th>
+                <th><Label for="typeName">货物类型名称:</Label></th>
                 <td><input name="typeName" class="easyui-textbox" data-options="required:true, validType:'length[1, @CargoType.MaxNameLength]'" style="width: 100%"></td>
             </tr>
             <tr>
-                <th><label for="categoryId">基本品类：</label></th>
+                <th><label for="categoryId">抵押物类型：</label></th>
                 <td><input id="category" name="categoryId" class="easyui-combobox" style="width: 100%" /></td>
             </tr>
             <tr>

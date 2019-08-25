@@ -34,7 +34,10 @@ namespace Gsv.Objects
         public virtual CargoType CargoType { get; set; }
 
         public float? Inventory { get; set; }
-        public DateTime? ModifiedTime { get; set; }
+        public int NumInToday { get; set; }
+        public int NumOutToday { get; set; }
+        public DateTime? LastInTime { get; set; }
+        public DateTime? LastOutTime { get; set; }
     }
 }
 

@@ -14,7 +14,7 @@
             { field: "name", title: "名称", width: 100 },
             { field: "password", title: "登录密码", width: 80 },
             { field: "mobile", title: "手机号码", width: 100 },
-            { field: "weixinDeviceId", title: "微信设备号", width: 100 }
+            { field: "placeList", title: "工作场地列表", width: 100 }
         ]];
     </script>
 }
@@ -41,8 +41,8 @@
                 <td><input name="mobile" class="easyui-numberbox" data-options="validType:'length[@GsvConsts.MobileLength, @GsvConsts.MobileLength]'" style="width: 100%"></td>
             </tr>
             <tr>
-                <th><label for="weixinDeviceId">微信设备号：</label></th>
-                <td><input name="weixinDeviceId" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
+                <th><label for="placeList">工作场地列表：</label></th>
+                <td><input name="placeList" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
            </tr>
         </table>
     </form>

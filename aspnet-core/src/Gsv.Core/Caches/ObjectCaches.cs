@@ -22,6 +22,22 @@ namespace Gsv.Caches
         }
     }
     
+    public class CargoTypeCache : EntityListCache<CargoType, CargoType, CargoType>, ICargoTypeCache, ITransientDependency
+    {
+        public CargoTypeCache(ICacheManager cacheManager, IRepository<CargoType> repository, IObjectMapper objectMapper)
+            : base(cacheManager, repository, objectMapper)
+        {
+        }
+    }
+    
+    public class CapitalCache : EntityListCache<Capital, Capital, Capital>, ICapitalCache, ITransientDependency
+    {
+        public CapitalCache(ICacheManager cacheManager, IRepository<Capital> repository, IObjectMapper objectMapper)
+            : base(cacheManager, repository, objectMapper)
+        {
+        }
+    }
+    
     public class ObjectCache : EntityListCache<Object, Object, Object>, IObjectCache, ITransientDependency
     {
         public ObjectCache(ICacheManager cacheManager, IRepository<Object> repository, IObjectMapper objectMapper)

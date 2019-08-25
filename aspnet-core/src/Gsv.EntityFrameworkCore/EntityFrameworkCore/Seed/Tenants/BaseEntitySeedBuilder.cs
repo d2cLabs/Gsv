@@ -1,15 +1,5 @@
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Gsv.Types;
-using System.Collections.Generic;
-using Gsv.Authorization.Roles;
-using Abp.Authorization.Roles;
-using Gsv.Authorization;
-using Abp.Authorization.Users;
-using Gsv.Authorization.Users;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Abp.Configuration;
 using Gsv.Staffing;
 using Gsv.Objects;
 
@@ -102,9 +92,9 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
             {
                 _context.Objects.AddRange(new Object[] 
                 {
-                    new Object() { TenantId = _tenantId, CapitalId = 1, PlaceId = 1, CategoryId = 1, Quantity = 120000, RiskRatio = 125000  },
-                    new Object() { TenantId = _tenantId, CapitalId = 1, PlaceId = 1, CategoryId = 2, Quantity = 15000, RiskRatio = 16500  },
-                    new Object() { TenantId = _tenantId, CapitalId = 2, PlaceId = 1, CategoryId = 1, Quantity = 98980, RiskRatio = 102000  },
+                    new Object() { TenantId = _tenantId, CapitalId = 1, PlaceId = 1, CategoryId = 1, Quantity = 120000, YellowQuantity = 125000  },
+                    new Object() { TenantId = _tenantId, CapitalId = 1, PlaceId = 1, CategoryId = 2, Quantity = 15000, YellowQuantity = 16500  },
+                    new Object() { TenantId = _tenantId, CapitalId = 2, PlaceId = 2, CategoryId = 1, Quantity = 98980, YellowQuantity = 102000  },
                 });
                 _context.SaveChanges();
             }            

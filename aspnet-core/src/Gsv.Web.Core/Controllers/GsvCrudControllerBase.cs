@@ -124,19 +124,6 @@ namespace Gsv.Controllers
             ObjectMapper.Map(input, entity);
         }
 
-        private PagedAndSortedResultRequestDto GetPagedInput()
-        {
-            PagedAndSortedResultRequestDto input = new PagedAndSortedResultRequestDto();
-            input.Sorting = GetSorting();
-            input.MaxResultCount = int.Parse(Request.Form["rows"]);
-            input.SkipCount = (int.Parse(Request.Form["page"]) - 1) * input.MaxResultCount;
-            return input;
-        }
-
-        private string GetSorting()
-        {
-            return $"{Request.Form["sort"]} {Request.Form["order"]}";
-        }
         #endregion
     }
 }

@@ -40,22 +40,9 @@ namespace Gsv.Configuration
         {
             return new List<SettingDefinition>
             {
-                new SettingDefinition(
-                    AppSettingNames.Const.UserDefaultPassword, 
-                    "123456", 
-                    new FixedLocalizableString("用户缺省密码"),
-                    scopes: SettingScopes.Tenant,
-                    isVisibleToClients: true
-                ),
-                new SettingDefinition(
-                    AppSettingNames.Const.RoleUserDefaultPassword, 
-                    "vpower@83306666", 
-                    new FixedLocalizableString("角色用户缺省密码"),
-                    scopes: SettingScopes.Tenant
-                ),
                  new SettingDefinition(
                     AppSettingNames.Const.Radius, 
-                    "200", 
+                    "500", 
                     new FixedLocalizableString("场地半径"),
                     scopes: SettingScopes.Tenant
                 )

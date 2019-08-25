@@ -83,7 +83,6 @@
             if (_$dialog.panel('options').title === "增加") {
                 user.surname = user.name;
                 user.emailAddress = user.name + "@163.com";
-                user.password = abp.setting.get('Const.UserDefaultPassword');
                 user.isActive = true;
                 user.roleNames = [user.roleName];
                 _defer = _userService.create(user);

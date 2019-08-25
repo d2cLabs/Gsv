@@ -9,6 +9,14 @@ namespace Gsv.Caches
     {
     }
 
+    public interface ICargoTypeCache : IEntityListCache<CargoType, CargoType, CargoType>
+    {
+    }
+
+    public interface ICapitalCache : IEntityListCache<Capital, Capital, Capital>
+    {
+    }
+
     public interface IObjectCache : IEntityListCache<Object, Object, Object>
     {
     }

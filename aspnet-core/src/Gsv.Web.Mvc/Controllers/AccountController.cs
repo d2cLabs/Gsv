@@ -16,7 +16,6 @@ using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.MultiTenancy;
 using Abp.Notifications;
-using Abp.Runtime.Session;
 using Abp.Threading;
 using Abp.Timing;
 using Abp.UI;
@@ -29,7 +28,6 @@ using Gsv.Identity;
 using Gsv.MultiTenancy;
 using Gsv.Sessions;
 using Gsv.Web.Models.Account;
-using Gsv.Web.Views.Shared.Components.TenantChange;
 
 namespace Gsv.Web.Controllers
 {
@@ -383,14 +381,14 @@ namespace Gsv.Web.Controllers
 
         #region Change Tenant
 
-        public async Task<ActionResult> TenantChangeModal()
-        {
-            var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
-            return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml", new ChangeModalViewModel
-            {
-                TenancyName = loginInfo.Tenant?.TenancyName
-            });
-        }
+        // public async Task<ActionResult> TenantChangeModal()
+        // {
+        //     var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
+        //     return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml", new ChangeModalViewModel
+        //     {
+        //         TenancyName = loginInfo.Tenant?.TenancyName
+        //     });
+        // }
 
         #endregion
 

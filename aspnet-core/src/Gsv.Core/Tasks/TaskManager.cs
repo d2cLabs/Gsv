@@ -14,18 +14,21 @@ namespace Gsv.Tasks
         private readonly IObjectCache _objectCache;
         private readonly ICategoryCache _categoryCache;
         private readonly IPlaceShelfCache _shelfCache;
+        private readonly ICargoTypeCache _cargoTypeCache;
 
         public TaskManager(IWorkerCache workerCache,
             IPlaceCache placeCache,
             IObjectCache objectCache,
             ICategoryCache categoryCache, 
-            IPlaceShelfCache shelfCache)
+            IPlaceShelfCache shelfCache,
+            ICargoTypeCache cargoTypeCache)
         {
             _workerCache = workerCache;
             _placeCache = placeCache;
             _objectCache = objectCache;
             _categoryCache = categoryCache;
             _shelfCache = shelfCache;
+            _cargoTypeCache = cargoTypeCache;
         }
 
         #region GetEntities
@@ -71,7 +74,7 @@ namespace Gsv.Tasks
         public string GetObjectCollateral(int id)
         {
             var obj = _objectCache[id];
-            return string.Format("类型: {0}   红线: {1}   黄线{2}", _categoryCache[obj.CategoryId].Name, obj.Quantity, obj.RiskRatio);
+            return string.Format("类型: {0}   红线: {1}   黄线{2}", _categoryCache[obj.CategoryId].Name, obj.Quantity, obj.YellowQuantity);
         }
 
         public List<PlaceShelf> GetObjectShelves(int id)
@@ -80,6 +83,12 @@ namespace Gsv.Tasks
             return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId);
         }
 
+        public List<PlaceShelf> GetObjectShelves(int id, int categoryId)
+        {
+            var obj = _objectCache[id];
+            return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId && _cargoTypeCache[x.CargoTypeId].CategoryId == categoryId);
+
+        }
         #endregion
     }
 }

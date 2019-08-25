@@ -1,0 +1,57 @@
+@{
+    Layout = "_Layout.cshtml";
+}
+
+@section styles {
+
+}
+
+@section scripts {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Shared/_TaskLayout.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Shared/_TaskLayout.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @*开放一个Section*@
+    @RenderSection("taskScripts", false);
+}
+
+<div class="easyui-layout" fit="true">
+    <!-- BEGIN of Object -->
+    <div data-options="region:'north', split:true, border:false" style="min-height:120px; height:40%">
+        <div id="tb">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="task.reload()">刷新</a>
+        </div>
+        <table id="dg" class="easyui-datagrid" toolbar="#tb"
+                fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" sortName="place.Cn">
+            <thead>
+                <tr>
+                    <th field="place" width="120" formatter="task.placeFormatter">场地</th>
+                    <th field="capital" width="120" formatter="task.capitalFormatter">抵押权人</th>
+                    <th field="categoryName" width="80">抵押物</th>
+                    <th field="categoryUnitName" width="60">单位</th>
+                    <th field="quantity" width="80">监管量</th>
+                    <th field="riskRatio" width="80">监管黄线</th>
+                    <th field="inventory" width="80" align="center">当前库存量</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <!-- END of object -->
+    <div data-options="region:'center'">
+        <div id="tbList">
+            日期: <input id="dd" class="easyui-datebox" style="width:120px">
+            货架: <input id="shelf" class="easyui-combobox" style="width:250px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="$('#dgList').datagrid('reload')">刷新</a>
+        </div>
+        <table id="dgList" class="easyui-datagrid" toolbar="#tbList"
+            fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" sortName="placeCn">
+        </table>
+        </div>
+    </div>
+</div>
+
+@RenderBody()
+

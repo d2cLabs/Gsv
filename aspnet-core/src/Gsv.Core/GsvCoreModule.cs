@@ -8,7 +8,6 @@ using Gsv.Authorization.Users;
 using Gsv.Configuration;
 using Gsv.Localization;
 using Gsv.MultiTenancy;
-using Gsv.Objects.Cache;
 using Gsv.Timing;
 
 namespace Gsv
@@ -39,12 +38,7 @@ namespace Gsv
 
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(typeof(GsvCoreModule).GetAssembly());
-            
-
-            // Cache for Objects
-            IocManager.Register<ICapitalCache, CapitalCache>();
-            IocManager.Register<ICargoTypeCache, CargoTypeCache>();
+            IocManager.RegisterAssemblyByConvention(typeof(GsvCoreModule).GetAssembly());            
         }
 
         public override void PostInitialize()

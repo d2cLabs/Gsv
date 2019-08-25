@@ -30,6 +30,7 @@ namespace Gsv.EntityFrameworkCore.Seed
 
             // EntityPreDataBuiler
             new BaseEntitySeedBuilder(context, 1).Create();
+            new TaskEntitySeedBuilder(context, 1).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

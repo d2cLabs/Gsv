@@ -1153,18 +1153,18 @@ namespace Gsv.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<float>("FixedPrice");
+                    b.Property<float?>("FixedPrice");
 
                     b.Property<int>("PlaceId");
 
-                    b.Property<int>("Quantity");
+                    b.Property<float>("Quantity");
 
                     b.Property<string>("Remark")
                         .HasMaxLength(50);
 
-                    b.Property<float>("RiskRatio");
-
                     b.Property<int>("TenantId");
+
+                    b.Property<float>("YellowQuantity");
 
                     b.Property<bool>("isFixedPrice");
 
@@ -1226,11 +1226,17 @@ namespace Gsv.Migrations
 
                     b.Property<float?>("Inventory");
 
-                    b.Property<DateTime?>("ModifiedTime");
+                    b.Property<DateTime?>("LastInTime");
+
+                    b.Property<DateTime?>("LastOutTime");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
+
+                    b.Property<int>("NumInToday");
+
+                    b.Property<int>("NumOutToday");
 
                     b.Property<int>("PlaceId");
 

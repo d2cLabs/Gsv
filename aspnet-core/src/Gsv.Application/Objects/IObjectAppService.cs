@@ -7,6 +7,8 @@ namespace Gsv.Objects
 {
     public interface IObjectAppService : IApplicationService
     {
-        Task<List<ComboboxItemDto>> GetComboItems(string name); 
+        List<ComboboxItemDto> GetComboItems(string name); 
+
+        Task<List<TaskObjectDto>> GetObjectsAsync(string sorting);
     }
 }
