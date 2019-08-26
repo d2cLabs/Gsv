@@ -7,11 +7,11 @@ namespace Gsv.Tasks.Dto
     [AutoMap(typeof(Inspect))]
     public class InspectDto : EntityDto
     {
-        public DateTime CarryoutTime { get; set; }
+        public DateTime CarryoutDate { get; set; }
 
         public string WorkerName { get; set; }
 
-        public string PlaceShelfName { get; set; }
+        public string ShelfName { get; set; }
 
         /// <summary>
         /// 成色
@@ -21,6 +21,8 @@ namespace Gsv.Tasks.Dto
         public string Remark { get; set; }
 
         public int PhotoLength { get; set; }
+
+        public DateTime CreateTime { get; set; }
 
    }
 }

@@ -28,11 +28,11 @@ namespace Gsv.Tasks
         /// </summary>
         [Required]
         public int ShelfId { get; set; }
-        public virtual PlaceShelf PlaceShelf { get; set; }
+        public virtual Shelf Shelf { get; set; }
 
         public float Inventory { get; set; }
 
-        public float Deviation { get; set; }
+        public float? Deviation { get; set; }
     }
 }
 

@@ -2,18 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq;
 using Gsv.Authorization;
 using Gsv.Caches;
+using Gsv.Objects.Dto;
+using Gsv.Tasks;
 
 namespace Gsv.Objects
 {
-    [AbpAuthorize(PermissionNames.Pages_Objects, PermissionNames.Pages_Watcher)]
+    [AbpAuthorize(PermissionNames.Pages_Objects, PermissionNames.Pages_Watcher, PermissionNames.Pages_Supervisor)]
     public class ObjectAppService : GsvAppServiceBase, IObjectAppService
     {
+        public TaskManager TaskManager { get; set; }
         public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
         private readonly IPlaceCache _placeCache;
         private readonly ICapitalCache _capitalCache;
@@ -32,33 +34,32 @@ namespace Gsv.Objects
             _objectRepository = objectRepository;
         }
 
-        public List<ComboboxItemDto> GetComboItems(string name)
+        public List<Place> GetPlaces()
         {
-            var lst = new List<ComboboxItemDto>();
-            switch (name) 
-            {
-                case "Place":
-                    foreach (Place t in _placeCache.GetList())
-                        lst.Add(new ComboboxItemDto { Value = t.Id.ToString(), DisplayText = t.Name });
-                    break;
-                case "Capital":
-                    foreach (Capital t in _capitalCache.GetList())
-                        lst.Add(new ComboboxItemDto { Value = t.Id.ToString(), DisplayText = t.Name });
-                    break;
-                case "CargoType":
-                    foreach (CargoType t in _cargoTypeCache.GetList())
-                        lst.Add(new ComboboxItemDto { Value = t.Id.ToString(), DisplayText = t.TypeName });
-                    break;
-                default:
-                    break;
-            }
-            return lst;
+            return _placeCache.GetList();
+        }
+            
+        public List<Capital> GetCapitals()
+        {
+            return _capitalCache.GetList();
         }
 
-
+        public List<CargoType> GetCargoTypes(int placeId)
+        {
+            if (placeId == 0)
+                return _cargoTypeCache.GetList();
+            return _cargoTypeCache.GetList().FindAll(x => x.PlaceId == placeId);
+        }
+        
         public async Task<List<TaskObjectDto>> GetObjectsAsync(string sorting)
         {
+            var user = await UserManager.GetUserByIdAsync(AbpSession.UserId??0);
+            var worker = TaskManager.GetWorkerByCn(user.UserName);
             var query = _objectRepository.GetAllIncluding(x => x.Capital, x => x.Place, x => x.Category);
+            if (worker != null && !string.IsNullOrEmpty(worker.PlaceList))
+            {
+                query = query.Where(x => worker.PlaceList.Contains(x.Place.Cn));
+            }
 
             query = query.OrderBy(sorting);                           // Applying Sorting
 
@@ -72,6 +73,14 @@ namespace Gsv.Objects
         {
             var dto = ObjectMapper.Map<TaskObjectDto>(entity);
 
+            var shelfs = TaskManager.GetObjectShelves(entity.Id, entity.CategoryId);
+
+            float sum = 0;
+            foreach (var shelf in shelfs)
+            {
+                sum += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
+            }
+            dto.Inventory = sum;
             return dto;
         }
 

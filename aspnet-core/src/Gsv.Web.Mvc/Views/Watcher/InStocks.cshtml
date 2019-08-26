@@ -4,22 +4,29 @@
 
 @section taskScripts
 {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Watcher/InStocks.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Watcher/InStocks.min.js" asp-append-version="true"></script>
+    </environment>
+
     <script type="text/javascript">
         task.controllerName = 'Watcher';
         task.columns = [[
-            { field: "carryoutDate", title: "日期", width: 80, formatter: $.dateFormatter },
+            { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
+            { field: "shelfName", title: "货架", width: 60 },
             { field: "sourceName", title: "来源", width: 50 },
-            { field: "quantity", title: "重量", width: 80 },
-            { field: "createWorkerName", title: "创建人", width: 80 },
-            { field: "createTime", title: "时间", width: 80, formatter: $.timeFormatter },
+            { field: "quantity", title: "入库重量", width: 60 },
+            { field: "workerName", title: "创建人", width: 60 },
         ]];
 
         task.loadList = function () {  
-            // alert(dd); alert(shelfId);  
             if (task.objectRow == null) return;       
+            // alert(task.shelfId);  
             $('#dgList').datagrid({
                 url: '/' + task.controllerName + '/GridDataInStock',
-                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId }
+                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
             });
         }
     </script>

@@ -31,7 +31,7 @@ namespace Gsv.Tasks
         /// </summary>
         [Required]
         public int ShelfId { get; set; }
-        public virtual PlaceShelf PlaceShelf { get; set; }
+        public virtual Shelf Shelf { get; set; }
 
         /// <summary>
         /// 成色

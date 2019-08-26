@@ -1,0 +1,34 @@
+@{
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+@section taskScripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Watcher/Inspects.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Watcher/Inspects.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        task.controllerName = 'Watcher';
+        task.columns = [[
+            { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
+            { field: "shelfName", title: "货架", width: 60 },
+            { field: "purity", title: "纯度", width: 60 },
+            { field: "remark", title: "说明", width: 50 },
+            { field: "photoLength", title: "相片长度", width: 50 },
+            { field: "workerName", title: "创建人", width: 60 },
+        ]];
+
+        task.loadList = function () {  
+            if (task.objectRow == null) return; 
+            // alert(task.dd + ' ' + task.shelfId);   
+            $('#dgList').datagrid({
+                url: '/' + task.controllerName + '/GridDataInspect',
+                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+            });
+        }
+    </script>
+}

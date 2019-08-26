@@ -16,6 +16,6 @@ namespace Gsv.Web.Models.Weixin
 
         public int ShelfId { get; set; }
 
-        public List<PlaceShelf> Shelves { get; set; }
+        public List<Shelf> Shelves { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+@{
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+@section taskScripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Watcher/OutStocks.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Watcher/OutStocks.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        task.controllerName = 'Watcher';
+        task.columns = [[
+            { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
+            { field: "shelfName", title: "货架", width: 60 },
+            { field: "quantity", title: "出库重量", width: 60 },
+            { field: "workerName", title: "创建人", width: 60 },
+        ]];
+
+        task.loadList = function () {  
+            if (task.objectRow == null) return;       
+            // alert(task.shelfId);  
+            $('#dgList').datagrid({
+                url: '/' + task.controllerName + '/GridDataOutStock',
+                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+            });
+        }
+    </script>
+}

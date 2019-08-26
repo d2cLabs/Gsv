@@ -34,24 +34,24 @@
         displayCapitalText : function (val) {
             var capitals = $('#capital').combobox('getData');
             for (var i = 0; i < capitals.length; i++) {
-                if (val === parseInt(capitals[i].value)) 
-                    return capitals[i].displayText;
+                if (val === parseInt(capitals[i].id)) 
+                    return capitals[i].name;
             };
             return val;
         },
         displayCategoryText : function (val) {
             var categories = $('#category').combobox('getData');
             for (var i = 0; i < categories.length; i++) {
-                if (val === parseInt(categories[i].value)) 
-                    return categories[i].displayText;
+                if (val === parseInt(categories[i].id)) 
+                    return categories[i].name;
             };
             return val;
         },
         displayCargoTypeText : function (val) {
             var types = $('#cargoType').combobox('getData');
             for (var i = 0; i < types.length; i++) {
-                if (val === parseInt(types[i].value)) 
-                    return types[i].displayText;
+                if (val === parseInt(types[i].id)) 
+                    return types[i].typeName;
             };
             return val;
         },
@@ -61,11 +61,11 @@
         },
         
         timeFormatter: function (val) {
-            if (val) return val.substr(11, 7);
+            if (val) return val.substr(11, 8);
         },
         
         datetimeFormatter: function (val) {
-            if (val) return val.substr(0, 10) + ' ' + val.substr(11, 7);
+            if (val) return val.substr(0, 10) + ' ' + val.substr(11, 8);
         },       
     });
 

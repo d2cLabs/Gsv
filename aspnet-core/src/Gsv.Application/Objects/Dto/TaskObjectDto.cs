@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 
-namespace Gsv.Objects
+namespace Gsv.Objects.Dto
 {
     [AutoMapFrom(typeof(Object))]
     public class TaskObjectDto : EntityDto
@@ -22,9 +22,9 @@ namespace Gsv.Objects
 
         public int Quantity{ get ; set; }
 
-        public float RiskRatio { get; set; }
+        public float YellowQuantity { get; set; }
 
-        public float TotalInvetory { get; set; }
+        public float Inventory { get; set; }
     }
 }
 

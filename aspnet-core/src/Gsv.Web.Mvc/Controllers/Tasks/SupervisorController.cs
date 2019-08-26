@@ -15,19 +15,7 @@ namespace Gsv.Web.Controllers
             _taskAppService = taskAppService;
         }
 
-        public ActionResult InStocks()
-        {
-            return View();
-        }
-        public ActionResult OutStocks()
-        {
-            return View();
-        }
-        public ActionResult Inspects()
-        {
-            return View();
-        }
-        public ActionResult Stocktaking()
+        public ActionResult Home()
         {
             return View();
         }

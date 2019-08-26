@@ -7,10 +7,11 @@ using Gsv.Authorization;
 using Gsv.Controllers;
 using Gsv.Objects;
 using Gsv.Tasks;
+using System.Collections.Generic;
 
 namespace Gsv.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Watcher)]
+    [AbpMvcAuthorize(PermissionNames.Pages_Watcher, PermissionNames.Pages_Supervisor)]
     public class WatcherController : GsvControllerBase
     {
         private readonly IObjectAppService _objectAppService;
@@ -46,11 +47,31 @@ namespace Gsv.Web.Controllers
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataInStock(DateTime carryoutDate, int shelfId, int placeId)
+        public async Task<JsonResult> GridDataInStock(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
         {
-            var output = await _taskAppService.GetInStocksByDateAndShelfAsync(carryoutDate, shelfId, placeId);
+            var output = await _taskAppService.GetInStocksByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
             return Json( new { rows = output });
         }
 
+        [DontWrapResult]
+        public async Task<JsonResult> GridDataOutStock(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        {
+            var output = await _taskAppService.GetOutStocksByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
+            return Json( new { rows = output });
+        }
+
+        [DontWrapResult]
+        public async Task<JsonResult> GridDataInspect(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        {
+            var output = await _taskAppService.GetInspectsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId, GetPagedInput());
+            return Json( new { total = output.TotalCount, rows = output.Items });
+        }
+
+        [DontWrapResult]
+        public async Task<JsonResult> GridDataStocktaking(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        {
+            var output = await _taskAppService.GetStocktakingsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId, GetPagedInput());
+            return Json( new { total = output.TotalCount, rows = output.Items });
+        }
 	}
 }

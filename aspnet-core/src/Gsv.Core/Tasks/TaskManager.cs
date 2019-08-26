@@ -13,14 +13,14 @@ namespace Gsv.Tasks
         private readonly IPlaceCache _placeCache;
         private readonly IObjectCache _objectCache;
         private readonly ICategoryCache _categoryCache;
-        private readonly IPlaceShelfCache _shelfCache;
+        private readonly IShelfCache _shelfCache;
         private readonly ICargoTypeCache _cargoTypeCache;
 
         public TaskManager(IWorkerCache workerCache,
             IPlaceCache placeCache,
             IObjectCache objectCache,
             ICategoryCache categoryCache, 
-            IPlaceShelfCache shelfCache,
+            IShelfCache shelfCache,
             ICargoTypeCache cargoTypeCache)
         {
             _workerCache = workerCache;
@@ -61,9 +61,14 @@ namespace Gsv.Tasks
         {
             return _objectCache[id];
         }
+
+        public Shelf GetShelf(int id)
+        {
+            return _shelfCache[id];
+        }
         #endregion 
 
-        #region Get ListViewModel of Object
+        #region Get ListViewModel of Object(Weixin)
 
         public string GetObjectPlaceInfo(int id)
         {
@@ -77,13 +82,13 @@ namespace Gsv.Tasks
             return string.Format("类型: {0}   红线: {1}   黄线{2}", _categoryCache[obj.CategoryId].Name, obj.Quantity, obj.YellowQuantity);
         }
 
-        public List<PlaceShelf> GetObjectShelves(int id)
+        public List<Shelf> GetObjectShelves(int id)
         {
             var obj = _objectCache[id];
             return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId);
         }
 
-        public List<PlaceShelf> GetObjectShelves(int id, int categoryId)
+        public List<Shelf> GetObjectShelves(int id, int categoryId)
         {
             var obj = _objectCache[id];
             return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId && _cargoTypeCache[x.CargoTypeId].CategoryId == categoryId);

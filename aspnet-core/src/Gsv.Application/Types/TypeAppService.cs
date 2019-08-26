@@ -2,26 +2,24 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Gsv.Caches;
 
 namespace Gsv.Types
 {
     [AbpAuthorize]
     public class TypeAppService : GsvAppServiceBase, ITypeAppService
     {
-        private readonly TypeProvider _typeProvider;
+        private readonly ICategoryCache _categoryCache;
 
-        public TypeAppService(TypeProvider typeProvider)
+        public TypeAppService(ICategoryCache categoryCache)
         {
-            _typeProvider = typeProvider;
+            _categoryCache = categoryCache;
         }
 
-        public Task<List<ComboboxItemDto>> GetComboItems(string typeName)
+        public List<Category> GetCategories()
         {
-            List<ComboboxItemDto> lst = _typeProvider.GetComboItems(typeName);
-            return Task.FromResult<List<ComboboxItemDto>>(lst);
-        }
-        
-        
+            return _categoryCache.GetList();
+        }       
     }
 
 }

@@ -14,9 +14,9 @@ namespace Gsv.Caches
         }
     }
     
-    public class PlaceShelfCache : EntityListCache<PlaceShelf, PlaceShelf, PlaceShelf>, IPlaceShelfCache, ITransientDependency
+    public class ShelfCache : EntityListCache<Shelf, Shelf, Shelf>, IShelfCache, ITransientDependency
     {
-        public PlaceShelfCache(ICacheManager cacheManager, IRepository<PlaceShelf> repository, IObjectMapper objectMapper)
+        public ShelfCache(ICacheManager cacheManager, IRepository<Shelf> repository, IObjectMapper objectMapper)
             : base(cacheManager, repository, objectMapper)
         {
         }

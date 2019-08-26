@@ -7,6 +7,6 @@ namespace Gsv.Types
 {
     public interface ITypeAppService : IApplicationService
     {
-        Task<List<ComboboxItemDto>> GetComboItems(string typeName);
+        List<Category> GetCategories();
     }
 }

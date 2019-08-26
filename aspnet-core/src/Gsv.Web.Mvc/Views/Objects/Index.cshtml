@@ -6,6 +6,7 @@
 @section customScript
 {
     <script type="text/javascript">
+        crud.children = true;
         crud.parentField = 'place';
         crud.dgDefault.name = 'Objects';
         crud.dgDefault.sortName = 'placeId';
@@ -13,10 +14,10 @@
             { field: "capitalId", title: "资本方", width: 100, formatter: $.displayCapitalText },
             { field: "categoryId", title: "品类", width: 100, formatter: $.displayCategoryText },
             { field: "quantity", title: "贷款数量", width: 80 },
+            { field: "yellowQuantity", title: "黄线", width: 100 },
             { field: "isFixedPrice", title: "采用固定价格", width: 80 },         
             { field: "fixedPrice", title: "固定价格", width: 80 },
             { field: "remark", title: "备注", width: 100 },
-            { field: "riskRatio", title: "黄线", width: 100 }
         ]];        
     </script>
 }
@@ -25,25 +26,37 @@
 {
     <script type="text/javascript">
         crud.startfunction = function () {
-            abp.services.app.object.getComboItems('Capital').done(function(d) { 
-                crud.setComboBox('#capital', d); 
+            abp.services.app.object.getCapitals().done(function(res) { 
+                $('#capital').combobox({
+                    data: res,
+                    valueField: 'id',
+                    textField: 'name'
+                }); 
             });
-            abp.services.app.type.getComboItems('Category').done(function(d) { 
-                crud.setComboBox('#category', d); 
+            abp.services.app.type.getCategories().done(function(res) { 
+                $('#category').combobox({
+                    data: res,
+                    valueField: 'id',
+                    textField: 'name'
+                }); 
             });
 
-            abp.services.app.object.getComboItems('Place').done(function(d) {
-                crud.setComboBox('#place', d);
+            abp.services.app.object.getPlaces().done(function(res) {
+                $('#place').combobox({
+                    data: res,
+                    valueField: 'id',
+                    textField: 'name'
+                }); 
                 var treeData = [];
-                d.forEach( function (val, index, arr) {
-                    treeData.push({ id: val.value, text: val.displayText });
+                res.forEach( function (val, index, arr) {
+                    treeData.push({ id: val.id, text: val.name });
                 });
                 $('#tree').tree({
                     data: treeData,
                     onSelect: function (node) {
                         crud.parentId = node.id;
                         $('#datagrid').datagrid({
-                            url: crud.dgDefault.name + '/GetPagedData/' + '南通'  //'PlaceId=' + node.id
+                            url: crud.dgDefault.name + '/GetPagedData/' + 'PlaceId=' + node.id
                         });
                     }
                 });

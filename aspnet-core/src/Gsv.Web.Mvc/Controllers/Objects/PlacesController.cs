@@ -2,6 +2,7 @@
 using Abp.Domain.Repositories;
 using Gsv.Authorization;
 using Gsv.Objects;
+using Gsv.Objects.Dto;
 
 namespace Gsv.Web.Controllers
 {

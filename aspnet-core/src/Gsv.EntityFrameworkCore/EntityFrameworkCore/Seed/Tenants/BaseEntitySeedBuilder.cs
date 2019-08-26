@@ -27,7 +27,7 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
             CreatePlaces();
             CreateObjects();
             CreateCargoTypes();
-            CreatePlaceShelves();
+            CreateShelves();
 
             // Staffing
             CreateWorkers();
@@ -115,19 +115,19 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
             }            
         }
 
-        private void CreatePlaceShelves()
+        private void CreateShelves()
         {
-            if (_context.PlaceShelves.Count() == 0)
+            if (_context.Shelves.Count() == 0)
             {
-                _context.PlaceShelves.AddRange(new PlaceShelf[] 
+                _context.Shelves.AddRange(new Shelf[] 
                 {
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 1, Name = "饰金柜台" },
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 2, Name = "K金柜台" },
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 3, Name = "铂金柜台" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 1, Name = "饰金柜台" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 2, Name = "K金柜台" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 3, Name = "铂金柜台" },
 
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "机加" },
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "五组" },
-                    new PlaceShelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "八组" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "机加" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "五组" },
+                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "八组" },
                 });
                 _context.SaveChanges();
             }            
@@ -144,9 +144,9 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
                     new Worker { TenantId = _tenantId, Cn = "12569", Name = "陈东", Password = "123456", PlaceList = "1001" },
                     new Worker { TenantId = _tenantId, Cn = "65273", Name = "田家铭", Password = "123456", PlaceList = "1001" },
                     new Worker { TenantId = _tenantId, Cn = "64122", Name = "任国锋", Password = "123456", PlaceList = "2001" },
-                    new Worker { TenantId = _tenantId, Cn = "65196", Name = "叶海平", Password = "123456", PlaceList = "1001" },
-                    new Worker { TenantId = _tenantId, Cn = "12683", Name = "章涛", Password = "123456", PlaceList = "1001" },
-                    new Worker { TenantId = _tenantId, Cn = "90005", Name = "测试", Password = "123456", PlaceList = "1001|2001" },
+                    new Worker { TenantId = _tenantId, Cn = "65196", Name = "叶海平", Password = "123456", PlaceList = "2001" },
+                    new Worker { TenantId = _tenantId, Cn = "12683", Name = "章涛", Password = "123456", PlaceList = "2001" },
+                    new Worker { TenantId = _tenantId, Cn = "90005", Name = "测试", Password = "123456", PlaceList = "1001" },
                 });
                 _context.SaveChanges();
             }

@@ -74,9 +74,9 @@ namespace Gsv.Web.Controllers
             {
                 vm.Items.Add(new ItemInfo {
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
-                    Shelf = item.PlaceShelfName,
+                    Shelf = item.ShelfName,
                     Quantity = item.Quantity.ToString("F2"),
-                    CreateWorker = item.CreateWorkerName,
+                    CreateWorker = item.WorkerName,
                 });
                 total += item.Quantity;
             }

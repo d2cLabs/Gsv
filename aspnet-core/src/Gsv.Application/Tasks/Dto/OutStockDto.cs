@@ -4,16 +4,18 @@ using Abp.AutoMapper;
 
 namespace Gsv.Tasks.Dto
 {
-    [AutoMap(typeof(OutStock))]
+    [AutoMapFrom(typeof(OutStock))]
     public class OutStockDto : EntityDto
     {
-        public DateTime CarryoutTime { get; set; }
+        public DateTime CarryoutDate { get; set; }
 
         public string WorkerName { get; set; }
 
-        public string PlaceShelfName { get; set; }
+        public string ShelfName { get; set; }
 
         public float Quantity { get; set; }
+
+        public DateTime CreateTime { get; set; }
     }
 }
 

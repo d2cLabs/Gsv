@@ -1216,7 +1216,7 @@ namespace Gsv.Migrations
                     b.ToTable("Places");
                 });
 
-            modelBuilder.Entity("Gsv.Objects.PlaceShelf", b =>
+            modelBuilder.Entity("Gsv.Objects.Shelf", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1251,7 +1251,7 @@ namespace Gsv.Migrations
                     b.HasIndex("TenantId", "Name", "CargoTypeId")
                         .IsUnique();
 
-                    b.ToTable("PlaceShelves");
+                    b.ToTable("Shelves");
                 });
 
             modelBuilder.Entity("Gsv.Staffing.Worker", b =>
@@ -1298,8 +1298,6 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<int?>("PlaceShelfId");
-
                     b.Property<float>("Quantity");
 
                     b.Property<int>("ShelfId");
@@ -1312,7 +1310,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceShelfId");
+                    b.HasIndex("ShelfId");
 
                     b.HasIndex("SourceId");
 
@@ -1335,8 +1333,6 @@ namespace Gsv.Migrations
 
                     b.Property<byte[]>("Photo");
 
-                    b.Property<int?>("PlaceShelfId");
-
                     b.Property<float>("Purity");
 
                     b.Property<string>("Remark")
@@ -1350,7 +1346,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceShelfId");
+                    b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
@@ -1369,8 +1365,6 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<int?>("PlaceShelfId");
-
                     b.Property<float>("Quantity");
 
                     b.Property<int>("ShelfId");
@@ -1381,7 +1375,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceShelfId");
+                    b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
@@ -1400,11 +1394,9 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<float>("Deviation");
+                    b.Property<float?>("Deviation");
 
                     b.Property<float>("Inventory");
-
-                    b.Property<int?>("PlaceShelfId");
 
                     b.Property<int>("ShelfId");
 
@@ -1414,7 +1406,7 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceShelfId");
+                    b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
@@ -1677,7 +1669,7 @@ namespace Gsv.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Gsv.Objects.PlaceShelf", b =>
+            modelBuilder.Entity("Gsv.Objects.Shelf", b =>
                 {
                     b.HasOne("Gsv.Objects.CargoType", "CargoType")
                         .WithMany()
@@ -1692,16 +1684,17 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.InStock", b =>
                 {
-                    b.HasOne("Gsv.Objects.PlaceShelf", "PlaceShelf")
+                    b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
-                        .HasForeignKey("PlaceShelfId");
+                        .HasForeignKey("ShelfId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Gsv.Types.Source", "Source")
                         .WithMany()
                         .HasForeignKey("SourceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gsv.Staffing.Worker", "CreateWorker")
+                    b.HasOne("Gsv.Staffing.Worker", "Worker")
                         .WithMany()
                         .HasForeignKey("WorkerId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1709,9 +1702,10 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.Inspect", b =>
                 {
-                    b.HasOne("Gsv.Objects.PlaceShelf", "PlaceShelf")
+                    b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
-                        .HasForeignKey("PlaceShelfId");
+                        .HasForeignKey("ShelfId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Gsv.Staffing.Worker", "Worker")
                         .WithMany()
@@ -1721,9 +1715,10 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.OutStock", b =>
                 {
-                    b.HasOne("Gsv.Objects.PlaceShelf", "PlaceShelf")
+                    b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
-                        .HasForeignKey("PlaceShelfId");
+                        .HasForeignKey("ShelfId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Gsv.Staffing.Worker", "Worker")
                         .WithMany()
@@ -1733,9 +1728,10 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.Stocktaking", b =>
                 {
-                    b.HasOne("Gsv.Objects.PlaceShelf", "PlaceShelf")
+                    b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
-                        .HasForeignKey("PlaceShelfId");
+                        .HasForeignKey("ShelfId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Gsv.Staffing.Worker", "Worker")
                         .WithMany()

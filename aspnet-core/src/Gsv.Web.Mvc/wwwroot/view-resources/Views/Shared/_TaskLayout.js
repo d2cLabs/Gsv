@@ -2,8 +2,10 @@
 
 (function($) {
     task.controllerName = '';
-    task.objectRow = null;
+
+    task.withoutDate = false;
     task.dd = '';
+    task.objectRow = null;
     task.shelfId = 0;
 
     task.columns = [[]];
@@ -11,12 +13,20 @@
 
     task.reload = function () {
         $('#dg').datagrid('reload');
-        $('#shelf').combobox({
-            data: {}
+
+        if (task.withoutDate) {
+            task.dd = '2000-01-01';
+            $('#dd').datebox('clear');
+        }
+
+        $('#dgList').datagrid({url: ''});
+        $('#dgList').datagrid('loadData',{total:0,rows:[]})
+        task.objectRow = null;
+
+        $('#shelf').tree({
+            data: []
         });
-        $('#dgList').datagrid({
-            data: {}
-        });
+        task.shelfId = 0;
     }
     
     task.placeFormatter = function(val, row, index) {
@@ -34,40 +44,23 @@
             onSelect: function(index, row) {
                 // set shelf comboBox
                 abp.services.app.task.getObjectShelves(row.id, row.categoryId).done(function (res) {
-                    $('#shelf').combobox({
-                        data: res,
-                        valueField: 'id',
-                        textField: 'name'
+                    alert('shelf');
+                    var treeData = [];
+                    res.forEach( function (val, index, arr) {
+                        treeData.push({ id: val.id, text: val.name });
+                    });
+                    $('#shelf').tree({
+                        data: treeData,
+                        onSelect: function(row) {
+                            task.shelfId = row.id;
+                            task.loadList();
+                        }
                     });
                 });
                 task.objectRow = row; 
-                task.loadList();              
-            }
-        });
-
-        abp.services.app.task.getTodayString().done(function (d) {
-            task.dd = d;
-            $('#dd').datebox('setValue', task.dd);
-        });
-
-        $('#dd').datebox({
-            onChange: function(newValue, oldValue) {
-                // alert(newValue);
-                task.dd = newValue;
+                task.shelfId = 0;
                 task.loadList();
             }
-        });
-
-        $('#shelf').combobox({
-            onChange: function(newValue, oldValue) {
-                alert(newValue);
-                task.shelfId = newValue;
-                task.loadList();
-            }
-        });
-
-        $('#dgList').datagrid({
-            columns: task.columns
         });
     });
 })(jQuery);

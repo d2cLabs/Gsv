@@ -48,7 +48,7 @@ namespace Gsv.Objects
         public double? Latitude { get; set; }
 
         [ForeignKey("PlaceId")]
-        public virtual List<PlaceShelf> Shelves { get; set; }
+        public virtual List<Shelf> Shelves { get; set; }
     }
 }
 

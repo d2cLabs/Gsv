@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
+using Gsv.Objects.Dto;
 
 namespace Gsv.Objects
 {
     public interface IObjectAppService : IApplicationService
     {
-        List<ComboboxItemDto> GetComboItems(string name); 
-
+        List<Place> GetPlaces(); 
+        List<Capital> GetCapitals(); 
+        List<CargoType> GetCargoTypes(int placeId); 
+    
         Task<List<TaskObjectDto>> GetObjectsAsync(string sorting);
     }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 
-namespace Gsv.Objects
+namespace Gsv.Objects.Dto
 {
     [AutoMap(typeof(Object))]
     public class ObjectDto : EntityDto

@@ -9,9 +9,9 @@ namespace Gsv.Tasks.Dto
     {
         public DateTime CarryoutDate { get; set; }
 
-        public string CreateWorkerName { get; set; }
+        public string WorkerName { get; set; }
 
-        public string PlaceShelfName { get; set; }
+        public string ShelfName { get; set; }
 
         public float Quantity { get; set; }
 

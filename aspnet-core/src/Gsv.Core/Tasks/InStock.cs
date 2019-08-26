@@ -23,7 +23,7 @@ namespace Gsv.Tasks
 
         [Required]
         public int WorkerId { get; set; }
-        public virtual Worker CreateWorker { get; set; }
+        public virtual Worker Worker { get; set; }
         public DateTime CreateTime { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Gsv.Tasks
         /// </summary>
         [Required]
         public int ShelfId { get; set; }
-        public virtual PlaceShelf PlaceShelf { get; set; }
+        public virtual Shelf Shelf { get; set; }
 
         public float Quantity { get; set; }
 

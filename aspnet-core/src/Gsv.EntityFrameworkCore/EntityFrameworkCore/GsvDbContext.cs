@@ -22,7 +22,7 @@ namespace Gsv.EntityFrameworkCore
         public DbSet<Place> Places { get; set; }
         public DbSet<Object> Objects { get; set; }
         public DbSet<CargoType> CargoTypes { get; set; }
-        public DbSet<PlaceShelf> PlaceShelves { get; set; }
+        public DbSet<Shelf> Shelves { get; set; }
 
         // Staffing
         public DbSet<Worker> Workers { get; set; }
@@ -69,7 +69,7 @@ namespace Gsv.EntityFrameworkCore
             {
                 b.HasIndex(e => new { e.TenantId, e.PlaceId, e.CategoryId, e.TypeName }).IsUnique();
             });
-            modelBuilder.Entity<PlaceShelf>(b =>
+            modelBuilder.Entity<Shelf>(b =>
             {
                 b.HasIndex(e => new { e.TenantId, e.Name, e.CargoTypeId }).IsUnique();
             });

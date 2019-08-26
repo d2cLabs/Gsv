@@ -1,0 +1,53 @@
+@{
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+@section taskScripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Watcher/Stocktaking.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Watcher/Stocktaking.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        task.controllerName = 'Watcher';
+        task.columns = [[
+            { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
+            { field: "shelfName", title: "货架", width: 60 },
+            { field: "inventory", title: "盘点数", width: 60 },
+            { field: "currentInventory", title: "与当前库存比较", width: 160 },
+            { field: "deviation", title: "偏差量", width: 60 },
+            { field: "workerName", title: "创建人", width: 60 },
+            { field: "operator", title: "操作", width: 60, align: "center", formatter: operator },
+        ]];
+
+        function operator (val, row, index) {
+            if (row.deviation == null)
+                return '<a href="javascript:void(0)" onclick="submit(' + index + ')">提交</a>';
+        }
+
+        function submit(index) {
+            abp.message.confirm('确认要提交盘库数据吗?', '请确认', function (r) {
+                if (r) {
+                    var row = $('#dgList').datagrid('getRows')[index];
+                    
+                    abp.services.app.task.submitStocktaking(row.id).done(function (res) {
+                        abp.notify.info('提交成功');
+                        $('#dgList').datagrid('reload');
+                    })
+                };
+            });
+        }
+
+        task.loadList = function () {  
+            if (task.objectRow == null) return; 
+            // alert(task.dd + ' ' + task.shelfId);   
+            $('#dgList').datagrid({
+                url: '/' + task.controllerName + '/GridDataStocktaking',
+                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+            });
+        }
+    </script>
+}

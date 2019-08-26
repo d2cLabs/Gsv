@@ -6,6 +6,7 @@
 @section customScript
 {
     <script type="text/javascript">
+        crud.children = true;
         crud.parentField = 'place';
         crud.dgDefault.name = 'CargoTypes';
         crud.dgDefault.sortName = 'placeId'
@@ -21,15 +22,23 @@
 {
     <script type="text/javascript">
         crud.startfunction = function () {
-            abp.services.app.type.getComboItems('Category').done(function(d) { 
-                crud.setComboBox('#category', d); 
+            abp.services.app.type.getCategories().done(function(res) { 
+                $('#category').combobox({
+                    data: res,
+                    valueField: 'id',
+                    textField: 'name'
+                }); 
             });
 
-            abp.services.app.object.getComboItems('Place').done(function(d) {
-                crud.setComboBox('#place', d);
+            abp.services.app.object.getPlaces().done(function(res) {
+                $('#place').combobox({
+                    data: res,
+                    valueField: 'id',
+                    textField: 'name'
+                }); 
                 var treeData = [];
-                d.forEach( function (val, index, arr) {
-                    treeData.push({ id: val.value, text: val.displayText });
+                res.forEach( function (val, index, arr) {
+                    treeData.push({ id: val.id, text: val.name });
                 });
                 $('#tree').tree({
                     data: treeData,
