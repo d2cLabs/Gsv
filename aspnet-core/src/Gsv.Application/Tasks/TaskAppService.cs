@@ -147,7 +147,7 @@ namespace Gsv.Tasks
             var outStock = await _outStockRepository.GetAsync(id);
             
             var shelf = await _shelfRepository.GetAsync(outStock.ShelfId);
-            shelf.Inventory -= GetRatio(shelf, outStock.Quantity);
+            shelf.Inventory += GetRatio(shelf, outStock.Quantity);
             _outStockRepository.Delete(outStock);
         }
 
