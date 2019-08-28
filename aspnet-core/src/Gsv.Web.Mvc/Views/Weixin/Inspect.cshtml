@@ -1,0 +1,56 @@
+@model Gsv.Web.Models.Weixin.InspectViewModel
+@{
+    ViewBag.Title = "填写抽检单";
+    Layout = "~/Views/Shared/_WeixinLayout.cshtml";
+}
+
+<form action ="/Weixin/InsertInspect" method="post" onsubmit="checkSubmit()">
+    @Html.ValidationSummary()
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd"><label for="shelfId" class="weui-label">柜台:</label></div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="shelfId">
+                @for (int i = 0; i < Model.Shelves.Count; i++)
+                {
+                    <option value="@Model.Shelves[i].Id">@Model.Shelves[i].Name</option>
+                }
+                </select>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="purity" class="weui-label">纯度:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="purity" step="0.01" type="number" placeholder="百分比" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="remark" class="weui-label">说明:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="remark" step="0.01" type="text" placeholder="" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="photo" class="weui-label">照片:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" readonly="readonly" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <input type="submit" value="提交" class="weui-btn weui-btn_primary" />
+        </div>
+    </div>
+</form>
+
+@section footer
+{
+    <script type="text/javascript">
+        var checkSubmitFlg = false; 
+
+        function checkSubmit(){ 
+            if(checkSubmitFlg == true) return false; //当表单被提交过一次后checkSubmitFlg将变为true,根据判断将无法进行提交。
+            checkSubmitFlg = true; 
+            return true; 
+        } 
+    </script>
+}

@@ -10,10 +10,9 @@ using Gsv.Configuration;
 using Gsv.Controllers;
 using Gsv.Web.Models.Weixin;
 using Gsv.Tasks;
-
-using Senparc.CO2NET.HttpUtility;
-using Senparc.Weixin.Work;
-using Senparc.Weixin.Work.Entities;
+using Senparc.Weixin.Work.AdvancedAPIs;
+using Senparc.Weixin.Work.Containers;
+using Senparc.Weixin.Work.AdvancedAPIs.OAuth2;
 
 namespace Gsv.Web.Controllers
 {
@@ -35,47 +34,26 @@ namespace Gsv.Web.Controllers
             _corpId = appConfiguration["SenparcWeixinSetting:CorpId"];
         }
 
-        public ActionResult Login(string returnUrl) 
+        public ActionResult Login(string returnUrl, string code) 
         {
+            if (string.IsNullOrEmpty(code))
+            {
+                // return Redirect(OAuth2Api.GetCode(_corpId, AbsoluteUri(), "STATE", _agentId));
+            }
+
+            var accessToken = AccessTokenContainer.GetToken(_corpId, _secret);
+            // GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
+
+            var ret = GetObjects("90005");
+            if (ret.Item2 != null) return Content(ret.Item2);
+
             var vm = new LoginViewModel() {
-                Objects = new List<LoginObject>(),
+                WorkerCn = "90005", //userInfo.UserId,
+                Password = "123456",
+                Objects = ret.Item1,
                 ReturnUrl = returnUrl
             };
 
-            vm.WorkerCn = "60001";
-            var worker = TaskManager.GetWorkerByCn(vm.WorkerCn);
-            if (worker == null || string.IsNullOrEmpty(worker.PlaceList))
-            {
-                ModelState.AddModelError("", "员工信息错误，请重新输入");
-                return View(vm);
-            }
-
-            List<LoginObject> loginObjects = new List<LoginObject>();
-            foreach (var placecn in worker.PlaceList.Split('|', ',')) 
-            {
-                var place = TaskManager.GetPlaceByCn(placecn);
-                if (place == null) {
-                    ModelState.AddModelError("", "员工工作场所编码错误");
-                    return View(vm);
-                }
-
-                foreach (var obj in TaskManager.GetObjectsByPlace(place.Id))
-                {
-                    loginObjects.Add(new LoginObject() 
-                    {
-                        ObjectId = obj.Id,
-                        PlaceName = place.Name,
-                        CategoryName = TaskManager.GetCategory(obj.CategoryId).Name
-                    });
-                }
-            }
-
-            if (loginObjects.Count == 0)
-            {
-                ModelState.AddModelError("", "没有对应的监视标的");
-                return View(vm);
-            }
-            vm.Objects = loginObjects;
             return View(vm);
         }
         
@@ -89,6 +67,21 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel vm)
         {
+            var ret = GetObjects("90005");
+            vm.Objects = ret.Item1;
+            var worker = TaskManager.GetWorkerByCn(vm.WorkerCn);
+            if (worker == null || worker.Password != vm.Password)
+            {
+                ModelState.AddModelError("", "用户名或密码错误");
+                return View(vm);
+            }
+
+            if (vm.ObjectId == 0) 
+            {
+                ModelState.AddModelError("", "需要选择监管对象");
+                return View(vm);
+            }
+            
             var claims = new[] 
             { 
                 new Claim("Cn", vm.WorkerCn),
@@ -124,6 +117,37 @@ namespace Gsv.Web.Controllers
             return url.Substring(i + 1, url.Length - i - 1);
         }
 
+        private string AbsoluteUri()
+        {
+            return $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
+        }
+
+        private (List<LoginObject>, string) GetObjects(string workerCn)
+        {
+            var worker = TaskManager.GetWorkerByCn(workerCn); // userInfo.UserId);
+            if (worker == null) return (null, "系统中没有登记此员工");
+            if (string.IsNullOrEmpty(worker.PlaceList)) return (null, "此员工没有设置工作场所");
+            
+            List<LoginObject> loginObjects = new List<LoginObject>();
+            foreach (var placecn in worker.PlaceList.Split('|', ',')) 
+            {
+                var place = TaskManager.GetPlaceByCn(placecn);
+                if (place == null) return (null, "员工工作场所中的编码错误");
+
+                foreach (var obj in TaskManager.GetObjectsByPlace(place.Id))
+                {
+                    loginObjects.Add(new LoginObject() 
+                    {
+                        ObjectId = obj.Id,
+                        PlaceName = place.Name,
+                        CategoryName = TaskManager.GetCategory(obj.CategoryId).Name
+                    });
+                }
+            }
+
+            if (loginObjects.Count == 0) return (null, "没有对应的监视标的");
+            return (loginObjects, null);
+        }
         #endregion
     }
 }

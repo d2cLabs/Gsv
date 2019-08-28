@@ -2,6 +2,7 @@
 
 (function($) {
     task.controllerName = '';
+    task.today = '';
 
     task.withoutDate = false;
     task.dd = '';
@@ -44,7 +45,6 @@
             onSelect: function(index, row) {
                 // set shelf comboBox
                 abp.services.app.task.getObjectShelves(row.id, row.categoryId).done(function (res) {
-                    alert('shelf');
                     var treeData = [];
                     res.forEach( function (val, index, arr) {
                         treeData.push({ id: val.id, text: val.name });

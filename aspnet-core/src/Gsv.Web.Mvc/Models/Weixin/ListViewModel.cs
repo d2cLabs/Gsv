@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Gsv.Objects;
+using Gsv.Objects.Dto;
 
 namespace Gsv.Web.Models.Weixin
 {
@@ -13,9 +13,5 @@ namespace Gsv.Web.Models.Weixin
 
         public List<ItemInfo> Items { get; set; }
 
-
-        public int ShelfId { get; set; }
-
-        public List<Shelf> Shelves { get; set; }
     }
 }

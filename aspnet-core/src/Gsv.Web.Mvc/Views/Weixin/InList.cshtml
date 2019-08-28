@@ -1,36 +1,37 @@
+@model Gsv.Web.Models.Weixin.ListViewModel
 @{
-    ViewBag.Title = "进库单";
+    ViewBag.Title = "入库";
     Layout = "~/Views/Shared/_WeixinLayout.cshtml";
 }
 
-<form name="fm" action ="/Weixin/InBill" method="post" onsubmit="checkSubmit()">
+<form name="fm" action ="/Weixin/InStock" method="post" onsubmit="checkSubmit()">
     <a href="javascript:add();">    
         <div class="header">
             <div class="header__title">
-                <h3>场地名称</h3>
+                <h3>@Model.PlaceInfo
+                    <span style="color:red; float:right">
+                        <h1>入</h1>
+                    </span>
+                </h3>
             </div>
             <div class="header__desc">
-                <p>重量：10000克</p>
+                <p>@Model.Collateral</p>
             </div>
         </div>
     </a>
 
-<div class="weui-panel weui-panel_access">
-    <div class="weui-panel__bd">
-        <div class="weui-media-box weui-media-box_text">
-            <h3 class="weui-media-box__title">1 柜台名称</h3>
-            <p class="weui-media-box__desc"> 两个</p>
-        </div>
-        <div class="weui-media-box weui-media-box_text">
-            <h3 class="weui-media-box__title">2 柜台名称</h3>
-            <p class="weui-media-box__desc"> 三个</p>
-        </div>
-        <div class="weui-media-box weui-media-box_text">
-            <h3 class="weui-media-box__title">3 柜台名称</h3>
-            <p class="weui-media-box__desc"> 四个</p>
-        </div>
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">@Model.TodaySummary</div>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_text">
+                    <h3 class="weui-media-box__title">@Model.Items[i].CreateTime &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.Items[i].Shelf</h3>
+                    <p class="weui-media-box__desc">纯度：@Model.Items[i].Quantity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作人：@Model.Items[i].CreateWorker</p> 
+                </div>
+            </div>
+       }
     </div>
-</div>
 </form>
 
 @section footer

@@ -16,8 +16,9 @@
         task.columns = [[
             { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
             { field: "shelfName", title: "货架", width: 60 },
-            { field: "inventory", title: "盘点数", width: 60 },
-            { field: "currentInventory", title: "与当前库存比较", width: 160 },
+            { field: "inventory", title: "品类原始重量", width: 60 },
+            { field: "actualInventory", title: "抵押品重量", width: 60 },
+            { field: "currentInventory", title: "与当前库存比较", width: 120 },
             { field: "deviation", title: "偏差量", width: 60 },
             { field: "workerName", title: "创建人", width: 60 },
             { field: "operator", title: "操作", width: 60, align: "center", formatter: operator },

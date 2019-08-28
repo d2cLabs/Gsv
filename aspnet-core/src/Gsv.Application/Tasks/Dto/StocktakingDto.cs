@@ -13,6 +13,7 @@ namespace Gsv.Tasks.Dto
 
         public float Inventory { get; set; }
 
+        public float ActualInventory { get; set; }
         public string CurrentInventory { get; set; }
         
         public float? Deviation { get; set; }

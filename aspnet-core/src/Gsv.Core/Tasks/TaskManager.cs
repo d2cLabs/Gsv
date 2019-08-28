@@ -16,12 +16,15 @@ namespace Gsv.Tasks
         private readonly IShelfCache _shelfCache;
         private readonly ICargoTypeCache _cargoTypeCache;
 
+        private readonly ISourceCache _sourceCache;
+
         public TaskManager(IWorkerCache workerCache,
             IPlaceCache placeCache,
             IObjectCache objectCache,
             ICategoryCache categoryCache, 
             IShelfCache shelfCache,
-            ICargoTypeCache cargoTypeCache)
+            ICargoTypeCache cargoTypeCache,
+            ISourceCache sourceCache)
         {
             _workerCache = workerCache;
             _placeCache = placeCache;
@@ -29,6 +32,7 @@ namespace Gsv.Tasks
             _categoryCache = categoryCache;
             _shelfCache = shelfCache;
             _cargoTypeCache = cargoTypeCache;
+            _sourceCache = sourceCache;
         }
 
         #region GetEntities
@@ -66,6 +70,16 @@ namespace Gsv.Tasks
         {
             return _shelfCache[id];
         }
+
+        public CargoType GetCargoType(int id)
+        {
+            return _cargoTypeCache[id];
+        }
+
+        public List<Source> GetSources()
+        {
+            return _sourceCache.GetList();
+        }
         #endregion 
 
         #region Get ListViewModel of Object(Weixin)
@@ -91,7 +105,15 @@ namespace Gsv.Tasks
         public List<Shelf> GetObjectShelves(int id, int categoryId)
         {
             var obj = _objectCache[id];
-            return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId && _cargoTypeCache[x.CargoTypeId].CategoryId == categoryId);
+            var shelves = _shelfCache.GetList();
+            
+            List<Shelf> ret = new List<Shelf>();
+            foreach (var shelf in shelves) {
+                var type = _cargoTypeCache[shelf.CargoTypeId];
+                if (shelf.PlaceId == obj.PlaceId && type.CategoryId == categoryId)
+                    ret.Add(shelf);
+            }
+            return ret;
 
         }
         #endregion

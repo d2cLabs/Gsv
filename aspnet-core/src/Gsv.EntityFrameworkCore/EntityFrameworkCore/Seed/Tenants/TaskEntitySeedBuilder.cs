@@ -75,9 +75,10 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
             {
                 _context.Stocktakings.AddRange(new Stocktaking[]
                 {
-                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 1, Inventory = 1304.12F, Deviation = 0.56F, CreateTime = DateTime.Now },
-                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 2, Inventory = 24566.32F, Deviation = 1.58F, CreateTime = DateTime.Now.AddMinutes(5) },
-                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 3, Inventory = 23458.12F, Deviation = 1.13F, CreateTime = DateTime.Now.AddMinutes(10) },
+                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 1, Inventory = 130400.24F, CreateTime = DateTime.Now },
+                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 2, Inventory = 24566.67F, CreateTime = DateTime.Now.AddMinutes(5) },
+                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 3, Inventory = 23458.34F, CreateTime = DateTime.Now.AddMinutes(10) },
+                    new Stocktaking() { TenantId = _tenantId, CarryoutDate = DateTime.Today, WorkerId = 1, ShelfId = 4, Inventory = 23458.34F, CreateTime = DateTime.Now.AddMinutes(16) },
                 });
                 _context.SaveChanges();
             }

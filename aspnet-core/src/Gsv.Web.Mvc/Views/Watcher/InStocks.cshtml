@@ -19,8 +19,27 @@
             { field: "sourceName", title: "来源", width: 50 },
             { field: "quantity", title: "入库重量", width: 60 },
             { field: "workerName", title: "创建人", width: 60 },
+            { field: "operator", title: "操作", width: 60, align: "center", formatter: operator },
         ]];
 
+        function operator (val, row, index) {
+            if (row.createTime.substr(0, 10) == task.today)
+                return '<a href="javascript:void(0)" onclick="cancel(' + index + ')">取消</a>';
+        }
+
+        function cancel(index) {
+            abp.message.confirm('确认要取消这单数据吗?', '请确认', function (r) {
+                if (r) {
+                    var row = $('#dgList').datagrid('getRows')[index];
+                    
+                    abp.services.app.task.deleteInStock(row.id).done(function (res) {
+                        abp.notify.info('取消成功');
+                        $('#dgList').datagrid('reload');
+                    })
+                };
+            });
+        }
+        
         task.loadList = function () {  
             if (task.objectRow == null) return;       
             // alert(task.shelfId);  

@@ -1,6 +1,7 @@
 (function() {        
     $(function() {    
         abp.services.app.task.getTodayString().done(function (d) {
+            task.today = d;
             task.dd = d;
             $('#dd').datebox('setValue', task.dd);
         });

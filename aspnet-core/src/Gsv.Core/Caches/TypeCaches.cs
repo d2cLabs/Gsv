@@ -13,4 +13,11 @@ namespace Gsv.Caches
         {
         }
     }
+    public class SourceCache : EntityListCache<Source, Source, Source>, ISourceCache, ITransientDependency
+    {
+        public SourceCache(ICacheManager cacheManager, IRepository<Source> repository, IObjectMapper objectMapper)
+            : base(cacheManager, repository, objectMapper)
+        {
+        }
+    }
 }
