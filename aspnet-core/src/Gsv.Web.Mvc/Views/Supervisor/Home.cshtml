@@ -2,97 +2,126 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section styles
-{
-	<style type="text/css">
-		.title{
-			font-size:16px;
-			font-weight:bold;
-			padding:20px 10px;
-			background:#eee;
-			overflow:hidden;
-			border-bottom:1px solid #ccc;
-		}
-		.t-list{
-			padding:5px;
-		}
-	</style>
-}
 
 @section scripts
 {
-    <script type="text/javascript" src="~/js/jquery.portal.js"></script>
-	<script>
-		$(function(){
-			$('#pp').portal({
-				border:false,
-				fit:true
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=TjQr2g6GbI6PHZBacH7Ngf0w"></script>
+	<script>	
+    	$(function () {
+        	// alert(task.controllerName);
+        	$('#dg').datagrid({
+            	url: '/Supervisor' + '/GridData',
+            	onSelect: function(index, row) {
+					alert('select');
+				}
 			});
-			add();
+
+			startplay();
+
+			var map = new BMap.Map("allmap");    // 创建Map实例
+			map.centerAndZoom(new BMap.Point(114.022, 22.634), 12);  // 初始化地图,设置中心点坐标和地图级别
+			//添加地图类型控件
+			map.addControl(new BMap.MapTypeControl({
+				mapTypes:[
+            		BMAP_NORMAL_MAP,
+            		BMAP_HYBRID_MAP
+        		]}));	  
+			map.setCurrentCity("深圳");          // 设置地图显示的城市 此项是必须设置的
+			map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
 		});
-		function add(){
-			for(var i=0; i<3; i++){
-				var p = $('<div/>').appendTo('body');
-				p.panel({
-					title:'Title'+i,
-					content:'<div style="padding:5px;">Content'+(i+1)+'</div>',
-					height:100,
-					closable:true,
-					collapsible:true
-				});
-				$('#pp').portal('add', {
-					panel:p,
-					columnIndex:i
-				});
-			}
-			$('#pp').portal('resize');
+
+		function placeFormatter(val, row, index) {
+        	return row.placeCn + ' ' + row.placeName;
+    	}
+    	function capitalFormatter (val, row, index) {
+        	return row.capitalCn + ' ' + row.capitalName;
+    	}
+
+		function config() {
+			var obj = document.getElementById("EasyPlayerOcx");
+	
+			var cache = 7; //document.getElementById("cache").value;
+			var playsound = 0; //document.getElementById("playsound").checked ? 1 : 0;
+			var showtoscale = 1; //document.getElementById("showtoscale").checked ? 1 : 0;
+			var showsatic = 1; //document.getElementById("showsatic").checked ? 1 : 0;
+	
+			obj.Config(cache, playsound, showtoscale, showsatic);
+			//obj.SetOSD(1, 255, 0, 0, 255, 100, 100, 1000, 150, "EasyPlayer-RTSP OSD测试");
+			//alert(cache+";"+playsound+";"+showtoscale+";"+showsatic);
 		}
-		function remove(){
-			$('#pp').portal('remove',$('#pgrid'));
-			$('#pp').portal('resize');
+	
+		function startplay() {
+			var obj = document.getElementById("EasyPlayerOcx");
+			var url = "rtsp://192.168.20.120/h264/ch1/av_stream";
+			var rendertype = 7; //document.getElementById("rendertype").value;
+			var name = "admin"; //document.getElementById("name").value;
+			var password = "vp123456"; //document.getElementById("password").value;
+			var harddecode = 1; //document.getElementById("harddecode").checked ? 1 : 0;
+			var rtpovertcp = 1; // document.getElementById("rtpovertcp").checked ? 1 : 0;
+			obj.Start(url, rendertype, name, password, harddecode, rtpovertcp);
+			config();
+			//alert(url+";"+rendertype+";"+name+";"+password);
 		}
+
+		function stopplay() {
+			//alert("Close()!!!!!");
+			var obj = document.getElementById("EasyPlayerOcx");
+	
+			obj.Close();
+		}
+		
 	</script>
 }
 
-<div id="pp" style="position:relative">
-	<div style="width:20%;">
-		<div title="Clock" style="text-align:center;background:#f3eeaf;height:150px;padding:5px;">
-			<a href="javascript:$('#pp').portal('resize');" width="100">调整大小</a>
+<div class="easyui-layout" fit="true">
+    <div data-options="region:'north',split:true," style="height: 420px">
+		<div class="easyui-layout" fit="true">
+    		<div data-options="region:'west'" style="width: 20%">
+				<div title="今日总览" style="text-align:center;background:#f3eeaf;height:100%;padding:5px;">
+					<h2>入库数：800</h2>
+					<h2>出库数：600</h2>
+					<h2>库存数：100</h2>
+					<h2>监控标的：100</h2>
+				</div>
+			</div>
+    		<div data-options="region:'center'">
+				<div class="easyui-tabs" data-options="fit:true, border:false">
+					<div title="视频" style="display:none;">
+						<div class="easyui-layout" fit="true">
+    						<div data-options="region:'west'" style="width: 100px">
+							</div>
+    						<div data-options="region:'center', border:false">
+								<object id="EasyPlayerOcx" width="100%" height="99%" classid="clsid:1EE1C648-F4A9-42F9-9AA7-2C8E3AF7B7FD">	
+								</object>
+							</div>
+						</div>
+					</div>
+					<div id="allmap" title="地图" style="display:none;">
+					</div>
+				</div>
+			</div>
+    		<div data-options="region:'east'" style="width: 20%">
+				<div title="当前监控点情况" iconCls="icon-search" style="text-align:center;background:#f3eeaf;height:100%;padding:5px;">
+					<h2>出库数：600</h2>
+				</div>
+			</div>
 		</div>
-	    <div title="Tutorials" collapsible="true" style="height:200px;padding:5px;">
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/datagrid/datagrid1.php">Build border layout for Web Pages</a></div>
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/panel.php">Complex layout on Panel</a></div>
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/accordion.php">Create Accordion</a></div>
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/tabs.php">Create Tabs</a></div>
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/tabs2.php">Dynamically add tabs</a></div>
-		    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/panel2.php">Create XP style left panel</a></div>
-	    </div>
 	</div>
-	<div style="width:50%;">
-		<div id="pgrid" title="DataGrid" collapsible="true" style="height:300px;">
-			<table class="easyui-datagrid" style="width:650px;height:auto"
-				fit="true" border="false"
-				singleSelect="true"
-				idField="itemid" url="~/js/datagrid_data.json">
-				<thead>
-					<tr>
-						<th field="itemid" width="60">Item ID</th>
-						<th field="productid" width="60">Product ID</th>
-						<th field="listprice" width="80" align="right">List Price</th>
-						<th field="unitcost" width="80" align="right">Unit Cost</th>
-						<th field="attr1" width="120">Attribute</th>
-						<th field="status" width="50" align="center">Status</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-	</div>
-	<div style="width:30%;">
-		<div title="Searching" iconCls="icon-search" style="height:80px;padding:10px;">
-			<input class="easyui-searchbox">
-		</div>
-		<div title="Graph" closable="true" style="height:200px;text-align:center;">
-			<img height="160" src="http://knol.google.com/k/-/-/3mudqpof935ww/ip4n5y/web-graph.png"></img>
-		</div>
+    <div data-options="region:'center',border:false">
+        <table id="dg" class="easyui-datagrid"
+                fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" sortName="place.Cn">
+            <thead>
+                <tr>
+                    <th field="place" width="120" formatter="placeFormatter">场地</th>
+                    <th field="capital" width="120" formatter="capitalFormatter">抵押权人</th>
+                    <th field="categoryName" width="80">抵押物</th>
+                    <th field="categoryUnitName" width="60">单位</th>
+                    <th field="quantity" width="80" sortable="true" >监管量</th>
+                    <th field="yellowQuantity" width="80" sortable="true" >监管黄线</th>
+                    <th field="inventory" width="80" align="center">当前库存量</th>
+                </tr>
+            </thead>
+        </table>
 	</div>
 </div>

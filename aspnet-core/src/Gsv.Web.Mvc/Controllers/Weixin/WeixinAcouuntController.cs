@@ -38,7 +38,7 @@ namespace Gsv.Web.Controllers
         {
             if (string.IsNullOrEmpty(code))
             {
-                // return Redirect(OAuth2Api.GetCode(_corpId, AbsoluteUri(), "STATE", _agentId));
+                return Redirect(OAuth2Api.GetCode(_corpId, AbsoluteUri(), "STATE", _agentId));
             }
 
             var accessToken = AccessTokenContainer.GetToken(_corpId, _secret);
@@ -48,9 +48,9 @@ namespace Gsv.Web.Controllers
             if (ret.Item2 != null) return Content(ret.Item2);
 
             var vm = new LoginViewModel() {
-                WorkerCn = "90005", //userInfo.UserId,
-                Password = "123456",
-                Objects = ret.Item1,
+                //WorkerCn = "90005", //userInfo.UserId,
+                //Password = "123456",
+                Objects = new List<LoginObject>(),
                 ReturnUrl = returnUrl
             };
 
@@ -67,21 +67,23 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel vm)
         {
-            var ret = GetObjects("90005");
-            vm.Objects = ret.Item1;
             var worker = TaskManager.GetWorkerByCn(vm.WorkerCn);
             if (worker == null || worker.Password != vm.Password)
             {
                 ModelState.AddModelError("", "用户名或密码错误");
                 return View(vm);
             }
-
-            if (vm.ObjectId == 0) 
+            if (vm.ObjectId == 0)
             {
-                ModelState.AddModelError("", "需要选择监管对象");
+                var ret = GetObjects(vm.WorkerCn);
+                if (ret.Item2 != null) {
+                    ModelState.AddModelError("", "用户名或密码错误");
+                    return View(vm);
+                }
+                vm.Objects = ret.Item1;
                 return View(vm);
             }
-            
+
             var claims = new[] 
             { 
                 new Claim("Cn", vm.WorkerCn),

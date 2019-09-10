@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gsv.Migrations
 {
     [DbContext(typeof(GsvDbContext))]
-    [Migration("20190826010519_gsv")]
+    [Migration("20190828032631_gsv")]
     partial class gsv
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

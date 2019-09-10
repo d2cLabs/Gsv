@@ -26,6 +26,7 @@
     <ProjectReference Include="..\Gsv.Web.Core\Gsv.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1">
       <PrivateAssets>All</PrivateAssets>
