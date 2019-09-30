@@ -1298,6 +1298,8 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
+                    b.Property<byte[]>("Photo");
+
                     b.Property<float>("Quantity");
 
                     b.Property<int>("ShelfId");
@@ -1364,6 +1366,8 @@ namespace Gsv.Migrations
                     b.Property<DateTime>("CarryoutDate");
 
                     b.Property<DateTime>("CreateTime");
+
+                    b.Property<byte[]>("Photo");
 
                     b.Property<float>("Quantity");
 

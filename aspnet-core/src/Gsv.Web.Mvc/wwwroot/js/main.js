@@ -2,11 +2,12 @@
     //监听加载状态改变
     document.onreadystatechange = completeLoading;
     //$.parser.onComplete = completeLoading;
+    //alert("easyui complete");
 
     //加载状态为complete时移除loading效果
     function completeLoading() {
         //if (document.readyState === "complete") {
-            //alert("easyui complete");
+            // alert("easyui complete");
             var loadingMask = document.getElementById('loadingDiv');
             if (loadingMask !== null)
                 loadingMask.parentNode.removeChild(loadingMask);

@@ -10,6 +10,8 @@ using Gsv.Tasks;
 using Gsv.Objects.Dto;
 using Gsv.Objects;
 using Gsv.Types.Dto;
+using Senparc.Weixin.Work.Helpers;
+using Senparc.Weixin.Work.Containers;
 
 namespace Gsv.Web.Controllers
 {
@@ -44,6 +46,18 @@ namespace Gsv.Web.Controllers
 
         public ActionResult InStock()
         {
+            var timestamp = JSSDKHelper.GetTimestamp();
+            //获取随机码
+            var nonceStr = JSSDKHelper.GetNoncestr();
+            string ticket = JsApiTicketContainer.GetTicket(_corpId, _secret);
+            //获取签名
+            var signature = JSSDKHelper.GetSignature(ticket, nonceStr, timestamp, AbsoluteUri());
+ 
+            ViewBag.AppId = _corpId;
+            ViewBag.Timestamp = timestamp;
+            ViewBag.NonceStr = nonceStr;
+            ViewBag.Signature = signature;
+
             return View(GetInStockViewModel());
         } 
 

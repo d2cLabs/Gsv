@@ -32,7 +32,12 @@ namespace Gsv.Tasks
         public int ShelfId { get; set; }
         public virtual Shelf Shelf { get; set; }
 
-        public float Quantity { get; set; }        
+        public float Quantity { get; set; }   
+             
+        /// <summary>
+        /// 照片
+        /// </summary>
+        public byte[] Photo { get; set; }
     }
 }
 

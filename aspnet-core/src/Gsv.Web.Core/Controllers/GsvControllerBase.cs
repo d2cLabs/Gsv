@@ -32,5 +32,10 @@ namespace Gsv.Controllers
             var b = Request.Form["order"];
             return $"{Request.Form["sort"]} {Request.Form["order"]}";
         }
+
+        protected string AbsoluteUri()
+        {
+            return $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
+        }
     }
 }

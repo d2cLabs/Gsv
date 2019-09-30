@@ -42,15 +42,15 @@ namespace Gsv.Web.Controllers
             }
 
             var accessToken = AccessTokenContainer.GetToken(_corpId, _secret);
-            // GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
+            GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
 
-            var ret = GetObjects("90005");
+            var ret = GetObjects(userInfo.UserId);
             if (ret.Item2 != null) return Content(ret.Item2);
 
             var vm = new LoginViewModel() {
-                //WorkerCn = "90005", //userInfo.UserId,
+                WorkerCn = userInfo.UserId,
                 //Password = "123456",
-                Objects = new List<LoginObject>(),
+                Objects = ret.Item1,   // new List<LoginObject>(),
                 ReturnUrl = returnUrl
             };
 

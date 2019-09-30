@@ -10,6 +10,7 @@ using Gsv.Tasks;
 
 namespace Gsv.EntityFrameworkCore
 {
+    // [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class GsvDbContext : AbpZeroDbContext<Tenant, Role, User, GsvDbContext>
     {
         /* Define a DbSet for each entity of the application */

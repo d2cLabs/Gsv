@@ -38,6 +38,10 @@ namespace Gsv.Tasks
         public int SourceId { get; set; }
         public virtual Source Source { get; set; }
         
+        /// <summary>
+        /// 照片
+        /// </summary>
+        public byte[] Photo { get; set; }
     }
 }
 
