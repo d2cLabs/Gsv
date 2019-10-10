@@ -133,6 +133,14 @@ namespace Gsv.Tasks
             shelf.Inventory = actual;
         }
 
+        public async Task DeleteStocktaking(int id) 
+        {
+            var taking = await _stocktakingRepository.GetAsync(id);
+            if (taking.Deviation.HasValue) return;
+            _stocktakingRepository.Delete(taking);           
+        }
+
+
         public async Task DeleteInStock(int id) 
         {
             var inStock = await _inStockRepository.GetAsync(id);

@@ -43,6 +43,8 @@ namespace Gsv.Web.Controllers
 
             var accessToken = AccessTokenContainer.GetToken(_corpId, _secret);
             GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
+            Logger.Info(string.Format("accessKey={0} code={1}, corpId={2}, secret={3}", accessToken, code, _corpId, _secret));
+            Logger.Info(userInfo.UserId);
 
             var ret = GetObjects(userInfo.UserId);
             if (ret.Item2 != null) return Content(ret.Item2);
@@ -117,11 +119,6 @@ namespace Gsv.Web.Controllers
         {
             int i = url.LastIndexOf('/');
             return url.Substring(i + 1, url.Length - i - 1);
-        }
-
-        private string AbsoluteUri()
-        {
-            return $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
         }
 
         private (List<LoginObject>, string) GetObjects(string workerCn)

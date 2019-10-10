@@ -25,8 +25,12 @@
         ]];
 
         function operator (val, row, index) {
-            if (row.deviation == null)
-                return '<a href="javascript:void(0)" onclick="submit(' + index + ')">提交</a>';
+            if (row.deviation == null) {
+                var html = '<a href="javascript:void(0)" onclick="submit(' + index + ')">提交</a>';
+                html = html + '<span>&nbsp;&nbsp;&nbsp;</span>';
+                html = html + '<a href="javascript:void(0)" onclick="remove(' + index + ')">删除</a>';
+                return html;
+            }
         }
 
         function submit(index) {
@@ -36,6 +40,19 @@
                     
                     abp.services.app.task.submitStocktaking(row.id).done(function (res) {
                         abp.notify.info('提交成功');
+                        $('#dgList').datagrid('reload');
+                    })
+                };
+            });
+        }
+
+        function remove(index) {
+            abp.message.confirm('确认要删除此盘库数据吗?', '请确认', function (r) {
+                if (r) {
+                    var row = $('#dgList').datagrid('getRows')[index];
+                    
+                    abp.services.app.task.deleteStocktaking(row.id).done(function (res) {
+                        abp.notify.info('删除成功');
                         $('#dgList').datagrid('reload');
                     })
                 };

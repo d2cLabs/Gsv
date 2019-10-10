@@ -1,5 +1,5 @@
 ﻿@using Gsv
-@using Gsv.Objects
+
 @{
     Layout = "~/Views/Shared/_CrudLayout.cshtml";
 }
@@ -14,7 +14,6 @@
         crud.dgDefault.columns = [[
             { field: "name", title: "名称", width: 100 },
             { field: "cargoTypeId", title: "品类", width: 80, formatter: $.displayCargoTypeText },      
-            { field: "inventory", title: "库存数", width: 80, formatter: $.displayCargoTypeText },      
         ]];        
     </script>
 }
@@ -86,10 +85,6 @@
             <tr>
                 <th><label for="cargoTypeId">品类：</label></th>
                 <td><input id="cargoType" name="cargoTypeId" class="easyui-combobox" style="width: 375px" /></td>
-            </tr>
-            <tr>
-                <th><Label for="inventory">库存数:</Label></th>
-                <td><input name="inventory" class="easyui-numberbox" readonly style="width: 100%"></td>
             </tr>
          </table>
     </form>

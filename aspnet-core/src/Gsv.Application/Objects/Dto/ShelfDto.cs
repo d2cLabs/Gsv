@@ -25,6 +25,6 @@ namespace Gsv.Objects.Dto
         [Required]
         public int CargoTypeId { get; set; }
 
-        public float Inventory { get; set; }
+        // public float Inventory { get; set; }
     }
 }

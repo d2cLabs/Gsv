@@ -20,6 +20,7 @@ namespace Gsv.Tasks
         Task<PagedResultDto<StocktakingDto>> GetStocktakingsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId, PagedAndSortedResultRequestDto input);   
 
         Task SubmitStocktaking(int id);
+        Task DeleteStocktaking(int id);
         Task DeleteInStock(int id);
 
         #region For Weixin 
