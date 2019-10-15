@@ -75,7 +75,8 @@ namespace Gsv.Web.Controllers
             if (obj == null) return null;
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
-            vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
+            var ret = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -130,7 +131,8 @@ namespace Gsv.Web.Controllers
             if (obj == null) return null;
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
-            vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
+            var ret = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxOutStocksAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -145,7 +147,7 @@ namespace Gsv.Web.Controllers
                 });
                 total += item.Quantity;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F2})", items.Count, total);
+            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F2})  余量({1:F2})", items.Count, total, ret.Item2 - ret.Item3);
         
             return vm;
         }
@@ -184,7 +186,8 @@ namespace Gsv.Web.Controllers
             if (obj == null) return null;
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
-            vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
+            var ret = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxInspectsAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -238,7 +241,8 @@ namespace Gsv.Web.Controllers
             if (obj == null) return null;
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
-            vm.Collateral = TaskManager.GetObjectCollateral(obj.Id);
+            var ret = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxStocktakingsAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();

@@ -34,7 +34,7 @@
                     <th field="categoryUnitName" width="60">单位</th>
                     <th field="quantity" width="80">监管量</th>
                     <th field="yellowQuantity" width="80">监管黄线</th>
-                    <th field="inventory" width="80" align="center">当前库存量</th>
+                    <th field="inventory" width="80" align="right", formatter="$.quantityFormatter">当前库存量</th>
                 </tr>
             </thead>
         </table>

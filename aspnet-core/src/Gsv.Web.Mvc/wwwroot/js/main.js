@@ -57,6 +57,11 @@
             return val;
         },
 
+        quantityFormatter: function (val) {
+            var num = Number(val);
+            if (!isNaN(num)) return num.toFixed(3);
+        },
+
         dateFormatter: function (val) {
             if (val) return val.substr(0, 10);
         },

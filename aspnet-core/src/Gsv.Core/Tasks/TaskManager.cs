@@ -84,16 +84,29 @@ namespace Gsv.Tasks
 
         #region Get ListViewModel of Object(Weixin)
 
+        private float GetObjectTotalInventory(int id)
+        {
+            var obj = _objectCache[id];
+            float total = 0.0f;
+            var shelves = _shelfCache.GetList();
+            foreach (var shelf in shelves) {
+                var type = _cargoTypeCache[shelf.CargoTypeId];
+                if (shelf.PlaceId == obj.PlaceId && type.CategoryId == obj.CategoryId)
+                    total += shelf.Inventory??shelf.Inventory.Value;
+            }
+            return total;
+        }
+
         public string GetObjectPlaceInfo(int id)
         {
             var obj = _objectCache[id];
             return _placeCache[obj.PlaceId].Name;
         }
 
-        public string GetObjectCollateral(int id)
+        public (string, float, float) GetObjectCollateral(int id)
         {
             var obj = _objectCache[id];
-            return string.Format("类型: {0}   红线: {1}   黄线{2}", _categoryCache[obj.CategoryId].Name, obj.Quantity, obj.YellowQuantity);
+            return (_categoryCache[obj.CategoryId].Name, GetObjectTotalInventory(id), obj.YellowQuantity);
         }
 
         public List<Shelf> GetObjectShelves(int id)

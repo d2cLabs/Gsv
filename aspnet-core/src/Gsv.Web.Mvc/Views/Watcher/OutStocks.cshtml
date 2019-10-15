@@ -16,7 +16,7 @@
         task.columns = [[
             { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
             { field: "shelfName", title: "货架", width: 60 },
-            { field: "quantity", title: "出库重量", width: 60 },
+            { field: "quantity", title: "出库重量", width: 60, align: "right", formatter: $.quantityFormatter },
             { field: "workerName", title: "创建人", width: 60 },
             { field: "operator", title: "操作", width: 60, align: "center", formatter: operator },
         ]];

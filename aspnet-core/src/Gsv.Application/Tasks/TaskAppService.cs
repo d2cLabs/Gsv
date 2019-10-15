@@ -17,6 +17,8 @@ namespace Gsv.Tasks
     {
         public TaskManager TaskManager { get; set; }
         public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
+
+        private const int NumItems = 20;
         private readonly IRepository<InStock> _inStockRepository;
         private readonly IRepository<OutStock> _outStockRepository;
         private readonly IRepository<Inspect> _inspectRepository;
@@ -169,7 +171,7 @@ namespace Gsv.Tasks
             if (!dto.Deviation.HasValue)
             {
                 var currentInventory = shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
-                dto.CurrentInventory = string.Format("{0} (偏差为 {1:F2})", currentInventory, dto.ActualInventory - currentInventory);
+                dto.CurrentInventory = string.Format("{0} (偏差为 {1:F3})", currentInventory, dto.ActualInventory - currentInventory);
             }
             return dto;
         }
@@ -186,7 +188,7 @@ namespace Gsv.Tasks
         {
             var query = _inStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
             query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-            query = query.OrderByDescending(x => x.CreateTime).Take(5);
+            query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<InStockDto>>(entities);
@@ -196,7 +198,7 @@ namespace Gsv.Tasks
         {
             var query = _outStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
             query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-            query = query.OrderByDescending(x => x.CreateTime).Take(5);
+            query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<OutStockDto>>(entities);
@@ -207,7 +209,7 @@ namespace Gsv.Tasks
         {
             var query = _inspectRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
             query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-            query = query.OrderByDescending(x => x.CreateTime).Take(5);
+            query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<InspectDto>>(entities);
@@ -218,7 +220,7 @@ namespace Gsv.Tasks
         {
             var query = _stocktakingRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
             query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-            query = query.OrderByDescending(x => x.CreateTime).Take(5);
+            query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<StocktakingDto>>(entities);
