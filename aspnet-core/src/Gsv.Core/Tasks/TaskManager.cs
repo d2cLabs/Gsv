@@ -92,7 +92,7 @@ namespace Gsv.Tasks
             foreach (var shelf in shelves) {
                 var type = _cargoTypeCache[shelf.CargoTypeId];
                 if (shelf.PlaceId == obj.PlaceId && type.CategoryId == obj.CategoryId)
-                    total += shelf.Inventory??shelf.Inventory.Value;
+                    total += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0.0f;
             }
             return total;
         }

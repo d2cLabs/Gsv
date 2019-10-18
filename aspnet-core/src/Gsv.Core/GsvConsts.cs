@@ -12,6 +12,7 @@
         public const int EntityListCacheSlidingExpireTime = 20;
 
         public const int NormalStringFieldLength = 50;
+        public const int LargeStringFieldLength = 512;
 
         public const int MobileLength = 11;
     }

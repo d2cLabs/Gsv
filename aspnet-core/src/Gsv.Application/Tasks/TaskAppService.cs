@@ -244,7 +244,7 @@ namespace Gsv.Tasks
 
             
                 var shelf = _shelfRepository.Get(shelfId);
-                shelf.Inventory += quantity;
+                shelf.Inventory += GetRatio(shelf, quantity);
                 shelf.LastInTime = DateTime.Now;
 
                 CurrentUnitOfWork.SaveChanges();
@@ -266,7 +266,7 @@ namespace Gsv.Tasks
                 _outStockRepository.Insert(entity);
 
                 var shelf = _shelfRepository.Get(shelfId);
-                shelf.Inventory -= quantity;
+                shelf.Inventory -= GetRatio(shelf, quantity);
                 shelf.LastOutTime = DateTime.Now;
 
                 CurrentUnitOfWork.SaveChanges();

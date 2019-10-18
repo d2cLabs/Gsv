@@ -147,7 +147,7 @@ namespace Gsv.Web.Controllers
                 });
                 total += item.Quantity;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F2})  余量({1:F2})", items.Count, total, ret.Item2 - ret.Item3);
+            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F2})  余量({2:F2})", items.Count, total, ret.Item2 - ret.Item3);
         
             return vm;
         }
