@@ -30,9 +30,9 @@ namespace Gsv.Tasks
         public int ShelfId { get; set; }
         public virtual Shelf Shelf { get; set; }
 
-        public float Inventory { get; set; }
+        public double Inventory { get; set; }
 
-        public float? Deviation { get; set; }
+        public double? Deviation { get; set; }
     }
 }
 

@@ -27,8 +27,11 @@ namespace Gsv.Web.Controllers
         [DontWrapResult]
         public async Task<JsonResult> GridData()
         {
-            var output = await _userAppService.GetAll(new PagedUserResultRequestDto());
-            return Json( new { rows = output.Items });
+            var input = new PagedUserResultRequestDto();
+            input.MaxResultCount = int.Parse(Request.Form["rows"]);
+            input.SkipCount = (int.Parse(Request.Form["page"]) - 1) * input.MaxResultCount;
+            var output = await _userAppService.GetAll(input);
+            return Json( new { total = output.TotalCount, rows = output.Items });
         }
     }
 }

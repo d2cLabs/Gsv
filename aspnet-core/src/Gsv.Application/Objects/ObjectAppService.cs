@@ -61,11 +61,16 @@ namespace Gsv.Objects
                 query = query.Where(x => worker.PlaceList.Contains(x.Place.Cn));
             }
 
-            query = query.OrderBy(sorting);                           // Applying Sorting
+            // query = query.OrderBy(sorting);                           // Applying Sorting
 
+            try {
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
-
             return entities.Select(MapToTaskObjectDto).ToList();
+            }
+            catch (System.Exception ex)
+            {
+            }       //return entities.Select(MapToTaskObjectDto).ToList();
+            return null;
         }
        
         #region private
@@ -75,7 +80,7 @@ namespace Gsv.Objects
 
             var shelfs = TaskManager.GetObjectShelves(entity.Id, entity.CategoryId);
 
-            float sum = 0;
+            double sum = 0;
             foreach (var shelf in shelfs)
             {
                 sum += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;

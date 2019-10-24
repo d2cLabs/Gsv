@@ -7,6 +7,7 @@ namespace Gsv.Web.Models.Weixin
         public string Quantity { get; set; }
 
         public string Shelf { get; set; }
+        public string ToShelf { get; set; }
 
         public string CreateTime { get; set; }
 

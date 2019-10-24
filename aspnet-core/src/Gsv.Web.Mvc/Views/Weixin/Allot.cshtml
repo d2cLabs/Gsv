@@ -1,0 +1,88 @@
+@model Gsv.Web.Models.Weixin.InStockViewModel
+@{
+    ViewBag.Title = "填写调拨单";
+    Layout = "~/Views/Shared/_WeixinLayout.cshtml";
+}
+
+<form action ="/Weixin/InsertAllot" method="post" onsubmit="checkSubmit()">
+    @Html.ValidationSummary()
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd"><label for="fromShelfId" class="weui-label">从柜台:</label></div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="fromShelfId">
+                @for (int i = 0; i < Model.Shelves.Count; i++)
+                {
+                    <option value="@Model.Shelves[i].Id">@Model.Shelves[i].Name</option>
+                }
+                </select>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd"><label for="toShelfId" class="weui-label">到柜台:</label></div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="toShelfId">
+                @for (int i = 0; i < Model.Shelves.Count; i++)
+                {
+                    <option value="@Model.Shelves[i].Id">@Model.Shelves[i].Name</option>
+                }
+                </select>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="quantity" class="weui-label">调拨量:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="quantity" step="0.001" type="number" placeholder="重量（克）" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="photo" class="weui-label">照片:</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="photo" type="text" readonly="readonly" />
+            </div>
+        </div>
+        <div class="weui-cell">
+            <input type="submit" value="提交" class="weui-btn weui-btn_primary" />
+        </div>
+    </div>
+</form>
+
+@section footer
+{
+    <script type="text/javascript">
+
+        //wx.config({
+        //    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        //    appId: '@ViewBag.AppId',            // 必填，公众号的唯一标识
+        //    timestamp: '@ViewBag.Timestamp',    // 必填，生成签名的时间戳
+        //    nonceStr: '@ViewBag.NonceStr',      // 必填，生成签名的随机串
+        //    signature: '@ViewBag.Signature',    // 必填，签名，见附录1
+        //    jsApiList: [                        // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        //        'getLocation', 'openLocation', 'chooseImage', 'previewImage', 'uploadImage'
+        //    ]
+        //});
+
+        //wx.ready(function(){
+        //    wx.chooseImage({
+        //        count: 1, // 默认9
+        //        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        //        sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
+        //        success: function (res) {
+        //            var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+        //            alert("fsdfsfsd");
+        //        }
+        //    });
+        //});
+        //wx.error(function(res){
+        //    alert('jssdk config error');
+        //});
+
+        var checkSubmitFlg = false; 
+
+        function checkSubmit(){ 
+            if(checkSubmitFlg == true) return false; //当表单被提交过一次后checkSubmitFlg将变为true,根据判断将无法进行提交。
+            checkSubmitFlg = true; 
+            return true; 
+        } 
+    </script>
+}

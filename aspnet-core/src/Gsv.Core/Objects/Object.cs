@@ -37,8 +37,8 @@ namespace Gsv.Objects
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public float Quantity{ get ; set; }
-        public float YellowQuantity{ get ; set; }
+        public int Quantity{ get ; set; }
+        public int YellowQuantity{ get ; set; }
 
         public bool isFixedPrice { get; set; }
 

@@ -84,10 +84,10 @@ namespace Gsv.Tasks
 
         #region Get ListViewModel of Object(Weixin)
 
-        private float GetObjectTotalInventory(int id)
+        private double GetObjectTotalInventory(int id)
         {
             var obj = _objectCache[id];
-            float total = 0.0f;
+            double total = 0.0f;
             var shelves = _shelfCache.GetList();
             foreach (var shelf in shelves) {
                 var type = _cargoTypeCache[shelf.CargoTypeId];
@@ -103,7 +103,7 @@ namespace Gsv.Tasks
             return _placeCache[obj.PlaceId].Name;
         }
 
-        public (string, float, float) GetObjectCollateral(int id)
+        public (string, double, double) GetObjectCollateral(int id)
         {
             var obj = _objectCache[id];
             return (_categoryCache[obj.CategoryId].Name, GetObjectTotalInventory(id), obj.YellowQuantity);

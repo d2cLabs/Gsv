@@ -26,8 +26,8 @@ namespace Gsv.Objects.Dto
         public int CategoryId { get; set; }
 
         [Required]
-        public float Quantity{ get ; set; }
-        public float YellowQuantity { get; set; }
+        public int Quantity{ get ; set; }
+        public int YellowQuantity { get; set; }
 
         public string isFixedPrice { get; set; }
 

@@ -29,6 +29,7 @@ namespace Gsv.EntityFrameworkCore
         public DbSet<Worker> Workers { get; set; }
 
         // Tasks
+        public DbSet<Allot> Allots { get; set; }
         public DbSet<Inspect> Inspects { get; set; }
         public DbSet<InStock> InStocks { get; set; }
         public DbSet<OutStock> OutStocks { get; set; }
@@ -82,6 +83,11 @@ namespace Gsv.EntityFrameworkCore
             });
 
             // Tasks
+            modelBuilder.Entity<Allot>(b => 
+            {
+                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.FromShelfId });
+            });
+            
             modelBuilder.Entity<InStock>(b => 
             {
                 b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.ShelfId });

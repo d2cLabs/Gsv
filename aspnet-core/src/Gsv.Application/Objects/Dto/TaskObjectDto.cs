@@ -22,9 +22,9 @@ namespace Gsv.Objects.Dto
 
         public int Quantity{ get ; set; }
 
-        public float YellowQuantity { get; set; }
+        public int YellowQuantity { get; set; }
 
-        public float Inventory { get; set; }
+        public double Inventory { get; set; }
     }
 }
 

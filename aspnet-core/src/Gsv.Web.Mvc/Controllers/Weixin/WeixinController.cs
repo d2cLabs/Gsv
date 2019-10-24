@@ -37,6 +37,64 @@ namespace Gsv.Web.Controllers
             _taskAppService = taskAppService;
         }
 
+        #region Allot
+        public ActionResult AllotList()
+        {
+            return View(GetAllotListViewModel());
+        }
+        public ActionResult Allot()
+        {
+            SetViewBag();
+            return View(GetAllotViewModel());
+        } 
+
+        [HttpPost]
+        public ActionResult InsertAllot(AllotViewModel vm)
+        {
+            _taskAppService.InsertAllot(vm.FromShelfId, vm.ToShelfId, vm.Quantity, GetWorkerId());
+            // valid vm ToDO
+            return RedirectToAction("AllotList");
+        }
+
+
+        private ListViewModel GetAllotListViewModel()
+        {
+            var obj = GetObject();
+            if (obj == null) return null;
+            ListViewModel vm = new ListViewModel();
+            vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
+            var ret = TaskManager.GetObjectCollateral(obj.Id);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+
+            var items = _taskAppService.GetWxAllotsAsync(obj.PlaceId, obj.CategoryId).Result;
+            vm.Items = new List<ItemInfo>();
+            double total = 0.0;
+            foreach (var item in items)
+            {
+                vm.Items.Add(new ItemInfo {
+                    CreateTime = item.CreateTime.ToString("HH:mm:ss"),
+                    Shelf = item.FromShelfName,
+                    ToShelf = item.ToShelfName,
+                    Quantity = item.Quantity.ToString("F2"),
+                    CreateWorker = item.WorkerName,
+                });
+                total += item.Quantity;
+            }
+            vm.TodaySummary = string.Format("今日笔数({0})  调拨总重({1:F2})", items.Count, total);
+        
+            return vm;
+        }
+
+        private AllotViewModel GetAllotViewModel()
+        {
+            var obj = GetObject();
+            AllotViewModel vm = new AllotViewModel();
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            return vm;
+        }
+
+        #endregion
+
         #region InStock
 
         public ActionResult InList()
@@ -271,6 +329,21 @@ namespace Gsv.Web.Controllers
         #endregion 
 
         #region Common Utils
+        
+        private void SetViewBag()
+        {
+            var timestamp = JSSDKHelper.GetTimestamp();
+            //获取随机码
+            var nonceStr = JSSDKHelper.GetNoncestr();
+            string ticket = JsApiTicketContainer.GetTicket(_corpId, _secret);
+            //获取签名
+            var signature = JSSDKHelper.GetSignature(ticket, nonceStr, timestamp, AbsoluteUri());
+ 
+            ViewBag.AppId = _corpId;
+            ViewBag.Timestamp = timestamp;
+            ViewBag.NonceStr = nonceStr;
+            ViewBag.Signature = signature;
+        }
 
         private Object GetObject()
         {

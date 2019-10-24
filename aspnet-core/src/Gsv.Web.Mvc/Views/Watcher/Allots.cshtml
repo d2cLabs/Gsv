@@ -1,0 +1,52 @@
+@{
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+@section taskScripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Watcher/Allots.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Watcher/Allots.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        task.controllerName = 'Watcher';
+        task.columns = [[
+            { field: "createTime", title: "时间", width: 60, formatter: $.datetimeFormatter },
+            { field: "fromShelfName", title: "从货架", width: 60 },
+            { field: "toShelfName", title: "到货架", width: 60 },
+            { field: "quantity", title: "入库重量", width: 60, align: "right", formatter: $.quantityFormatter },
+            { field: "workerName", title: "创建人", width: 60 },
+            { field: "operator", title: "操作", width: 60, align: "center", formatter: operator },
+        ]];
+
+        function operator (val, row, index) {
+            if (row.createTime.substr(0, 10) == task.today)
+                return '<a href="javascript:void(0)" onclick="cancel(' + index + ')">取消</a>';
+        }
+
+        function cancel(index) {
+            abp.message.confirm('确认要取消这单数据吗?', '请确认', function (r) {
+                if (r) {
+                    var row = $('#dgList').datagrid('getRows')[index];
+                    
+                    abp.services.app.task.deleteAllot(row.id).done(function (res) {
+                        abp.notify.info('取消成功');
+                        $('#dgList').datagrid('reload');
+                    })
+                };
+            });
+        }
+        
+        task.loadList = function () {  
+            if (task.objectRow == null) return;       
+            // alert(task.shelfId);  
+            $('#dgList').datagrid({
+                url: '/' + task.controllerName + '/GridDataAllot',
+                queryParams: { carryoutDate: task.dd, shelfId: task.fromShelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+            });
+        }
+    </script>
+}

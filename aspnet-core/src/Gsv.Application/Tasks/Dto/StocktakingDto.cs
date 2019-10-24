@@ -11,12 +11,12 @@ namespace Gsv.Tasks.Dto
         public int ShelfId { get; set; }
         public string ShelfName { get; set; }
 
-        public float Inventory { get; set; }
+        public double Inventory { get; set; }
 
-        public float ActualInventory { get; set; }
+        public double ActualInventory { get; set; }
         public string CurrentInventory { get; set; }
         
-        public float? Deviation { get; set; }
+        public double? Deviation { get; set; }
 
         public string WorkerName { get; set; }
         public DateTime CreateTime { get; set; }

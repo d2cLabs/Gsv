@@ -42,6 +42,7 @@ namespace Gsv.Web.Startup
                     .AddItem(new MenuItemDefinition("Watcher_OutStocks", new FixedLocalizableString("出库单"), url: "Watcher/OutStocks"))
                     .AddItem(new MenuItemDefinition("Watcher_Inspects", new FixedLocalizableString("抽检单"), url: "Watcher/Inspects"))
                     .AddItem(new MenuItemDefinition("Watcher_Stocktaking", new FixedLocalizableString("盘点"), url: "Watcher/Stocktaking"))
+                    .AddItem(new MenuItemDefinition("Watcher_Allot", new FixedLocalizableString("调拨"), url: "Watcher/Allots"))
 
                 // Supervision
                 ).AddItem(new MenuItemDefinition(PermissionNames.Pages_Supervisor, new FixedLocalizableString("全局监管"), icon: "fa fa-list", requiredPermissionName: PermissionNames.Pages_Supervisor)
@@ -50,6 +51,7 @@ namespace Gsv.Web.Startup
                     .AddItem(new MenuItemDefinition("Supervisor_OutStocks", new FixedLocalizableString("出库单"), url: "Watcher/OutStocks"))
                     .AddItem(new MenuItemDefinition("Supervisor_Inspects", new FixedLocalizableString("抽检单"), url: "Watcher/Inspects"))
                     .AddItem(new MenuItemDefinition("Supervisor_Stocktaking", new FixedLocalizableString("盘点"), url: "Watcher/Stocktaking"))
+                    .AddItem(new MenuItemDefinition("Supervisor_Allot", new FixedLocalizableString("调拨"), url: "Watcher/Allots"))
                 );
         }
 

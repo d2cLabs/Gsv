@@ -13,7 +13,7 @@ namespace Gsv.Tasks.Dto
 
         public string ShelfName { get; set; }
 
-        public float Quantity { get; set; }
+        public double Quantity { get; set; }
 
         public DateTime CreateTime { get; set; }
     }

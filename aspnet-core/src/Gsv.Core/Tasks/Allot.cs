@@ -9,31 +9,39 @@ using Gsv.Types;
 namespace Gsv.Tasks
 {
     /// <summary>
-    /// 出库 Entity
+    /// 调拨 Entity
     /// </summary>
-    [Description("出库存")]
-    public class OutStock : Entity, IMustHaveTenant
+    [Description("调拨")]
+    public class Allot : Entity, IMustHaveTenant
     {
         public const int MaxCnLength = 2;
  
         // Implement of IMustHaveTenant
         public int TenantId { get; set; }
 
-
         public DateTime CarryoutDate { get; set; }
+
+        [Required]
         public int WorkerId { get; set; }
         public virtual Worker Worker { get; set; }
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// 场地Id
+        /// 调出场地Id
         /// </summary>
         [Required]
-        public int ShelfId { get; set; }
-        public virtual Shelf Shelf { get; set; }
+        public int FromShelfId { get; set; }
+        public virtual Shelf FromShelf { get; set; }
 
-        public double Quantity { get; set; }   
-             
+        /// <summary>
+        /// 调入场地Id
+        /// </summary>
+        [Required]
+        public int ToShelfId { get; set; }
+        public virtual Shelf ToShelf { get; set; }
+
+        public double Quantity { get; set; }
+        
         /// <summary>
         /// 照片
         /// </summary>

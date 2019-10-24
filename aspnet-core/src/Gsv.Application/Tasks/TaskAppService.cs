@@ -19,6 +19,7 @@ namespace Gsv.Tasks
         public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
         private const int NumItems = 20;
+        private readonly IRepository<Allot> _allotRepository;
         private readonly IRepository<InStock> _inStockRepository;
         private readonly IRepository<OutStock> _outStockRepository;
         private readonly IRepository<Inspect> _inspectRepository;
@@ -26,12 +27,14 @@ namespace Gsv.Tasks
 
         private readonly IRepository<Shelf> _shelfRepository;
 
-        public TaskAppService(IRepository<InStock> inStockRepository,
+        public TaskAppService(IRepository<Allot> allotRepository,
+            IRepository<InStock> inStockRepository,
             IRepository<OutStock> outStockRepository,
             IRepository<Inspect> inspectRepository,
             IRepository<Stocktaking> stocktakingRepository, 
             IRepository<Shelf> shelfRepository)
         {
+            _allotRepository = allotRepository;
             _inStockRepository = inStockRepository;
             _outStockRepository = outStockRepository;
             _inspectRepository = inspectRepository;
@@ -48,6 +51,18 @@ namespace Gsv.Tasks
         {
             var shelves = TaskManager.GetObjectShelves(objectId, categoryId);
             return ObjectMapper.Map<List<ShelfDto>>(shelves);           
+        }
+
+        public async Task<List<AllotDto>> GetAllotsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        {
+            var query = _allotRepository.GetAllIncluding(x => x.FromShelf, x => x.ToShelf, x => x.Worker);
+            if (shelfId > 0)
+                query = query.Where(x => x.CarryoutDate == carryoutDate && x.FromShelfId == shelfId);
+            else
+                query = query.Where(x => x.CarryoutDate == carryoutDate && x.FromShelf.PlaceId == placeId && x.FromShelf.CargoType.CategoryId == categoryId);
+            var entities = await AsyncQueryableExecuter.ToListAsync(query);
+            
+            return ObjectMapper.Map<List<AllotDto>>(entities);
         }
                 
         public async Task<List<InStockDto>> GetInStocksByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
@@ -161,6 +176,17 @@ namespace Gsv.Tasks
             _outStockRepository.Delete(outStock);
         }
 
+        public async Task DeleteAllot(int id) 
+        {
+            var allot = await _allotRepository.GetAsync(id);
+            
+            var shelf = await _shelfRepository.GetAsync(allot.FromShelfId);
+            shelf.Inventory += GetRatio(shelf, allot.Quantity);
+            shelf = await _shelfRepository.GetAsync(allot.ToShelfId);
+            shelf.Inventory -= GetRatio(shelf, allot.Quantity);
+            _allotRepository.Delete(allot);
+        }
+
         private StocktakingDto MapToStocktakingDto(Stocktaking entity)
         {
             StocktakingDto dto = ObjectMapper.Map<StocktakingDto>(entity);
@@ -176,13 +202,23 @@ namespace Gsv.Tasks
             return dto;
         }
 
-        private float GetRatio(Shelf shelf, float quantity)
+        private double GetRatio(Shelf shelf, double quantity)
         {
             var cargoType = TaskManager.GetCargoType(shelf.CargoTypeId);
             return cargoType.Ratio * quantity;
         }
         #region Wx
 
+        [AbpAllowAnonymous]
+        public async Task<List<AllotDto>> GetWxAllotsAsync(int placeId, int categoryId)
+        {
+            var query = _allotRepository.GetAllIncluding(x => x.FromShelf, x => x.Worker);
+            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.FromShelf.PlaceId == placeId && x.FromShelf.CargoType.CategoryId == categoryId);
+            query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
+            var entities = await AsyncQueryableExecuter.ToListAsync(query);
+            
+            return ObjectMapper.Map<List<AllotDto>>(entities);
+        }
         [AbpAllowAnonymous]
         public async Task<List<InStockDto>> GetWxInStocksAsync(int placeId, int categoryId)
         {
@@ -225,9 +261,38 @@ namespace Gsv.Tasks
             
             return ObjectMapper.Map<List<StocktakingDto>>(entities);
         }
+
+        [AbpAllowAnonymous]
+        public void InsertAllot(int fromShelfId, int toShelfId, double quantity, int workerId)
+        {
+            using (CurrentUnitOfWork.SetTenantId(1))
+            {
+                var entity = new Allot() {
+                    CarryoutDate = DateTime.Today,
+                    FromShelfId = fromShelfId,
+                    ToShelfId = toShelfId,
+                    Quantity = quantity,
+                    WorkerId = workerId,
+                    CreateTime = DateTime.Now
+                };
+
+                _allotRepository.Insert(entity);
+           
+                var shelf = _shelfRepository.Get(fromShelfId);
+                shelf.Inventory -= GetRatio(shelf, quantity);
+                shelf.LastInTime = DateTime.Now;
+
+                shelf = _shelfRepository.Get(toShelfId);
+                shelf.Inventory += GetRatio(shelf, quantity);
+                shelf.LastInTime = DateTime.Now;
+
+                CurrentUnitOfWork.SaveChanges();
+            }
+        }
+
                 
         [AbpAllowAnonymous]
-        public void InsertInStock(int shelfId, int sourceId, float quantity, int workerId)
+        public void InsertInStock(int shelfId, int sourceId, double quantity, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -252,7 +317,7 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertOutStock(int shelfId, float quantity, int workerId)
+        public void InsertOutStock(int shelfId, double quantity, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -292,7 +357,7 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertStocktaking(int shelfId, float inventory, int workerId)
+        public void InsertStocktaking(int shelfId, double inventory, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {

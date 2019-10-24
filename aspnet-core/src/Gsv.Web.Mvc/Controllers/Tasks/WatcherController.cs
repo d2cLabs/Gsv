@@ -39,10 +39,22 @@ namespace Gsv.Web.Controllers
             return View();
         }
 
+        public ActionResult Allots()
+        {
+            return View();
+        }
+
         [DontWrapResult]
         public async Task<JsonResult> GridData()
         {
             var output = await _objectAppService.GetObjectsAsync(GetSorting());
+            return Json( new { rows = output });
+        }
+
+        [DontWrapResult]
+        public async Task<JsonResult> GridDataAllot(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        {
+            var output = await _taskAppService.GetAllotsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
             return Json( new { rows = output });
         }
 
