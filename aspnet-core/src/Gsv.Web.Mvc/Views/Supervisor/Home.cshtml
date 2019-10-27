@@ -12,7 +12,7 @@
         	$('#dg').datagrid({
             	url: '/Supervisor' + '/GridData',
             	onSelect: function(index, row) {
-					alert('select');
+					$('#fm').form('load', row);
 				}
 			});
 
@@ -77,12 +77,26 @@
     <div data-options="region:'north',split:true," style="height: 420px">
 		<div class="easyui-layout" fit="true">
     		<div data-options="region:'west'" style="width: 20%">
-				<div title="今日总览" style="text-align:center;background:#f3eeaf;height:100%;padding:5px;">
-					<h2>入库数：800</h2>
-					<h2>出库数：600</h2>
-					<h2>库存数：100</h2>
-					<h2>监控标的：100</h2>
-				</div>
+    			<form id="fm" class="easyui-form" method="post" novalidate>
+        			<table class="edit-tbl">
+            			<tr>
+                			<th><label for="place">场所</label></th>
+                			<td><input name="placeName" class="easyui-textbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><Label for="capital">资金方</Label></th>
+                			<td><input name="capitalName" class="easyui-textbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><label for="yellowQuantity">黄线</label></th>
+                			<td><input name="yellowQuantity" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><label for="spare">富余</label></th>
+                			<td><input name="spare" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+         			</table>
+    			</form>
 			</div>
     		<div data-options="region:'center'">
 				<div class="easyui-tabs" data-options="fit:true, border:false">
@@ -119,6 +133,7 @@
                     <th field="quantity" width="80" sortable="true" align="right">监管量</th>
                     <th field="yellowQuantity" width="80" sortable="true" align="right">监管黄线</th>
                     <th field="inventory" width="80" align="right" formatter="$.quantityFormatter">当前库存量</th>
+                    <th field="spare" width="80" align="right" formatter="$.quantityFormatter">当前库存量</th>
                 </tr>
             </thead>
         </table>

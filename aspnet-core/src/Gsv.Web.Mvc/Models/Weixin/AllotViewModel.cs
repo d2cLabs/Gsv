@@ -11,7 +11,8 @@ namespace Gsv.Web.Models.Weixin
 
         public List<ShelfDto> Shelves { get; set; }
 
-        public float Quantity { get; set; }
+        public double Quantity { get; set; }
 
+        public string Remark { get; set; }
     }
 }

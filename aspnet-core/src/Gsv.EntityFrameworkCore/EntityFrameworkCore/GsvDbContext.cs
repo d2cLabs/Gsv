@@ -109,6 +109,8 @@ namespace Gsv.EntityFrameworkCore
             modelBuilder.Entity<CargoType>()
                 .HasOne(b => b.Place).WithMany().OnDelete(DeleteBehavior.Restrict);
  
+            modelBuilder.Entity<Allot>()
+                .HasOne(b => b.ToShelf).WithMany().OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

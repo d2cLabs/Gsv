@@ -35,9 +35,16 @@ namespace Gsv.Tasks
         public double Quantity { get; set; }   
              
         /// <summary>
-        /// 照片
+        /// 备注
         /// </summary>
-        public byte[] Photo { get; set; }
+        [StringLength(GsvConsts.NormalStringFieldLength)]
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 照片文件名
+        /// </summary>
+        [StringLength(GsvConsts.PhotoFilePathLength)]
+        public string PhotoFile { get; set; }
     }
 }
 

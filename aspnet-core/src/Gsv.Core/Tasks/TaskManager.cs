@@ -87,12 +87,12 @@ namespace Gsv.Tasks
         private double GetObjectTotalInventory(int id)
         {
             var obj = _objectCache[id];
-            double total = 0.0f;
+            double total = 0.0d;
             var shelves = _shelfCache.GetList();
             foreach (var shelf in shelves) {
                 var type = _cargoTypeCache[shelf.CargoTypeId];
                 if (shelf.PlaceId == obj.PlaceId && type.CategoryId == obj.CategoryId)
-                    total += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0.0f;
+                    total += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0.0d;
             }
             return total;
         }
@@ -103,7 +103,7 @@ namespace Gsv.Tasks
             return _placeCache[obj.PlaceId].Name;
         }
 
-        public (string, double, double) GetObjectCollateral(int id)
+        public (string, double, int) GetObjectCollateral(int id)
         {
             var obj = _objectCache[id];
             return (_categoryCache[obj.CategoryId].Name, GetObjectTotalInventory(id), obj.YellowQuantity);

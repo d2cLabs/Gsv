@@ -8,6 +8,18 @@ namespace Gsv.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "Photo",
+                table: "OutStocks");
+
+            migrationBuilder.DropColumn(
+                name: "Photo",
+                table: "InStocks");
+
+            migrationBuilder.DropColumn(
+                name: "Photo",
+                table: "Inspects");
+
             migrationBuilder.AlterColumn<double>(
                 name: "Inventory",
                 table: "Stocktakings",
@@ -20,6 +32,18 @@ namespace Gsv.Migrations
                 nullable: true,
                 oldClrType: typeof(float),
                 oldNullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PhotoFile",
+                table: "Stocktakings",
+                maxLength: 100,
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Remark",
+                table: "Stocktakings",
+                maxLength: 50,
+                nullable: true);
 
             migrationBuilder.AlterColumn<double>(
                 name: "Inventory",
@@ -34,6 +58,18 @@ namespace Gsv.Migrations
                 nullable: false,
                 oldClrType: typeof(float));
 
+            migrationBuilder.AddColumn<string>(
+                name: "PhotoFile",
+                table: "OutStocks",
+                maxLength: 100,
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Remark",
+                table: "OutStocks",
+                maxLength: 50,
+                nullable: true);
+
             migrationBuilder.AlterColumn<int>(
                 name: "YellowQuantity",
                 table: "Objects",
@@ -46,11 +82,35 @@ namespace Gsv.Migrations
                 nullable: false,
                 oldClrType: typeof(float));
 
+            migrationBuilder.AddColumn<string>(
+                name: "CameraIps",
+                table: "Objects",
+                maxLength: 512,
+                nullable: true);
+
             migrationBuilder.AlterColumn<double>(
                 name: "Quantity",
                 table: "InStocks",
                 nullable: false,
                 oldClrType: typeof(float));
+
+            migrationBuilder.AddColumn<string>(
+                name: "PhotoFile",
+                table: "InStocks",
+                maxLength: 100,
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Remark",
+                table: "InStocks",
+                maxLength: 50,
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PhotoFile",
+                table: "Inspects",
+                maxLength: 100,
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "Allots",
@@ -65,7 +125,8 @@ namespace Gsv.Migrations
                     FromShelfId = table.Column<int>(nullable: false),
                     ToShelfId = table.Column<int>(nullable: false),
                     Quantity = table.Column<double>(nullable: false),
-                    Photo = table.Column<byte[]>(nullable: true)
+                    PhotoFile = table.Column<string>(maxLength: 100, nullable: true),
+                    Remark = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,7 +142,7 @@ namespace Gsv.Migrations
                         column: x => x.ToShelfId,
                         principalTable: "Shelves",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Allots_Workers_WorkerId",
                         column: x => x.WorkerId,
@@ -116,6 +177,38 @@ namespace Gsv.Migrations
             migrationBuilder.DropTable(
                 name: "Allots");
 
+            migrationBuilder.DropColumn(
+                name: "PhotoFile",
+                table: "Stocktakings");
+
+            migrationBuilder.DropColumn(
+                name: "Remark",
+                table: "Stocktakings");
+
+            migrationBuilder.DropColumn(
+                name: "PhotoFile",
+                table: "OutStocks");
+
+            migrationBuilder.DropColumn(
+                name: "Remark",
+                table: "OutStocks");
+
+            migrationBuilder.DropColumn(
+                name: "CameraIps",
+                table: "Objects");
+
+            migrationBuilder.DropColumn(
+                name: "PhotoFile",
+                table: "InStocks");
+
+            migrationBuilder.DropColumn(
+                name: "Remark",
+                table: "InStocks");
+
+            migrationBuilder.DropColumn(
+                name: "PhotoFile",
+                table: "Inspects");
+
             migrationBuilder.AlterColumn<float>(
                 name: "Inventory",
                 table: "Stocktakings",
@@ -142,6 +235,11 @@ namespace Gsv.Migrations
                 nullable: false,
                 oldClrType: typeof(double));
 
+            migrationBuilder.AddColumn<byte[]>(
+                name: "Photo",
+                table: "OutStocks",
+                nullable: true);
+
             migrationBuilder.AlterColumn<float>(
                 name: "YellowQuantity",
                 table: "Objects",
@@ -159,6 +257,16 @@ namespace Gsv.Migrations
                 table: "InStocks",
                 nullable: false,
                 oldClrType: typeof(double));
+
+            migrationBuilder.AddColumn<byte[]>(
+                name: "Photo",
+                table: "InStocks",
+                nullable: true);
+
+            migrationBuilder.AddColumn<byte[]>(
+                name: "Photo",
+                table: "Inspects",
+                nullable: true);
         }
     }
 }

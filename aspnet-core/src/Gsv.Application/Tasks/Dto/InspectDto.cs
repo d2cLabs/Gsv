@@ -20,7 +20,7 @@ namespace Gsv.Tasks.Dto
 
         public string Remark { get; set; }
 
-        public int PhotoLength { get; set; }
+        public string PhotoFile { get; set; }
 
         public DateTime CreateTime { get; set; }
 

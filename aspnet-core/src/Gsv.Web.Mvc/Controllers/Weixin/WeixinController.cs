@@ -51,7 +51,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertAllot(AllotViewModel vm)
         {
-            _taskAppService.InsertAllot(vm.FromShelfId, vm.ToShelfId, vm.Quantity, GetWorkerId());
+            _taskAppService.InsertAllot(vm.FromShelfId, vm.ToShelfId, vm.Quantity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("AllotList");
         }
@@ -64,7 +64,7 @@ namespace Gsv.Web.Controllers
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
             var ret = TaskManager.GetObjectCollateral(obj.Id);
-            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxAllotsAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -75,12 +75,12 @@ namespace Gsv.Web.Controllers
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
                     Shelf = item.FromShelfName,
                     ToShelf = item.ToShelfName,
-                    Quantity = item.Quantity.ToString("F2"),
+                    Quantity = item.Quantity.ToString("F3"),
                     CreateWorker = item.WorkerName,
                 });
                 total += item.Quantity;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  调拨总重({1:F2})", items.Count, total);
+            vm.TodaySummary = string.Format("今日笔数({0})  调拨总重({1:F3})", items.Count, total);
         
             return vm;
         }
@@ -122,7 +122,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertInStock(InStockViewModel vm)
         {
-            _taskAppService.InsertInStock(vm.ShelfId, vm.SourceId, vm.Quantity, GetWorkerId());
+            _taskAppService.InsertInStock(vm.ShelfId, vm.SourceId, vm.Quantity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("InList");
         }
@@ -134,7 +134,7 @@ namespace Gsv.Web.Controllers
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
             var ret = TaskManager.GetObjectCollateral(obj.Id);
-            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -144,12 +144,12 @@ namespace Gsv.Web.Controllers
                 vm.Items.Add(new ItemInfo {
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
                     Shelf = item.ShelfName,
-                    Quantity = item.Quantity.ToString("F2"),
+                    Quantity = item.Quantity.ToString("F3"),
                     CreateWorker = item.WorkerName,
                 });
                 total += item.Quantity;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  进库总重({1:F2})", items.Count, total);
+            vm.TodaySummary = string.Format("今日笔数({0})  进库总重({1:F3})", items.Count, total);
         
             return vm;
         }
@@ -178,7 +178,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertOutStock(OutStockViewModel vm)
         {
-            _taskAppService.InsertOutStock(vm.ShelfId, vm.Quantity, GetWorkerId());
+            _taskAppService.InsertOutStock(vm.ShelfId, vm.Quantity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("OutList");
         }
@@ -190,7 +190,7 @@ namespace Gsv.Web.Controllers
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
             var ret = TaskManager.GetObjectCollateral(obj.Id);
-            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxOutStocksAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -200,12 +200,12 @@ namespace Gsv.Web.Controllers
                 vm.Items.Add(new ItemInfo {
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
                     Shelf = item.ShelfName,
-                    Quantity = item.Quantity.ToString("F2"),
+                    Quantity = item.Quantity.ToString("F3"),
                     CreateWorker = item.WorkerName,
                 });
                 total += item.Quantity;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F2})  余量({2:F2})", items.Count, total, ret.Item2 - ret.Item3);
+            vm.TodaySummary = string.Format("今日笔数({0})  出库总重({1:F3})  余量({2:F3})", items.Count, total, ret.Item2 - ret.Item3);
         
             return vm;
         }
@@ -245,7 +245,7 @@ namespace Gsv.Web.Controllers
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
             var ret = TaskManager.GetObjectCollateral(obj.Id);
-            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxInspectsAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -288,7 +288,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertStocktaking(StocktakingViewModel vm)
         {
-            _taskAppService.InsertStocktaking(vm.ShelfId, vm.Inventory, GetWorkerId());
+            _taskAppService.InsertStocktaking(vm.ShelfId, vm.Inventory, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("StocktakingList");
         }
@@ -300,7 +300,7 @@ namespace Gsv.Web.Controllers
             ListViewModel vm = new ListViewModel();
             vm.PlaceInfo = TaskManager.GetObjectPlaceInfo(obj.Id);
             var ret = TaskManager.GetObjectCollateral(obj.Id);
-            vm.Collateral = string.Format("类型:{0}   库存:{1:F2}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
+            vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
             var items = _taskAppService.GetWxStocktakingsAsync(obj.PlaceId, obj.CategoryId).Result;
             vm.Items = new List<ItemInfo>();
@@ -310,12 +310,12 @@ namespace Gsv.Web.Controllers
                 vm.Items.Add(new ItemInfo {
                     CreateTime = item.CreateTime.ToString("HH:mm:ss"),
                     Shelf = item.ShelfName,
-                    Quantity = item.Inventory.ToString("F2"),
+                    Quantity = item.Inventory.ToString("F3"),
                     CreateWorker = item.WorkerName,
                 });
                 total += item.Inventory;
             }
-            vm.TodaySummary = string.Format("今日笔数({0})  总称重({1:F2})", items.Count, total);
+            vm.TodaySummary = string.Format("今日笔数({0})  总称重({1:F3})", items.Count, total);
         
             return vm;
         }

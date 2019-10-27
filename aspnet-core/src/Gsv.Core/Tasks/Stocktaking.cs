@@ -33,6 +33,17 @@ namespace Gsv.Tasks
         public double Inventory { get; set; }
 
         public double? Deviation { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [StringLength(GsvConsts.NormalStringFieldLength)]
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 照片文件名
+        /// </summary>
+        [StringLength(GsvConsts.PhotoFilePathLength)]
+        public string PhotoFile { get; set; }
     }
 }
 

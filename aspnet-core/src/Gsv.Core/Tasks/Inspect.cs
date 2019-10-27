@@ -45,9 +45,10 @@ namespace Gsv.Tasks
         public string Remark { get; set; }
 
         /// <summary>
-        /// 照片
+        /// 照片文件名
         /// </summary>
-        public byte[] Photo { get; set; }
+        [StringLength(GsvConsts.PhotoFilePathLength)]
+        public string PhotoFile { get; set; }
    }
 }
 

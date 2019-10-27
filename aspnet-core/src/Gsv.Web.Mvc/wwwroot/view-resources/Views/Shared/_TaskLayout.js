@@ -47,7 +47,11 @@
                 abp.services.app.task.getObjectShelves(row.id, row.categoryId).done(function (res) {
                     var treeData = [];
                     res.forEach( function (val, index, arr) {
-                        treeData.push({ id: val.id, text: val.name });
+                        var displayText = val.name;
+                        if (val.inventory != null) {
+                            displayText = displayText + '【库存:' + val.inventory.toFixed(3) + '】';
+                        }
+                        treeData.push({ id: val.id, text: displayText });
                     });
                     $('#shelf').tree({
                         data: treeData,

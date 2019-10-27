@@ -10,10 +10,11 @@ namespace Gsv.Web.Models.Weixin
 
         public List<ShelfDto> Shelves { get; set; }
 
-        public float Quantity { get; set; }
+        public double Quantity { get; set; }
 
         public int SourceId { get; set; }
 
         public List<SourceDto> Sources { get; set; }
+        public string Remark { get; set; }
     }
 }

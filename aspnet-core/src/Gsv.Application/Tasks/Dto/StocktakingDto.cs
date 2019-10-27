@@ -19,6 +19,9 @@ namespace Gsv.Tasks.Dto
         public double? Deviation { get; set; }
 
         public string WorkerName { get; set; }
+        public string Remark { get; set; }
+
+        public string PhotoFile { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

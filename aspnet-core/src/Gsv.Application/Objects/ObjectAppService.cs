@@ -61,16 +61,9 @@ namespace Gsv.Objects
                 query = query.Where(x => worker.PlaceList.Contains(x.Place.Cn));
             }
 
-            // query = query.OrderBy(sorting);                           // Applying Sorting
-
-            try {
+            query = query.OrderBy(sorting);                           // Applying Sorting
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             return entities.Select(MapToTaskObjectDto).ToList();
-            }
-            catch (System.Exception ex)
-            {
-            }       //return entities.Select(MapToTaskObjectDto).ToList();
-            return null;
         }
        
         #region private
@@ -86,6 +79,8 @@ namespace Gsv.Objects
                 sum += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
             }
             dto.Inventory = sum;
+            dto.Spare = sum - dto.YellowQuantity;
+            
             return dto;
         }
 

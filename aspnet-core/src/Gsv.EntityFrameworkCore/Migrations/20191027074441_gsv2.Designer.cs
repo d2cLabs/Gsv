@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gsv.Migrations
 {
     [DbContext(typeof(GsvDbContext))]
-    [Migration("20191024095118_gsv2")]
+    [Migration("20191027074441_gsv2")]
     partial class gsv2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1151,6 +1151,9 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CameraIps")
+                        .HasMaxLength(512);
+
                     b.Property<int>("CapitalId");
 
                     b.Property<int>("CategoryId");
@@ -1302,9 +1305,13 @@ namespace Gsv.Migrations
 
                     b.Property<int>("FromShelfId");
 
-                    b.Property<byte[]>("Photo");
+                    b.Property<string>("PhotoFile")
+                        .HasMaxLength(100);
 
                     b.Property<double>("Quantity");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(50);
 
                     b.Property<int>("TenantId");
 
@@ -1335,9 +1342,13 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<byte[]>("Photo");
+                    b.Property<string>("PhotoFile")
+                        .HasMaxLength(100);
 
                     b.Property<double>("Quantity");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(50);
 
                     b.Property<int>("ShelfId");
 
@@ -1370,7 +1381,8 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<byte[]>("Photo");
+                    b.Property<string>("PhotoFile")
+                        .HasMaxLength(100);
 
                     b.Property<float>("Purity");
 
@@ -1404,9 +1416,13 @@ namespace Gsv.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<byte[]>("Photo");
+                    b.Property<string>("PhotoFile")
+                        .HasMaxLength(100);
 
                     b.Property<double>("Quantity");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(50);
 
                     b.Property<int>("ShelfId");
 
@@ -1438,6 +1454,12 @@ namespace Gsv.Migrations
                     b.Property<double?>("Deviation");
 
                     b.Property<double>("Inventory");
+
+                    b.Property<string>("PhotoFile")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(50);
 
                     b.Property<int>("ShelfId");
 
@@ -1733,7 +1755,7 @@ namespace Gsv.Migrations
                     b.HasOne("Gsv.Objects.Shelf", "ToShelf")
                         .WithMany()
                         .HasForeignKey("ToShelfId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Gsv.Staffing.Worker", "Worker")
                         .WithMany()

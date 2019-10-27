@@ -11,6 +11,7 @@
         public const string UserEmailServerName = "@tenant.com";
         public const int EntityListCacheSlidingExpireTime = 20;
 
+        public const int PhotoFilePathLength = 100;
         public const int NormalStringFieldLength = 50;
         public const int LargeStringFieldLength = 512;
 

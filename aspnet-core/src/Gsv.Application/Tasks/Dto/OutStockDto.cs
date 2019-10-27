@@ -15,6 +15,9 @@ namespace Gsv.Tasks.Dto
 
         public double Quantity { get; set; }
 
+        public string Remark { get; set; }
+
+        public string PhotoFile { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

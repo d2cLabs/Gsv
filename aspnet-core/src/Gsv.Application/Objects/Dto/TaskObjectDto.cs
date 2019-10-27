@@ -25,6 +25,8 @@ namespace Gsv.Objects.Dto
         public int YellowQuantity { get; set; }
 
         public double Inventory { get; set; }
+
+        public double Spare { get; set; }
     }
 }
 

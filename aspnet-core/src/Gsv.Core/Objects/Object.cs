@@ -46,6 +46,9 @@ namespace Gsv.Objects
 
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string Remark { get; set; }
+
+        [StringLength(GsvConsts.LargeStringFieldLength)]
+        public string CameraIps { get; set; }
     }
 }
 

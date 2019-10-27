@@ -7,7 +7,6 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq;
 using Gsv.Objects;
-using Gsv.Objects.Dto;
 using Gsv.Tasks.Dto;
 
 namespace Gsv.Tasks
@@ -47,10 +46,10 @@ namespace Gsv.Tasks
             return DateTime.Today.ToString("yyyy-MM-dd");
         }
         
-        public List<ShelfDto> GetObjectShelves(int objectId, int categoryId)
+        public List<TaskShelfDto> GetObjectShelves(int objectId, int categoryId)
         {
             var shelves = TaskManager.GetObjectShelves(objectId, categoryId);
-            return ObjectMapper.Map<List<ShelfDto>>(shelves);           
+            return ObjectMapper.Map<List<TaskShelfDto>>(shelves);           
         }
 
         public async Task<List<AllotDto>> GetAllotsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
@@ -263,7 +262,7 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertAllot(int fromShelfId, int toShelfId, double quantity, int workerId)
+        public void InsertAllot(int fromShelfId, int toShelfId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -272,6 +271,7 @@ namespace Gsv.Tasks
                     FromShelfId = fromShelfId,
                     ToShelfId = toShelfId,
                     Quantity = quantity,
+                    Remark = remark,
                     WorkerId = workerId,
                     CreateTime = DateTime.Now
                 };
@@ -292,7 +292,7 @@ namespace Gsv.Tasks
 
                 
         [AbpAllowAnonymous]
-        public void InsertInStock(int shelfId, int sourceId, double quantity, int workerId)
+        public void InsertInStock(int shelfId, int sourceId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -301,6 +301,7 @@ namespace Gsv.Tasks
                     ShelfId = shelfId,
                     SourceId = sourceId,
                     Quantity = quantity,
+                    Remark = remark,
                     WorkerId = workerId,
                     CreateTime = DateTime.Now
                 };
@@ -317,7 +318,7 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertOutStock(int shelfId, double quantity, int workerId)
+        public void InsertOutStock(int shelfId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -325,6 +326,7 @@ namespace Gsv.Tasks
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     Quantity = quantity,
+                    Remark = remark,
                     WorkerId = workerId,
                     CreateTime = DateTime.Now
                 };
@@ -357,7 +359,7 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertStocktaking(int shelfId, double inventory, int workerId)
+        public void InsertStocktaking(int shelfId, double inventory, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
@@ -365,6 +367,7 @@ namespace Gsv.Tasks
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     Inventory = inventory,
+                    Remark = remark,
                     WorkerId = workerId,
                     CreateTime = DateTime.Now
                 };
