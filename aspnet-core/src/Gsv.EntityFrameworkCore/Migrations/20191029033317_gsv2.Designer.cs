@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gsv.Migrations
 {
     [DbContext(typeof(GsvDbContext))]
-    [Migration("20191027074441_gsv2")]
+    [Migration("20191029033317_gsv2")]
     partial class gsv2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1151,9 +1151,6 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CameraIps")
-                        .HasMaxLength(512);
-
                     b.Property<int>("CapitalId");
 
                     b.Property<int>("CategoryId");
@@ -1192,6 +1189,9 @@ namespace Gsv.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CameraIps")
+                        .HasMaxLength(512);
 
                     b.Property<string>("Cn")
                         .IsRequired()
@@ -1244,6 +1244,10 @@ namespace Gsv.Migrations
                     b.Property<int>("NumOutToday");
 
                     b.Property<int>("PlaceId");
+
+                    b.Property<double>("QuantityInToday");
+
+                    b.Property<double>("QuantityOutToday");
 
                     b.Property<int>("TenantId");
 

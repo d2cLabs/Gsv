@@ -36,5 +36,8 @@ namespace Gsv.Objects.Dto
         /// 纬度
         /// </summary>
         public double? Latitude { get; set; }
+        
+        [StringLength(GsvConsts.LargeStringFieldLength)]
+        public string CameraIps { get; set; }
     }
 }

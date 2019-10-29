@@ -52,6 +52,24 @@ namespace Gsv.Migrations
                 oldClrType: typeof(float),
                 oldNullable: true);
 
+            migrationBuilder.AddColumn<double>(
+                name: "QuantityInToday",
+                table: "Shelves",
+                nullable: false,
+                defaultValue: 0.0);
+
+            migrationBuilder.AddColumn<double>(
+                name: "QuantityOutToday",
+                table: "Shelves",
+                nullable: false,
+                defaultValue: 0.0);
+
+            migrationBuilder.AddColumn<string>(
+                name: "CameraIps",
+                table: "Places",
+                maxLength: 512,
+                nullable: true);
+
             migrationBuilder.AlterColumn<double>(
                 name: "Quantity",
                 table: "OutStocks",
@@ -81,12 +99,6 @@ namespace Gsv.Migrations
                 table: "Objects",
                 nullable: false,
                 oldClrType: typeof(float));
-
-            migrationBuilder.AddColumn<string>(
-                name: "CameraIps",
-                table: "Objects",
-                maxLength: 512,
-                nullable: true);
 
             migrationBuilder.AlterColumn<double>(
                 name: "Quantity",
@@ -125,8 +137,8 @@ namespace Gsv.Migrations
                     FromShelfId = table.Column<int>(nullable: false),
                     ToShelfId = table.Column<int>(nullable: false),
                     Quantity = table.Column<double>(nullable: false),
-                    PhotoFile = table.Column<string>(maxLength: 100, nullable: true),
-                    Remark = table.Column<string>(maxLength: 50, nullable: true)
+                    Remark = table.Column<string>(maxLength: 50, nullable: true),
+                    PhotoFile = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,16 +198,24 @@ namespace Gsv.Migrations
                 table: "Stocktakings");
 
             migrationBuilder.DropColumn(
+                name: "QuantityInToday",
+                table: "Shelves");
+
+            migrationBuilder.DropColumn(
+                name: "QuantityOutToday",
+                table: "Shelves");
+
+            migrationBuilder.DropColumn(
+                name: "CameraIps",
+                table: "Places");
+
+            migrationBuilder.DropColumn(
                 name: "PhotoFile",
                 table: "OutStocks");
 
             migrationBuilder.DropColumn(
                 name: "Remark",
                 table: "OutStocks");
-
-            migrationBuilder.DropColumn(
-                name: "CameraIps",
-                table: "Objects");
 
             migrationBuilder.DropColumn(
                 name: "PhotoFile",

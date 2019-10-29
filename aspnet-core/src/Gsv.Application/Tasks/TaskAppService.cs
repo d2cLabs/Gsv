@@ -311,6 +311,13 @@ namespace Gsv.Tasks
             
                 var shelf = _shelfRepository.Get(shelfId);
                 shelf.Inventory += GetRatio(shelf, quantity);
+                if (!shelf.LastInTime.HasValue || shelf.LastInTime.Value.Date != DateTime.Now.Date)
+                {
+                    shelf.NumInToday = 0;
+                    shelf.QuantityInToday = 0;
+                }
+                shelf.NumInToday += 1;
+                shelf.QuantityInToday += quantity;
                 shelf.LastInTime = DateTime.Now;
 
                 CurrentUnitOfWork.SaveChanges();
@@ -334,6 +341,14 @@ namespace Gsv.Tasks
 
                 var shelf = _shelfRepository.Get(shelfId);
                 shelf.Inventory -= GetRatio(shelf, quantity);
+                shelf.Inventory += GetRatio(shelf, quantity);
+                if (!shelf.LastOutTime.HasValue || shelf.LastOutTime.Value.Date != DateTime.Now.Date)
+                {
+                    shelf.NumOutToday = 0;
+                    shelf.QuantityOutToday = 0;
+                }
+                shelf.NumOutToday += 1;
+                shelf.QuantityOutToday += quantity;
                 shelf.LastOutTime = DateTime.Now;
 
                 CurrentUnitOfWork.SaveChanges();

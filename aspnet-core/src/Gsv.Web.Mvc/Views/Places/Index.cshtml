@@ -16,6 +16,7 @@
             { field: "weixinIds", title: "通知微信列表", width: 100 },
             { field: "longitude", title: "经度", width: 80 },
             { field: "latitude", title: "纬度", width: 80 },
+            { field: "cameraIps", title: "摄像头地址列表", width: 110 },
        ]];
     </script>
 }
@@ -48,6 +49,10 @@
             <tr>
                 <th><Label for="latitude">纬度:</Label></th>
                 <td><input name="latitude" class="easyui-numberbox" data-options="precision:6" style="width: 100%"></td>
+            </tr>
+            <tr>
+                 <th><Label for="cameraIps">摄像头地址列表:</Label></th>
+                <td><input name="cameraIps" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.LargeStringFieldLength]'" style="width: 100%"></td>
             </tr>
         </table>
     </form>

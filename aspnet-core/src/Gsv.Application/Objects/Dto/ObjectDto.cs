@@ -34,10 +34,7 @@ namespace Gsv.Objects.Dto
         public float? FixedPrice { get; set; }
 
         [StringLength(GsvConsts.NormalStringFieldLength)]
-        public string Remark { get; set; }
-        
-        [StringLength(GsvConsts.LargeStringFieldLength)]
-        public string CameraIps { get; set; }
+        public string Remark { get; set; }        
     }
 }
 

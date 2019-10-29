@@ -47,6 +47,9 @@ namespace Gsv.Objects
         /// </summary>
         public double? Latitude { get; set; }
 
+        [StringLength(GsvConsts.LargeStringFieldLength)]
+        public string CameraIps { get; set; }
+        
         [ForeignKey("PlaceId")]
         public virtual List<Shelf> Shelves { get; set; }
     }

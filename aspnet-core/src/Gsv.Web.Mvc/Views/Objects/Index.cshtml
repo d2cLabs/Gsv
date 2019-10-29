@@ -18,7 +18,6 @@
             { field: "isFixedPrice", title: "采用固定价格", width: 80 },         
             { field: "fixedPrice", title: "固定价格", width: 80 },
             { field: "remark", title: "备注", width: 100 },
-            { field: "cameraIps", title: "摄像头地址列表", width: 110 },
         ]];        
     </script>
 }
@@ -116,10 +115,6 @@
             <tr>
                  <th><Label for="remark">备注:</Label></th>
                 <td><input name="remark" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.NormalStringFieldLength]'" style="width: 100%"></td>
-            </tr>
-            <tr>
-                 <th><Label for="cameraIps">摄像头地址列表:</Label></th>
-                <td><input name="cameraIps" class="easyui-textbox" data-options="validType:'length[1, @GsvConsts.LargeStringFieldLength]'" style="width: 100%"></td>
             </tr>
         </table>
     </form>

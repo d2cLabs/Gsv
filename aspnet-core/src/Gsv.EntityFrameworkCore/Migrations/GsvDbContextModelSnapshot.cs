@@ -1149,9 +1149,6 @@ namespace Gsv.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CameraIps")
-                        .HasMaxLength(512);
-
                     b.Property<int>("CapitalId");
 
                     b.Property<int>("CategoryId");
@@ -1190,6 +1187,9 @@ namespace Gsv.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CameraIps")
+                        .HasMaxLength(512);
 
                     b.Property<string>("Cn")
                         .IsRequired()
@@ -1242,6 +1242,10 @@ namespace Gsv.Migrations
                     b.Property<int>("NumOutToday");
 
                     b.Property<int>("PlaceId");
+
+                    b.Property<double>("QuantityInToday");
+
+                    b.Property<double>("QuantityOutToday");
 
                     b.Property<int>("TenantId");
 

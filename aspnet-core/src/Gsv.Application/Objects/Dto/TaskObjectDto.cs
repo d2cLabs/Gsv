@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
@@ -27,6 +28,16 @@ namespace Gsv.Objects.Dto
         public double Inventory { get; set; }
 
         public double Spare { get; set; }
+
+        public int NumInToday { get; set; }
+        public int NumOutToday { get; set; }
+        public double QuantityInToday { get; set; }
+        public double QuantityOutToday { get; set; }
+        public double InventoryInToday { get; set; }
+        public double InventoryOutToday { get; set; }
+        public DateTime? LastInTime { get; set; }
+        public DateTime? LastOutTime { get; set; }
+
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -67,19 +68,57 @@ namespace Gsv.Objects
         }
        
         #region private
+
+        private double GetRatio(Shelf shelf, double quantity)
+        {
+            var cargoType = TaskManager.GetCargoType(shelf.CargoTypeId);
+            return cargoType.Ratio * quantity;
+        }
+
         private TaskObjectDto MapToTaskObjectDto(Object entity)
         {
             var dto = ObjectMapper.Map<TaskObjectDto>(entity);
 
             var shelfs = TaskManager.GetObjectShelves(entity.Id, entity.CategoryId);
 
-            double sum = 0;
+            double sumInventory = 0;
+            double sumQuantityInToday = 0;
+            double sumQuantityOutToday = 0;
+            double sumInventoryInToday = 0;
+            double sumInventoryOutToday = 0;
+            int sumNumInToday = 0;
+            int sumNumOutToday = 0;
             foreach (var shelf in shelfs)
             {
-                sum += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
+                sumInventory += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
+                if (shelf.LastInTime.HasValue && shelf.LastInTime.Value.Date == DateTime.Now.Date)
+                {
+                    sumNumInToday += shelf.NumInToday;
+                    sumQuantityInToday += shelf.QuantityInToday;
+                    sumInventoryInToday += GetRatio(shelf, shelf.QuantityInToday);
+
+                    if (shelf.LastInTime.Value > dto.LastInTime)
+                        dto.LastInTime = shelf.LastInTime.Value;
+                }
+                if (shelf.LastOutTime.HasValue && shelf.LastOutTime.Value.Date == DateTime.Now.Date)
+                {
+                    sumNumOutToday += shelf.NumOutToday;
+                    sumQuantityOutToday += shelf.QuantityOutToday;
+                    sumInventoryOutToday += GetRatio(shelf, shelf.QuantityOutToday);
+
+                    if (shelf.LastOutTime.Value > dto.LastOutTime)
+                        dto.LastOutTime = shelf.LastOutTime.Value;
+                 }
             }
-            dto.Inventory = sum;
-            dto.Spare = sum - dto.YellowQuantity;
+            dto.Inventory = sumInventory;
+            dto.NumInToday = sumNumInToday;
+            dto.NumOutToday = sumNumOutToday;
+            dto.QuantityInToday = sumQuantityInToday;
+            dto.QuantityOutToday = sumQuantityOutToday;
+            dto.InventoryInToday = sumInventoryInToday;
+            dto.InventoryOutToday = sumInventoryOutToday;
+
+            dto.Spare = sumInventory - dto.YellowQuantity;
             
             return dto;
         }

@@ -13,6 +13,7 @@
             	url: '/Supervisor' + '/GridData',
             	onSelect: function(index, row) {
 					$('#fm').form('load', row);
+					$('#fm2').form('load', row);
 				}
 			});
 
@@ -88,8 +89,16 @@
                 			<td><input name="capitalName" class="easyui-textbox" readonly style="width: 100%"></td>
             			</tr>
             			<tr>
+                			<th><label for="quantity">监管量</label></th>
+                			<td><input name="quantity" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
                 			<th><label for="yellowQuantity">黄线</label></th>
                 			<td><input name="yellowQuantity" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+             			<tr>
+                			<th><label for="inventroy">当前库存</label></th>
+                			<td><input name="inventroy" class="easyui-numberbox" readonly style="width: 100%"></td>
             			</tr>
             			<tr>
                 			<th><label for="spare">富余</label></th>
@@ -115,9 +124,34 @@
 				</div>
 			</div>
     		<div data-options="region:'east'" style="width: 20%">
-				<div title="当前监控点情况" iconCls="icon-search" style="text-align:center;background:#f3eeaf;height:100%;padding:5px;">
-					<h2>出库数：600</h2>
-				</div>
+    			<form id="fm2" class="easyui-form" method="post" novalidate>
+        			<table class="edit-tbl">
+            			<tr>
+                			<th><label for="numInToday"></label>进库笔数</th>
+                			<td><input name="numInToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><label for="quantityInToday"></label>进库重量</th>
+                			<td><input name="quantityInToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+             			<tr>
+                			<th><label for="inventoryInToday">进库折算量</label></th>
+                			<td><input name="inventoryInToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><label for="numOutToday"></label>出库笔数</th>
+                			<td><input name="numOutToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+            			<tr>
+                			<th><label for="quantityOutToday"></label>出库重量</th>
+                			<td><input name="quantityOutToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+             			<tr>
+                			<th><label for="inventoryOutToday">出库折算量</label></th>
+                			<td><input name="inventoryOutToday" class="easyui-numberbox" readonly style="width: 100%"></td>
+            			</tr>
+         			</table>
+    			</form>
 			</div>
 		</div>
 	</div>
@@ -133,7 +167,8 @@
                     <th field="quantity" width="80" sortable="true" align="right">监管量</th>
                     <th field="yellowQuantity" width="80" sortable="true" align="right">监管黄线</th>
                     <th field="inventory" width="80" align="right" formatter="$.quantityFormatter">当前库存量</th>
-                    <th field="spare" width="80" align="right" formatter="$.quantityFormatter">当前库存量</th>
+                    <th field="lastInTime" width="80" align="right" formatter="$.datetimeFormatter">最近进库时间</th>
+                    <th field="lastOutTime" width="80" align="right" formatter="$.datetimeFormatter">最近出库时间</th>
                 </tr>
             </thead>
         </table>
