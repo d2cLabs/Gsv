@@ -341,7 +341,7 @@ namespace Gsv.Tasks
 
                 var shelf = _shelfRepository.Get(shelfId);
                 shelf.Inventory -= GetRatio(shelf, quantity);
-                shelf.Inventory += GetRatio(shelf, quantity);
+                //shelf.Inventory += GetRatio(shelf, quantity);
                 if (!shelf.LastOutTime.HasValue || shelf.LastOutTime.Value.Date != DateTime.Now.Date)
                 {
                     shelf.NumOutToday = 0;

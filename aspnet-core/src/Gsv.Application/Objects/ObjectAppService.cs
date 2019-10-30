@@ -88,6 +88,7 @@ namespace Gsv.Objects
             double sumInventoryOutToday = 0;
             int sumNumInToday = 0;
             int sumNumOutToday = 0;
+
             foreach (var shelf in shelfs)
             {
                 sumInventory += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
@@ -97,8 +98,8 @@ namespace Gsv.Objects
                     sumQuantityInToday += shelf.QuantityInToday;
                     sumInventoryInToday += GetRatio(shelf, shelf.QuantityInToday);
 
-                    if (shelf.LastInTime.Value > dto.LastInTime)
-                        dto.LastInTime = shelf.LastInTime.Value;
+                    if (!dto.LastInTime.HasValue || shelf.LastInTime.Value > dto.LastInTime.Value)
+                        dto.LastInTime = shelf.LastInTime;
                 }
                 if (shelf.LastOutTime.HasValue && shelf.LastOutTime.Value.Date == DateTime.Now.Date)
                 {
@@ -106,8 +107,8 @@ namespace Gsv.Objects
                     sumQuantityOutToday += shelf.QuantityOutToday;
                     sumInventoryOutToday += GetRatio(shelf, shelf.QuantityOutToday);
 
-                    if (shelf.LastOutTime.Value > dto.LastOutTime)
-                        dto.LastOutTime = shelf.LastOutTime.Value;
+                    if (!dto.LastOutTime.HasValue || shelf.LastOutTime.Value > dto.LastOutTime.Value)
+                        dto.LastOutTime = shelf.LastOutTime;
                  }
             }
             dto.Inventory = sumInventory;
@@ -119,7 +120,6 @@ namespace Gsv.Objects
             dto.InventoryOutToday = sumInventoryOutToday;
 
             dto.Spare = sumInventory - dto.YellowQuantity;
-            
             return dto;
         }
 

@@ -38,21 +38,21 @@ namespace Gsv.Web.Controllers
         {
             if (string.IsNullOrEmpty(code))
             {
-                return Redirect(OAuth2Api.GetCode(_corpId, AbsoluteUri(), "STATE", _agentId));
+                // return Redirect(OAuth2Api.GetCode(_corpId, AbsoluteUri(), "STATE", _agentId));
             }
 
             var accessToken = AccessTokenContainer.GetToken(_corpId, _secret);
-            GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
-            Logger.Info(string.Format("accessKey={0} code={1}, corpId={2}, secret={3}", accessToken, code, _corpId, _secret));
-            Logger.Info(userInfo.UserId);
+            //GetUserInfoResult userInfo = OAuth2Api.GetUserId(accessToken, code);
+            //Logger.Info(string.Format("accessKey={0} code={1}, corpId={2}, secret={3}", accessToken, code, _corpId, _secret));
+            //Logger.Info(userInfo.UserId);
 
-            var ret = GetObjects(userInfo.UserId);
-            if (ret.Item2 != null) return Content(ret.Item2);
+            //var ret = GetObjects(userInfo.UserId);
+            //if (ret.Item2 != null) return Content(ret.Item2);
 
             var vm = new LoginViewModel() {
-                WorkerCn = userInfo.UserId,
+                //WorkerCn = userInfo.UserId,
                 //Password = "123456",
-                Objects = ret.Item1,   // new List<LoginObject>(),
+                //Objects = ret.Item1,   // new List<LoginObject>(),
                 ReturnUrl = returnUrl
             };
 
@@ -79,7 +79,7 @@ namespace Gsv.Web.Controllers
             {
                 var ret = GetObjects(vm.WorkerCn);
                 if (ret.Item2 != null) {
-                    ModelState.AddModelError("", "用户名或密码错误");
+                    ModelState.AddModelError("", ret.Item2);
                     return View(vm);
                 }
                 vm.Objects = ret.Item1;

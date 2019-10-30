@@ -97,8 +97,8 @@
                 			<td><input name="yellowQuantity" class="easyui-numberbox" readonly style="width: 100%"></td>
             			</tr>
              			<tr>
-                			<th><label for="inventroy">当前库存</label></th>
-                			<td><input name="inventroy" class="easyui-numberbox" readonly style="width: 100%"></td>
+                			<th><label for="inventory">当前库存</label></th>
+                			<td><input name="inventory" class="easyui-numberbox" readonly style="width: 100%"></td>
             			</tr>
             			<tr>
                 			<th><label for="spare">富余</label></th>
@@ -156,7 +156,10 @@
 		</div>
 	</div>
     <div data-options="region:'center',border:false">
-        <table id="dg" class="easyui-datagrid"
+		<div id="tb">
+    		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="$('#dg').datagrid('reload')">刷新</a>
+		</div>
+        <table id="dg" class="easyui-datagrid" toolbar="#tb"
                 fit="true" fitColumns="true" rownumbers="true" singleSelect="true" striped="true" sortName="place.Cn">
             <thead>
                 <tr>
@@ -167,6 +170,9 @@
                     <th field="quantity" width="80" sortable="true" align="right">监管量</th>
                     <th field="yellowQuantity" width="80" sortable="true" align="right">监管黄线</th>
                     <th field="inventory" width="80" align="right" formatter="$.quantityFormatter">当前库存量</th>
+                    <th field="spare" width="80" align="right" formatter="$.quantityFormatter">富余量</th>
+                    <th field="inventoryInToday" width="80" align="right" formatter="$.quantityFormatter">今日进库</th>
+                    <th field="inventoryOutToday" width="80" align="right" formatter="$.quantityFormatter">今日出库</th>
                     <th field="lastInTime" width="80" align="right" formatter="$.datetimeFormatter">最近进库时间</th>
                     <th field="lastOutTime" width="80" align="right" formatter="$.datetimeFormatter">最近出库时间</th>
                 </tr>
