@@ -44,15 +44,26 @@ namespace Gsv.Web.Controllers
         }
         public ActionResult Allot()
         {
-            SetViewBag();
+            // SetViewBag();
             return View(GetAllotViewModel());
         } 
 
         [HttpPost]
         public ActionResult InsertAllot(AllotViewModel vm)
         {
-            _taskAppService.InsertAllot(vm.FromShelfId, vm.ToShelfId, vm.Quantity, vm.Remark, GetWorkerId());
-            // valid vm ToDO
+            if (vm.FromShelfId == vm.ToShelfId)
+            {
+                ModelState.AddModelError("", "调入调出柜台不能相同");
+                return View("Allot", GetAllotViewModel());
+            }
+
+            if (!TaskManager.IsSameCategory(vm.FromShelfId, vm.ToShelfId))
+            {
+                ModelState.AddModelError("", "只能在相同品类中调拨");
+                return View("Allot", GetAllotViewModel());
+            }
+
+            _taskAppService.InsertAllot(vm.ObjectId, vm.FromShelfId, vm.ToShelfId, vm.Quantity, vm.Remark, GetWorkerId());
             return RedirectToAction("AllotList");
         }
 
@@ -66,7 +77,7 @@ namespace Gsv.Web.Controllers
             var ret = TaskManager.GetObjectCollateral(obj.Id);
             vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
-            var items = _taskAppService.GetWxAllotsAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetWxAllotsAsync(obj.Id).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -89,7 +100,8 @@ namespace Gsv.Web.Controllers
         {
             var obj = GetObject();
             AllotViewModel vm = new AllotViewModel();
-            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            vm.ObjectId = obj.Id;
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id));
             return vm;
         }
 
@@ -104,25 +116,14 @@ namespace Gsv.Web.Controllers
 
         public ActionResult InStock()
         {
-            var timestamp = JSSDKHelper.GetTimestamp();
-            //获取随机码
-            var nonceStr = JSSDKHelper.GetNoncestr();
-            string ticket = JsApiTicketContainer.GetTicket(_corpId, _secret);
-            //获取签名
-            var signature = JSSDKHelper.GetSignature(ticket, nonceStr, timestamp, AbsoluteUri());
- 
-            ViewBag.AppId = _corpId;
-            ViewBag.Timestamp = timestamp;
-            ViewBag.NonceStr = nonceStr;
-            ViewBag.Signature = signature;
-
+            // SetViewBag();
             return View(GetInStockViewModel());
         } 
 
         [HttpPost]
         public ActionResult InsertInStock(InStockViewModel vm)
         {
-            _taskAppService.InsertInStock(vm.ShelfId, vm.SourceId, vm.Quantity, vm.Remark, GetWorkerId());
+            _taskAppService.InsertInStock(vm.ObjectId, vm.ShelfId, vm.SourceId, vm.Quantity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("InList");
         }
@@ -136,7 +137,7 @@ namespace Gsv.Web.Controllers
             var ret = TaskManager.GetObjectCollateral(obj.Id);
             vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
-            var items = _taskAppService.GetWxInStocksAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetWxInStocksAsync(obj.Id).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -157,7 +158,8 @@ namespace Gsv.Web.Controllers
         {
             var obj = GetObject();
             InStockViewModel vm = new InStockViewModel();
-            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            vm.ObjectId = obj.Id;
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id));
             vm.Sources = ObjectMapper.Map<List<SourceDto>>(TaskManager.GetSources());
             return vm;
         }
@@ -178,7 +180,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertOutStock(OutStockViewModel vm)
         {
-            _taskAppService.InsertOutStock(vm.ShelfId, vm.Quantity, vm.Remark, GetWorkerId());
+            _taskAppService.InsertOutStock(vm.ObjectId, vm.ShelfId, vm.Quantity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("OutList");
         }
@@ -192,7 +194,7 @@ namespace Gsv.Web.Controllers
             var ret = TaskManager.GetObjectCollateral(obj.Id);
             vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
-            var items = _taskAppService.GetWxOutStocksAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetWxOutStocksAsync(obj.Id).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -213,7 +215,8 @@ namespace Gsv.Web.Controllers
         {
             var obj = GetObject();
             OutStockViewModel vm = new OutStockViewModel();
-            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            vm.ObjectId = obj.Id;
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id));
             return vm;
         }
         #endregion 
@@ -233,7 +236,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertInspect(InspectViewModel vm)
         {
-            _taskAppService.InsertInspect(vm.ShelfId, vm.Purity, vm.Remark, GetWorkerId());
+            _taskAppService.InsertInspect(vm.ObjectId, vm.ShelfId, vm.Purity, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("InspectList");
         }
@@ -247,7 +250,7 @@ namespace Gsv.Web.Controllers
             var ret = TaskManager.GetObjectCollateral(obj.Id);
             vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
-            var items = _taskAppService.GetWxInspectsAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetWxInspectsAsync(obj.Id).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -268,7 +271,8 @@ namespace Gsv.Web.Controllers
         {
             var obj = GetObject();
             InspectViewModel vm = new InspectViewModel();
-            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            vm.ObjectId = obj.Id;
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id));
             return vm;
         }
         #endregion 
@@ -288,7 +292,7 @@ namespace Gsv.Web.Controllers
         [HttpPost]
         public ActionResult InsertStocktaking(StocktakingViewModel vm)
         {
-            _taskAppService.InsertStocktaking(vm.ShelfId, vm.Inventory, vm.Remark, GetWorkerId());
+            _taskAppService.InsertStocktaking(vm.ObjectId, vm.ShelfId, vm.Inventory, vm.Remark, GetWorkerId());
             // valid vm ToDO
             return RedirectToAction("StocktakingList");
         }
@@ -302,7 +306,7 @@ namespace Gsv.Web.Controllers
             var ret = TaskManager.GetObjectCollateral(obj.Id);
             vm.Collateral = string.Format("类型:{0}   库存:{1:F3}   黄线:{2}", ret.Item1, ret.Item2, ret.Item3);
 
-            var items = _taskAppService.GetWxStocktakingsAsync(obj.PlaceId, obj.CategoryId).Result;
+            var items = _taskAppService.GetWxStocktakingsAsync(obj.Id).Result;
             vm.Items = new List<ItemInfo>();
             double total = 0.0;
             foreach (var item in items)
@@ -323,7 +327,8 @@ namespace Gsv.Web.Controllers
         {
             var obj = GetObject();
             StocktakingViewModel vm = new StocktakingViewModel();
-            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id, obj.CategoryId));
+            vm.ObjectId = obj.Id;
+            vm.Shelves = ObjectMapper.Map<List<ShelfDto>>(TaskManager.GetObjectShelves(obj.Id));
             return vm;
         }
         #endregion 
@@ -352,6 +357,7 @@ namespace Gsv.Web.Controllers
             if (id == 0) return null;
             return TaskManager.GetObject(id);
         }
+
         private int GetWorkerId()
         {
             var claim = HttpContext.User.Claims.First(x => x.Type == "Cn");

@@ -57,6 +57,17 @@
             return val;
         },
 
+        displayObjectText : function (val) {
+            var objects = $('#object').combobox('getData');
+            for (var i = 0; i < objects.length; i++) {
+                if (val === parseInt(objects[i].id)) {
+                    var text = objects[i].capitalName + ' ' + objects[i].categoryName;
+                    return text;
+                }
+            };
+            return val;
+        },
+
         quantityFormatter: function (val) {
             var num = Number(val);
             if (!isNaN(num)) return num.toFixed(3);

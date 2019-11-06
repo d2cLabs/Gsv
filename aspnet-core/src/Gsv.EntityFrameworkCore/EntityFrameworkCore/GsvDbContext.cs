@@ -85,32 +85,45 @@ namespace Gsv.EntityFrameworkCore
             // Tasks
             modelBuilder.Entity<Allot>(b => 
             {
-                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.FromShelfId });
+                b.HasIndex(e => new { e.TenantId, e.ObjectId, e.CarryoutDate, e.FromShelfId });
             });
             
             modelBuilder.Entity<InStock>(b => 
             {
-                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.ShelfId });
+                b.HasIndex(e => new { e.TenantId, e.ObjectId, e.CarryoutDate, e.ShelfId });
             });
             modelBuilder.Entity<OutStock>(b => 
             {
-                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.ShelfId });
+                b.HasIndex(e => new { e.TenantId, e.ObjectId, e.CarryoutDate, e.ShelfId });
             });
             modelBuilder.Entity<Inspect>(b => 
             {
-                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.ShelfId });
+                b.HasIndex(e => new { e.TenantId, e.ObjectId, e.CarryoutDate, e.ShelfId });
             });
             modelBuilder.Entity<Stocktaking>(b => 
             {
-                b.HasIndex(e => new { e.TenantId, e.CarryoutDate, e.ShelfId });
+                b.HasIndex(e => new { e.TenantId, e.ObjectId, e.CarryoutDate, e.ShelfId });
             });
 
             // ForeignKey Conflict
+            modelBuilder.Entity<Object>()
+                .HasMany(b => b.Shelves).WithOne().OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<CargoType>()
                 .HasOne(b => b.Place).WithMany().OnDelete(DeleteBehavior.Restrict);
  
             modelBuilder.Entity<Allot>()
                 .HasOne(b => b.ToShelf).WithMany().OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Allot>()
+                .HasOne(b => b.Object).WithMany().OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<InStock>()
+                .HasOne(b => b.Object).WithMany().OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<OutStock>()
+                .HasOne(b => b.Object).WithMany().OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Inspect>()
+                .HasOne(b => b.Object).WithMany().OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Stocktaking>()
+                .HasOne(b => b.Object).WithMany().OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

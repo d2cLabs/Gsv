@@ -52,37 +52,37 @@ namespace Gsv.Web.Controllers
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataAllot(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<JsonResult> GridDataAllot(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var output = await _taskAppService.GetAllotsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
+            var output = await _taskAppService.GetAllotsByObjectAsync(objectId, carryoutDate, shelfId);
             return Json( new { rows = output });
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataInStock(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<JsonResult> GridDataInStock(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var output = await _taskAppService.GetInStocksByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
+            var output = await _taskAppService.GetInStocksByObjectAsync(objectId, carryoutDate, shelfId);
             return Json( new { rows = output });
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataOutStock(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<JsonResult> GridDataOutStock(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var output = await _taskAppService.GetOutStocksByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId);
+            var output = await _taskAppService.GetOutStocksByObjectAsync(objectId, carryoutDate, shelfId);
             return Json( new { rows = output });
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataInspect(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<JsonResult> GridDataInspect(int objectId, DateTime carryoutDate, int shelfId, int placeId, int categoryId)
         {
-            var output = await _taskAppService.GetInspectsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId, GetPagedInput());
+            var output = await _taskAppService.GetInspectsByObjectAsync(objectId, carryoutDate, shelfId, GetPagedInput());
             return Json( new { total = output.TotalCount, rows = output.Items });
         }
 
         [DontWrapResult]
-        public async Task<JsonResult> GridDataStocktaking(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<JsonResult> GridDataStocktaking(int objectId, DateTime carryoutDate, int shelfId, int placeId, int categoryId)
         {
-            var output = await _taskAppService.GetStocktakingsByDateAndShelfAsync(carryoutDate, shelfId, placeId, categoryId, GetPagedInput());
+            var output = await _taskAppService.GetStocktakingsByObjectAsync(objectId, carryoutDate, shelfId, GetPagedInput());
             return Json( new { total = output.TotalCount, rows = output.Items });
         }
 	}

@@ -1241,6 +1241,8 @@ namespace Gsv.Migrations
 
                     b.Property<int>("NumOutToday");
 
+                    b.Property<int>("ObjectId");
+
                     b.Property<int>("PlaceId");
 
                     b.Property<double>("QuantityInToday");
@@ -1252,6 +1254,8 @@ namespace Gsv.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CargoTypeId");
+
+                    b.HasIndex("ObjectId");
 
                     b.HasIndex("PlaceId");
 
@@ -1307,6 +1311,8 @@ namespace Gsv.Migrations
 
                     b.Property<int>("FromShelfId");
 
+                    b.Property<int>("ObjectId");
+
                     b.Property<string>("PhotoFile")
                         .HasMaxLength(100);
 
@@ -1325,11 +1331,13 @@ namespace Gsv.Migrations
 
                     b.HasIndex("FromShelfId");
 
+                    b.HasIndex("ObjectId");
+
                     b.HasIndex("ToShelfId");
 
                     b.HasIndex("WorkerId");
 
-                    b.HasIndex("TenantId", "CarryoutDate", "FromShelfId");
+                    b.HasIndex("TenantId", "ObjectId", "CarryoutDate", "FromShelfId");
 
                     b.ToTable("Allots");
                 });
@@ -1343,6 +1351,8 @@ namespace Gsv.Migrations
                     b.Property<DateTime>("CarryoutDate");
 
                     b.Property<DateTime>("CreateTime");
+
+                    b.Property<int>("ObjectId");
 
                     b.Property<string>("PhotoFile")
                         .HasMaxLength(100);
@@ -1362,13 +1372,15 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ObjectId");
+
                     b.HasIndex("ShelfId");
 
                     b.HasIndex("SourceId");
 
                     b.HasIndex("WorkerId");
 
-                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+                    b.HasIndex("TenantId", "ObjectId", "CarryoutDate", "ShelfId");
 
                     b.ToTable("InStocks");
                 });
@@ -1382,6 +1394,8 @@ namespace Gsv.Migrations
                     b.Property<DateTime>("CarryoutDate");
 
                     b.Property<DateTime>("CreateTime");
+
+                    b.Property<int>("ObjectId");
 
                     b.Property<string>("PhotoFile")
                         .HasMaxLength(100);
@@ -1399,11 +1413,13 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ObjectId");
+
                     b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
-                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+                    b.HasIndex("TenantId", "ObjectId", "CarryoutDate", "ShelfId");
 
                     b.ToTable("Inspects");
                 });
@@ -1417,6 +1433,8 @@ namespace Gsv.Migrations
                     b.Property<DateTime>("CarryoutDate");
 
                     b.Property<DateTime>("CreateTime");
+
+                    b.Property<int>("ObjectId");
 
                     b.Property<string>("PhotoFile")
                         .HasMaxLength(100);
@@ -1434,11 +1452,13 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ObjectId");
+
                     b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
-                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+                    b.HasIndex("TenantId", "ObjectId", "CarryoutDate", "ShelfId");
 
                     b.ToTable("OutStocks");
                 });
@@ -1457,6 +1477,8 @@ namespace Gsv.Migrations
 
                     b.Property<double>("Inventory");
 
+                    b.Property<int>("ObjectId");
+
                     b.Property<string>("PhotoFile")
                         .HasMaxLength(100);
 
@@ -1471,11 +1493,13 @@ namespace Gsv.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ObjectId");
+
                     b.HasIndex("ShelfId");
 
                     b.HasIndex("WorkerId");
 
-                    b.HasIndex("TenantId", "CarryoutDate", "ShelfId");
+                    b.HasIndex("TenantId", "ObjectId", "CarryoutDate", "ShelfId");
 
                     b.ToTable("Stocktakings");
                 });
@@ -1741,6 +1765,11 @@ namespace Gsv.Migrations
                         .HasForeignKey("CargoTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("Gsv.Objects.Object")
+                        .WithMany("Shelves")
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Gsv.Objects.Place")
                         .WithMany("Shelves")
                         .HasForeignKey("PlaceId")
@@ -1753,6 +1782,11 @@ namespace Gsv.Migrations
                         .WithMany()
                         .HasForeignKey("FromShelfId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Gsv.Objects.Object", "Object")
+                        .WithMany()
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Gsv.Objects.Shelf", "ToShelf")
                         .WithMany()
@@ -1767,6 +1801,11 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.InStock", b =>
                 {
+                    b.HasOne("Gsv.Objects.Object", "Object")
+                        .WithMany()
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
                         .HasForeignKey("ShelfId")
@@ -1785,6 +1824,11 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.Inspect", b =>
                 {
+                    b.HasOne("Gsv.Objects.Object", "Object")
+                        .WithMany()
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
                         .HasForeignKey("ShelfId")
@@ -1798,6 +1842,11 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.OutStock", b =>
                 {
+                    b.HasOne("Gsv.Objects.Object", "Object")
+                        .WithMany()
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
                         .HasForeignKey("ShelfId")
@@ -1811,6 +1860,11 @@ namespace Gsv.Migrations
 
             modelBuilder.Entity("Gsv.Tasks.Stocktaking", b =>
                 {
+                    b.HasOne("Gsv.Objects.Object", "Object")
+                        .WithMany()
+                        .HasForeignKey("ObjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Gsv.Objects.Shelf", "Shelf")
                         .WithMany()
                         .HasForeignKey("ShelfId")

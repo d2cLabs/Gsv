@@ -5,6 +5,7 @@
 }
 
 <form action ="/Weixin/InsertStocktaking" method="post" onsubmit="checkSubmit()">
+    <input name="objectId" type="hidden" value="@Model.ObjectId"/>
     @Html.ValidationSummary()
     <div class="weui-cells">
         <div class="weui-cell weui-cell_select weui-cell_select-after">

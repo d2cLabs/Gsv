@@ -6,6 +6,7 @@ namespace Gsv.Web.Models.Weixin
 {
     public class AllotViewModel
     {
+        public int ObjectId { get; set; }
         public int FromShelfId { get; set; }
         public int ToShelfId { get; set; }
 

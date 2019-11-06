@@ -20,8 +20,6 @@ using Senparc.CO2NET.RegisterServices;
 using Senparc.Weixin;
 using Senparc.Weixin.Entities;
 using Senparc.Weixin.RegisterServices;
-using Senparc.Weixin.Work;
-using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Gsv.Web.Startup
 {

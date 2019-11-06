@@ -5,6 +5,7 @@ namespace Gsv.Web.Models.Weixin
 {
     public class InspectViewModel
     {
+        public int ObjectId { get; set; }
         public int ShelfId { get; set; }
 
         public List<ShelfDto> Shelves { get; set; }

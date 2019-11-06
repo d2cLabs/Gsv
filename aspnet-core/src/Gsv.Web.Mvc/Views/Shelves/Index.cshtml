@@ -12,9 +12,10 @@
         crud.dgDefault.name = 'Shelves';
         crud.dgDefault.sortName = 'name'
         crud.dgDefault.columns = [[
+            { field: "objectId", title: "标的", width: 100, formatter: $.displayObjectText },
             { field: "name", title: "名称", width: 100 },
             { field: "cargoTypeId", title: "品类", width: 80, formatter: $.displayCargoTypeText },      
-        ]];        
+        ]];    
     </script>
 }
 
@@ -37,9 +38,6 @@
                     onSelect: function (node) {
                         crud.parentId = node.id;
                         // alert(crud.dgDefault.name + '/GetPagedData/' + 'PlaceId=' + node.id);
-                        $('#datagrid').datagrid({
-                            url: crud.dgDefault.name + '/GetPagedData/' + 'PlaceId=' + node.id
-                        });
 
                         abp.services.app.object.getCargoTypes(node.id).done(function(res) { 
                             $('#cargoType').combobox({
@@ -47,6 +45,18 @@
                                 valueField: 'id',
                                 textField: 'typeName'
                             }); 
+                        });
+
+                        abp.services.app.object.getObjects(node.id).done(function(res) { 
+                            $('#object').combobox({
+                                data: res,
+                                valueField: 'id',
+                                textField: 'categoryName'
+                            }); 
+                        });
+
+                        $('#datagrid').datagrid({
+                            url: crud.dgDefault.name + '/GetPagedData/' + 'PlaceId=' + node.id
                         });
                     }
                 });
@@ -77,6 +87,10 @@
             <tr>
                 <th><label for="placeId">场所：</label></th>
                 <td><input id="place" name="placeId" class="easyui-combobox" readonly="true" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <th><label for="objectId">标的：</label></th>
+                <td><input id="object" name="objectId" class="easyui-combobox" style="width: 375px" /></td>
             </tr>
             <tr>
                 <th><Label for="name">货架名称:</Label></th>

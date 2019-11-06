@@ -46,7 +46,7 @@
             // alert(task.shelfId);  
             $('#dgList').datagrid({
                 url: '/' + task.controllerName + '/GridDataOutStock',
-                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+                queryParams: { objectId: task.objectRow.id, carryoutDate: task.dd, shelfId: task.shelfId }
             });
         }
     </script>

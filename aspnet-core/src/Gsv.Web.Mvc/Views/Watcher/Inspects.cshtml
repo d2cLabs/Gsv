@@ -27,7 +27,7 @@
             // alert(task.dd + ' ' + task.shelfId);   
             $('#dgList').datagrid({
                 url: '/' + task.controllerName + '/GridDataInspect',
-                queryParams: { carryoutDate: task.dd, shelfId: task.shelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+                queryParams: { objectId: task.objectRow.id, carryoutDate: task.dd, shelfId: task.shelfId }
             });
         }
     </script>

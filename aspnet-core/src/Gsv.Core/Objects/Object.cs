@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Gsv.Types;
 
@@ -17,19 +19,20 @@ namespace Gsv.Objects
         public int TenantId { get; set; }
        
         /// <summary>
+        /// 场地Id
+        /// </summary>
+        [Required]
+        public int PlaceId { get; set; }
+        public virtual Place Place { get; set; }
+
+        /// <summary>
         /// 资本Id
         /// </summary>
         [Required]
         public int CapitalId { get; set; }
         public virtual Capital Capital { get; set; }
 
-        /// <summary>
-        /// 场地Id
-        /// </summary>
-        [Required]
-        public int PlaceId { get; set; }
-        public virtual Place Place { get; set; }
-        
+
         /// <summary>
         /// 品类Id
         /// </summary>
@@ -46,6 +49,9 @@ namespace Gsv.Objects
 
         [StringLength(GsvConsts.NormalStringFieldLength)]
         public string Remark { get; set; }
+
+        [ForeignKey("ObjectId")]
+        public virtual List<Shelf> Shelves { get; set; }
     }
 }
 

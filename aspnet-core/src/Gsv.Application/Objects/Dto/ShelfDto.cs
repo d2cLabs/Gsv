@@ -11,6 +11,9 @@ namespace Gsv.Objects.Dto
         [Required]
         public int PlaceId { get; set; }
         
+        [Required]
+        public int ObjectId { get; set; }
+        
         /// <summary>
         /// 场地货架名称
         /// </summary>

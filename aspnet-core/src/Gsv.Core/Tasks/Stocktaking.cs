@@ -18,6 +18,8 @@ namespace Gsv.Tasks
         // Implement of IMustHaveTenant
         public int TenantId { get; set; }
 
+        public int ObjectId { get; set;}
+        public virtual Objects.Object Object { get; set; }
 
         public DateTime CarryoutDate { get; set; }
         public int WorkerId { get; set; }

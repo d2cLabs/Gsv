@@ -47,7 +47,7 @@
             // alert(task.shelfId);  
             $('#dgList').datagrid({
                 url: '/' + task.controllerName + '/GridDataAllot',
-                queryParams: { carryoutDate: task.dd, shelfId: task.fromShelfId, placeId: task.objectRow.placeId, categoryId: task.objectRow.categoryId }
+                queryParams: { objectId: task.objectRow.id, carryoutDate: task.dd, shelfId: task.fromShelfId }
             });
         }
     </script>

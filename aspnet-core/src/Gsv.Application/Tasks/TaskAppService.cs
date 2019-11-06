@@ -46,58 +46,57 @@ namespace Gsv.Tasks
             return DateTime.Today.ToString("yyyy-MM-dd");
         }
         
-        public List<TaskShelfDto> GetObjectShelves(int objectId, int categoryId)
+        public List<TaskShelfDto> GetObjectShelves(int objectId)
         {
-            var shelves = TaskManager.GetObjectShelves(objectId, categoryId);
+            var shelves = TaskManager.GetObjectShelves(objectId);
             return ObjectMapper.Map<List<TaskShelfDto>>(shelves);           
         }
 
-        public async Task<List<AllotDto>> GetAllotsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<List<AllotDto>> GetAllotsByObjectAsync(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var query = _allotRepository.GetAllIncluding(x => x.FromShelf, x => x.ToShelf, x => x.Worker);
+            var query = _allotRepository.GetAllIncluding(x => x.FromShelf, x => x.ToShelf, x => x.Worker).Where(x => x.ObjectId == objectId);
             if (shelfId > 0)
                 query = query.Where(x => x.CarryoutDate == carryoutDate && x.FromShelfId == shelfId);
             else
-                query = query.Where(x => x.CarryoutDate == carryoutDate && x.FromShelf.PlaceId == placeId && x.FromShelf.CargoType.CategoryId == categoryId);
+                query = query.Where(x => x.CarryoutDate == carryoutDate);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<AllotDto>>(entities);
         }
                 
-        public async Task<List<InStockDto>> GetInStocksByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<List<InStockDto>> GetInStocksByObjectAsync(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var query = _inStockRepository.GetAllIncluding(x => x.Shelf, x => x.Source, x => x.Worker);
+            var query = _inStockRepository.GetAllIncluding(x => x.Shelf, x => x.Source, x => x.Worker).Where(x => x.ObjectId == objectId);
             if (shelfId > 0)
                 query = query.Where(x => x.CarryoutDate == carryoutDate && x.ShelfId == shelfId);
             else
-                query = query.Where(x => x.CarryoutDate == carryoutDate && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+                query = query.Where(x => x.CarryoutDate == carryoutDate);
+
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<InStockDto>>(entities);
         }
 
-        public async Task<List<OutStockDto>> GetOutStocksByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId)
+        public async Task<List<OutStockDto>> GetOutStocksByObjectAsync(int objectId, DateTime carryoutDate, int shelfId)
         {
-            var query = _outStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
+            var query = _outStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker).Where(x => x.ObjectId == objectId);
             if (shelfId > 0)
                 query = query.Where(x => x.CarryoutDate == carryoutDate && x.ShelfId == shelfId);
             else
-                query = query.Where(x => x.CarryoutDate == carryoutDate && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+                query = query.Where(x => x.CarryoutDate == carryoutDate);
+
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<OutStockDto>>(entities);
         }
                 
-        public async Task<PagedResultDto<InspectDto>> GetInspectsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId, PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<InspectDto>> GetInspectsByObjectAsync(int objectId, DateTime carryoutDate, int shelfId, PagedAndSortedResultRequestDto input)
         {
-            var query = _inspectRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
-            if (carryoutDate.Year > 2000)
+            var query = _inspectRepository.GetAllIncluding(x => x.Shelf, x => x.Worker).Where(x => x.ObjectId == objectId);
+            if (carryoutDate.Year > 2000) 
                 query = query.Where(x => x.CarryoutDate == carryoutDate);
             if (shelfId > 0)
                 query = query.Where(x => x.ShelfId == shelfId);
-            else
-                query = query.Where(x => x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-
 
             var totalCount = await AsyncQueryableExecuter.CountAsync(query);
 
@@ -112,16 +111,13 @@ namespace Gsv.Tasks
             );
         }
                 
-        public async Task<PagedResultDto<StocktakingDto>> GetStocktakingsByDateAndShelfAsync(DateTime carryoutDate, int shelfId, int placeId, int categoryId, PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<StocktakingDto>> GetStocktakingsByObjectAsync(int objectId, DateTime carryoutDate, int shelfId, PagedAndSortedResultRequestDto input)
         {
-            var query = _stocktakingRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
+            var query = _stocktakingRepository.GetAllIncluding(x => x.Shelf, x => x.Worker).Where(x => x.ObjectId == objectId);
             if (carryoutDate.Year > 2000)
                 query = query.Where(x => x.CarryoutDate == carryoutDate);
             if (shelfId > 0)
                 query = query.Where(x => x.ShelfId == shelfId);
-            else
-                query = query.Where(x => x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
-
 
             var totalCount = await AsyncQueryableExecuter.CountAsync(query);
 
@@ -204,35 +200,36 @@ namespace Gsv.Tasks
         private double GetRatio(Shelf shelf, double quantity)
         {
             var cargoType = TaskManager.GetCargoType(shelf.CargoTypeId);
-            return cargoType.Ratio * quantity;
+            double r = quantity * cargoType.Ratio;
+            return  r;
         }
         #region Wx
 
         [AbpAllowAnonymous]
-        public async Task<List<AllotDto>> GetWxAllotsAsync(int placeId, int categoryId)
+        public async Task<List<AllotDto>> GetWxAllotsAsync(int objectId)
         {
             var query = _allotRepository.GetAllIncluding(x => x.FromShelf, x => x.Worker);
-            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.FromShelf.PlaceId == placeId && x.FromShelf.CargoType.CategoryId == categoryId);
+            query = query.Where(x => x.ObjectId == objectId && x.CarryoutDate == DateTime.Today);
             query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<AllotDto>>(entities);
         }
         [AbpAllowAnonymous]
-        public async Task<List<InStockDto>> GetWxInStocksAsync(int placeId, int categoryId)
+        public async Task<List<InStockDto>> GetWxInStocksAsync(int objectId)
         {
             var query = _inStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
-            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+            query = query.Where(x => x.ObjectId == objectId && x.CarryoutDate == DateTime.Today);
             query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
             return ObjectMapper.Map<List<InStockDto>>(entities);
         }
         [AbpAllowAnonymous]
-        public async Task<List<OutStockDto>> GetWxOutStocksAsync(int placeId, int categoryId)
+        public async Task<List<OutStockDto>> GetWxOutStocksAsync(int objectId)
         {
             var query = _outStockRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
-            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+            query = query.Where(x => x.ObjectId == objectId && x.CarryoutDate == DateTime.Today);
             query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
@@ -240,10 +237,10 @@ namespace Gsv.Tasks
         }
                 
         [AbpAllowAnonymous]
-        public async Task<List<InspectDto>> GetWxInspectsAsync(int placeId, int categoryId)
+        public async Task<List<InspectDto>> GetWxInspectsAsync(int objectId)
         {
             var query = _inspectRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
-            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+            query = query.Where(x => x.ObjectId == objectId && x.CarryoutDate == DateTime.Today);
             query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
@@ -251,10 +248,10 @@ namespace Gsv.Tasks
         }
                 
         [AbpAllowAnonymous]
-        public async Task<List<StocktakingDto>> GetWxStocktakingsAsync(int placeId, int categoryId)
+        public async Task<List<StocktakingDto>> GetWxStocktakingsAsync(int objectId)
         {
             var query = _stocktakingRepository.GetAllIncluding(x => x.Shelf, x => x.Worker);
-            query = query.Where(x => x.CarryoutDate == DateTime.Today && x.Shelf.PlaceId == placeId && x.Shelf.CargoType.CategoryId == categoryId);
+            query = query.Where(x => x.ObjectId == objectId && x.CarryoutDate == DateTime.Today);
             query = query.OrderByDescending(x => x.CreateTime).Take(NumItems);
             var entities = await AsyncQueryableExecuter.ToListAsync(query);
             
@@ -262,11 +259,12 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertAllot(int fromShelfId, int toShelfId, double quantity, string remark, int workerId)
+        public void InsertAllot(int objectId, int fromShelfId, int toShelfId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var entity = new Allot() {
+                    ObjectId = objectId,
                     CarryoutDate = DateTime.Today,
                     FromShelfId = fromShelfId,
                     ToShelfId = toShelfId,
@@ -280,11 +278,11 @@ namespace Gsv.Tasks
            
                 var shelf = _shelfRepository.Get(fromShelfId);
                 shelf.Inventory -= GetRatio(shelf, quantity);
-                shelf.LastInTime = DateTime.Now;
+                // shelf.LastOutTime = DateTime.Now;
 
                 shelf = _shelfRepository.Get(toShelfId);
                 shelf.Inventory += GetRatio(shelf, quantity);
-                shelf.LastInTime = DateTime.Now;
+                // shelf.LastInTime = DateTime.Now;
 
                 CurrentUnitOfWork.SaveChanges();
             }
@@ -292,11 +290,12 @@ namespace Gsv.Tasks
 
                 
         [AbpAllowAnonymous]
-        public void InsertInStock(int shelfId, int sourceId, double quantity, string remark, int workerId)
+        public void InsertInStock(int objectId, int shelfId, int sourceId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var entity = new InStock() {
+                    ObjectId = objectId,
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     SourceId = sourceId,
@@ -307,9 +306,9 @@ namespace Gsv.Tasks
                 };
 
                 _inStockRepository.Insert(entity);
-
             
                 var shelf = _shelfRepository.Get(shelfId);
+                if (!shelf.Inventory.HasValue) shelf.Inventory = 0;
                 shelf.Inventory += GetRatio(shelf, quantity);
                 if (!shelf.LastInTime.HasValue || shelf.LastInTime.Value.Date != DateTime.Now.Date)
                 {
@@ -325,11 +324,12 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertOutStock(int shelfId, double quantity, string remark, int workerId)
+        public void InsertOutStock(int objectId, int shelfId, double quantity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var entity = new OutStock() {
+                    ObjectId = objectId,
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     Quantity = quantity,
@@ -340,6 +340,7 @@ namespace Gsv.Tasks
                 _outStockRepository.Insert(entity);
 
                 var shelf = _shelfRepository.Get(shelfId);
+                if (!shelf.Inventory.HasValue) shelf.Inventory = 0;
                 shelf.Inventory -= GetRatio(shelf, quantity);
                 //shelf.Inventory += GetRatio(shelf, quantity);
                 if (!shelf.LastOutTime.HasValue || shelf.LastOutTime.Value.Date != DateTime.Now.Date)
@@ -356,11 +357,12 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertInspect(int shelfId, float purity, string remark, int workerId)
+        public void InsertInspect(int objectId, int shelfId, float purity, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var entity = new Inspect() {
+                    ObjectId = objectId,
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     Purity = purity,
@@ -374,11 +376,12 @@ namespace Gsv.Tasks
         }
 
         [AbpAllowAnonymous]
-        public void InsertStocktaking(int shelfId, double inventory, string remark, int workerId)
+        public void InsertStocktaking(int objectId, int shelfId, double inventory, string remark, int workerId)
         {
             using (CurrentUnitOfWork.SetTenantId(1))
             {
                 var entity = new Stocktaking() {
+                    ObjectId = objectId,
                     CarryoutDate = DateTime.Today,
                     ShelfId = shelfId,
                     Inventory = inventory,

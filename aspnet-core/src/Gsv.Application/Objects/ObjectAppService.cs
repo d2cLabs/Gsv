@@ -21,16 +21,20 @@ namespace Gsv.Objects
         private readonly IPlaceCache _placeCache;
         private readonly ICapitalCache _capitalCache;
 
+        private readonly IObjectCache _objectCache;
+
         private readonly ICargoTypeCache _cargoTypeCache;
         private readonly IRepository<Object> _objectRepository;
 
         public ObjectAppService(IPlaceCache placeCache,
             ICapitalCache capitalCache,
+            IObjectCache objectCache,
             ICargoTypeCache cargoTypeCache,
             IRepository<Object> objectRepository)
         {
             _placeCache = placeCache;
             _capitalCache = capitalCache;
+            _objectCache = objectCache;
             _cargoTypeCache = cargoTypeCache;
             _objectRepository = objectRepository;
         }
@@ -43,6 +47,13 @@ namespace Gsv.Objects
         public List<Capital> GetCapitals()
         {
             return _capitalCache.GetList();
+        }
+
+        public async Task<List<ShelfObjectDto>> GetObjects(int placeId)
+        {
+            var query = _objectRepository.GetAllIncluding(x => x.Capital, x => x.Category).Where(x => x.PlaceId == placeId);
+            var entities = await AsyncQueryableExecuter.ToListAsync(query);
+            return ObjectMapper.Map<List<ShelfObjectDto>>(entities);
         }
 
         public List<CargoType> GetCargoTypes(int placeId)
@@ -79,7 +90,7 @@ namespace Gsv.Objects
         {
             var dto = ObjectMapper.Map<TaskObjectDto>(entity);
 
-            var shelfs = TaskManager.GetObjectShelves(entity.Id, entity.CategoryId);
+            var shelfs = TaskManager.GetObjectShelves(entity.Id);
 
             double sumInventory = 0;
             double sumQuantityInToday = 0;

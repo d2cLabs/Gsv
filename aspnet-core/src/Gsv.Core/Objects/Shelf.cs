@@ -17,6 +17,9 @@ namespace Gsv.Objects
         // 所属场地
         public int PlaceId { get; set; }
 
+        // 所属标的
+        public int ObjectId { get; set; }
+
         /// <summary>
         /// 场地货架名称
         /// </summary>

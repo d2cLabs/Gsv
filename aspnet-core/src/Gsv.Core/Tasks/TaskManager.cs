@@ -84,19 +84,6 @@ namespace Gsv.Tasks
 
         #region Get ListViewModel of Object(Weixin)
 
-        private double GetObjectTotalInventory(int id)
-        {
-            var obj = _objectCache[id];
-            double total = 0.0d;
-            var shelves = _shelfCache.GetList();
-            foreach (var shelf in shelves) {
-                var type = _cargoTypeCache[shelf.CargoTypeId];
-                if (shelf.PlaceId == obj.PlaceId && type.CategoryId == obj.CategoryId)
-                    total += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0.0d;
-            }
-            return total;
-        }
-
         public string GetObjectPlaceInfo(int id)
         {
             var obj = _objectCache[id];
@@ -111,24 +98,24 @@ namespace Gsv.Tasks
 
         public List<Shelf> GetObjectShelves(int id)
         {
-            var obj = _objectCache[id];
-            return _shelfCache.GetList().FindAll(x => x.PlaceId == obj.PlaceId);
+            return _shelfCache.GetList().FindAll(x => x.ObjectId == id);
         }
 
-        public List<Shelf> GetObjectShelves(int id, int categoryId)
+        public bool IsSameCategory(int fromShelfId, int toShelfId)
         {
-            var obj = _objectCache[id];
-            var shelves = _shelfCache.GetList();
-            
-            List<Shelf> ret = new List<Shelf>();
-            foreach (var shelf in shelves) {
-                var type = _cargoTypeCache[shelf.CargoTypeId];
-                if (shelf.PlaceId == obj.PlaceId && type.CategoryId == categoryId)
-                    ret.Add(shelf);
-            }
-            return ret;
-
+            return _shelfCache[fromShelfId].CargoTypeId == _shelfCache[toShelfId].CargoTypeId;
         }
+        
+        private double GetObjectTotalInventory(int id)
+        {
+            double total = 0;
+            var shelves = GetObjectShelves(id);
+            foreach (var shelf in shelves) {
+                total += shelf.Inventory.HasValue ? shelf.Inventory.Value : 0;
+            }
+            return total;
+        }
+
         #endregion
     }
 }

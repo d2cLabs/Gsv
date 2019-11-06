@@ -121,13 +121,13 @@ namespace Gsv.EntityFrameworkCore.Seed.Tenants
             {
                 _context.Shelves.AddRange(new Shelf[] 
                 {
-                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 1, Name = "饰金柜台" },
-                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 2, Name = "K金柜台" },
-                    new Shelf() { TenantId = _tenantId, PlaceId = 1, CargoTypeId = 3, Name = "铂金柜台" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 1, PlaceId = 1, CargoTypeId = 1, Name = "饰金柜台" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 1, PlaceId = 1, CargoTypeId = 2, Name = "K金柜台" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 1, PlaceId = 1, CargoTypeId = 3, Name = "铂金柜台" },
 
-                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "机加" },
-                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "五组" },
-                    new Shelf() { TenantId = _tenantId, PlaceId = 2, CargoTypeId = 4, Name = "八组" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 2, PlaceId = 2, CargoTypeId = 4, Name = "机加" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 2, PlaceId = 2, CargoTypeId = 4, Name = "五组" },
+                    new Shelf() { TenantId = _tenantId, ObjectId = 2, PlaceId = 2, CargoTypeId = 4, Name = "八组" },
                 });
                 _context.SaveChanges();
             }            
